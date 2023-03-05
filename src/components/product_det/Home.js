@@ -127,14 +127,14 @@ const Home = () => {
               <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/company_about"> Mahsulotlar</NavLink>
+              <NavLink to="/product"> Mahsulotlar</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
               {itemList
                 .filter((data) => data.id == UrlId)
                 .map((value) => {
                   return (
-                    <NavLink to="/dekoart"> Parket loki</NavLink>
+                    <NavLink to="/product_det/:1"> {value.name}</NavLink>
                   );
                 })}
             </Breadcrumb.Item>

@@ -87,3 +87,9 @@
     font-weight: 300;
     color: rgb(238, 237, 237);
 }
+
+@media (min-width:768px) and (max-width:1023px) {
+    .Cards {
+        width: 100%;
+    }
+}

@@ -14,6 +14,7 @@ import ServiceEdeucation from "../components/Xizmatlar/ServiceEdeucation";
 import Shops from "../components/Shops/Shops";
 import DekoarItem from "../components/Dekoart/DekoartItem";
 import Footer from '../common/footer/Footer.jsx'
+import Products from '../components/Product/Products';
 export default function RouterMain() {
     return (
         <div>
@@ -27,6 +28,7 @@ export default function RouterMain() {
                 <Route path="/maslahat" element={<ServiceMaslahat />} />
                 <Route path="/oqitish" element={<ServiceEdeucation />} />
                 <Route path="/markets" element={<Shops />} />
+                <Route path="/product" element={<Products />} />
 
                 <Route path="/product_det/:id" element={<Prodeuct_Det />} />
                 <Route path="/video" element={<Videos />} />

@@ -6,14 +6,14 @@ AOS.init({
 });
 
 export default function WeAbout() {
-    return (
+    return ( 
         <div className={styles.Container}>
-            <div className={styles.Main}>
+            <div className={styles.Main}> 
                 <div className={styles.Text}>
                     <p>Nega bizni tanlashadi</p>
                 </div>
                 <div className={styles.CardsGroup}>
-                    <div className={styles.Cards} data-aos="fade-right">
+                    <div className={styles.Cards} >
                         <div className={styles.ImgCirlce}>
                             <img src="http://www.dekoart.uz/templates/dekoartuz/images/preim/1.png" alt="img" />
 
@@ -27,7 +27,7 @@ export default function WeAbout() {
                         </div>
 
                     </div>
-                    <div className={styles.Cards}  data-aos="fade-left">
+                    <div className={styles.Cards}  >
                         <div className={styles.ImgCirlce}>
                             <img
                                 src="http://www.dekoart.uz/templates/dekoartuz/images/preim/3.png"
@@ -43,7 +43,7 @@ export default function WeAbout() {
                         </div>
 
                     </div>
-                    <div className={styles.Cards} data-aos="fade-right">
+                    <div className={styles.Cards} >
                         <div className={styles.ImgCirlce}>
                             <img
                                 src="http://www.dekoart.uz/templates/dekoartuz/images/preim/5.png"
@@ -59,7 +59,7 @@ export default function WeAbout() {
                         </div>
 
                     </div>
-                    <div className={styles.Cards}  data-aos="fade-left">
+                    <div className={styles.Cards}  >
                         <div className={styles.ImgCirlce}>
                             <img
                                 src="http://www.dekoart.uz/templates/dekoartuz/images/preim/2.png"
@@ -75,7 +75,7 @@ export default function WeAbout() {
                         </div>
 
                     </div>
-                    <div className={styles.Cards} data-aos="fade-right">
+                    <div className={styles.Cards} >
                         <div className={styles.ImgCirlce}>
                             <img
                                 src="http://www.dekoart.uz/templates/dekoartuz/images/preim/4.png"
@@ -91,7 +91,7 @@ export default function WeAbout() {
                         </div>
 
                     </div>
-                    <div className={styles.Cards}  data-aos="fade-left">
+                    <div className={styles.Cards}  >
                         <div className={styles.ImgCirlce}>
                             <img
                                 src="http://www.dekoart.uz/templates/dekoartuz/images/preim/6.png"
