@@ -1,0 +1,267 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.Main {
+    width: 100%;
+    height: 100%;
+}
+
+.Text {
+    width: 100%;
+    height: 250px;
+    
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Text p {
+    font-size: 28px;
+    font-weight: 600;
+    font-style: normal;
+
+
+}
+
+.Carousel {
+    width: 100%;
+    height: fit-content;
+    background: rgba(0, 0, 0, .7) url('../../assets//images copy/bg-1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 30px 100px;
+    border-radius: 5px;
+    overflow: hidden;
+    background-blend-mode: darken;
+
+}
+
+.CarosuelText {
+    font-size: 28px;
+    font-weight: 600;
+    font-style: normal;
+    padding: 20px 0px;
+    color: white;
+}
+
+.Carousels {
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Swipers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.CardGroup {
+    display: flex;
+    height: 530px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.CardItem {
+    width: 95% !important;
+    height: 470px;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: white;
+    /* padding: 5px; */
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 8px;
+    user-select: none;
+
+
+    /* margin: 0px 10px; */
+}
+
+.CardList {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.ForImgCard {
+    width: 100%;
+    height: 50%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.ForImgCard img {
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.CardItem:hover img {
+    transform: scale(1.1);
+}
+
+
+
+
+.ForTextCard {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: space-around;
+    padding: 0px 10px;
+
+}
+
+.ProductTitle {
+    width: 100%;
+    text-align: center;
+
+}
+
+.ProductTitle p {
+    font-size: 18px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 20px;
+}
+
+.ProductText {
+    width: 100%;
+
+}
+
+.ProductText p {
+    font-size: 16px;
+    line-height: 18px;
+    font-style: normal;
+    text-align: center;
+
+
+
+}
+
+.ProductBtn {
+    width: 100%;
+
+}
+
+
+.ProductBtn button {
+    background-color: #0f3460;
+    /* background-color: #256471f4; */
+    color: white;
+    height: 44px;
+    width: 100%;
+    font-family: "Monserrant";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.5s;
+    letter-spacing: 4px;
+}
+
+.ProductBtn button:hover {
+    background-color: #0F3460;
+    opacity: 0.7;
+
+}
+
+.ProductBtn button:active {
+    transform: scale(0.98);
+    opacity: 0.7;
+}
+
+/* -------slider */
+
+.NextArrow button {
+    position: absolute;
+    top: 40%;
+    z-index: 5;
+    right: 25px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    border: 1px dashed black;
+    background: #fff;
+    transition: all .3s ease-in-out;
+    opacity: .5;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+}
+
+.PrevArrow button {
+    position: absolute;
+    top: 40%;
+
+
+    z-index: 5;
+    left: 25px;
+
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    border: 1px dashed black;
+    background: #fff;
+    transition: all .3s ease-in-out;
+    opacity: .5;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+
+}
+
+#forwidt {
+    transition: .4s;
+}
+
+#forwidt:hover {}
+
+#forwidt:hover img {
+    transform: scale(1.009);
+
+}
+
+.SliderGroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

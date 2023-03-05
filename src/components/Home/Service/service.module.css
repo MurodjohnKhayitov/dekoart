@@ -1,0 +1,144 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.Main {
+    width: 100%;
+    height: 100%;
+}
+
+.Text {
+    width: 100%;
+    height: 200px;
+    background-color: #F0F1F3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Text p:nth-child(1) {
+    font-size: 28px;
+    font-weight: 600;
+    font-style: normal;
+
+
+}
+
+.Text p:nth-child(2) {
+    font-size: 22px;
+    font-weight: 400;
+    font-style: normal;
+
+
+}
+
+.CardGroup {
+    width: 100%;
+    height: 520px;
+    background-color: #D1D1D1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 100px;
+
+}
+
+.Cards {
+    width: 23%;
+    height: 450px;
+    background: #0d7286f4;
+    box-shadow: 3px 3px 5px #999;
+    /* margin: 40px 15px; */
+    /* border: 1px solid black; */
+    text-align: center;
+    overflow: hidden;
+    padding: 8px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+
+
+.CardImg {
+    width: 100%;
+    height: 50%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.CardTitle {
+    width: 100%;
+    height: 40%;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: center;
+}
+
+.CardImg img {
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+}
+
+.Cards:hover img {
+    transform: scale(1.1);
+    opacity: .8;
+}
+
+.MainTitles {
+    width: 100%;
+    font-size: 17px;
+    font-weight: 400;
+    text-align: center;
+    color: #fff;
+}
+
+.Maintext {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 10px 25px;
+    color: rgb(238, 237, 237);
+}
+
+.MainBtn {
+    width: 100%;
+
+}
+
+.MainBtn button {
+    background-color: #39bcd6f4;
+    /* background-color: #256471f4; */
+    color: white;
+    height: 44px;
+    width: 100%;
+    font-family: "Monserrant";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 0.3s;
+    letter-spacing: 4px;
+}
+
+.MainBtn button:hover {
+    background-color: #256471f4;
+}
+
+.MainBtn button:active {
+    transform: scale(0.98);
+    opacity: 0.7;
+}

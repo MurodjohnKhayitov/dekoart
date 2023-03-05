@@ -1,0 +1,191 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.Main {
+    width: 100%;
+    height: 100%;
+    padding: 0px 100px;
+    color: #0f3460;
+}
+.BreadcrumbItem {
+    padding: 15px 0px;
+    margin: 20px 0px;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: white;
+
+}
+
+.BreadcrumbItem a {
+    background-color: white;
+    margin: 0;
+    font-family: "Montserrat";
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+
+
+
+}
+
+.BreadcrumbItem a:hover {
+    background-color: white;
+    color: red;
+}
+.Content {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    padding: 30px 0px;
+    justify-content: space-between;
+}
+
+.ContentLeft {
+    width: 72%;
+    height: 100%;
+    border-radius: 5px;
+    height: fit-content;
+    background-color: white;
+    padding: 30px;
+
+}
+
+.LeftTitle {
+    width: 100%;
+    background-color: #0f3460;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    padding: 0px 15px;
+    align-items: center;
+    color: white;
+    border-radius: 3px;
+
+}
+
+.LeftTitle p {
+    font-size: 25px;
+    line-height: 25px;
+    color: white;
+    font-style: normal;
+    font-style: 'Monserrat';
+    text-transform: uppercase;
+
+}
+
+.MainItem {
+    height: 100%;
+    padding: 45px 0px;
+}
+
+.ImgOne {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+}
+.ImgTwo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.ImgOne img {
+    width: 400px;
+    margin: auto;
+
+}
+
+.ImgOne p {
+    font-size: 22px;
+    line-height: 25px;
+    color: rgb(74, 69, 69);
+    font-style: normal;
+    font-style: 'Monserrat';
+    text-transform: uppercase;
+    padding: 15px 0px;
+
+}
+.ImgTwo img {
+    width: 400px;
+    margin:40px;
+
+}
+
+
+
+.textLeft p {
+    font-size: 16px;
+    font-size: normal;
+    line-height: 20px;
+    margin: 20px 0px;
+}
+
+.textLeftTwo p {
+    font-size: 16px;
+  
+    font-size: normal;
+    line-height: 20px;
+    margin: 15px 0px;
+}
+
+
+.ContentRight {
+    width: 25%;
+    height: 100%;
+    background-color: white;
+    padding: 30px 15px;
+    border-radius: 5px;
+}
+
+.RightTitle {
+    width: 100%;
+    background-color: #0f3460;
+    height: 100px;
+    display: flex;
+    justify-content: start;
+    padding: 0px 15px;
+    align-items: center;
+    color: white;
+    border-radius: 3px;
+}
+
+.RightTitle p {
+    font-size: 25px;
+    line-height: 25px;
+    color: white;
+    font-style: normal;
+    font-style: 'Monserrat';
+    text-transform: capitalize;
+
+}
+
+.ProductList {
+    margin-top: 30px;
+}
+
+.ProductItems {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0px;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.ProductItems p:nth-child(2) {
+    margin-left: 10px;
+}
+
+.ProductItems:hover {
+    padding-left: 5px;
+}
+
+.ProductItems:hover p {
+    color: red;
+}

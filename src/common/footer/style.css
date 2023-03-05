@@ -1,0 +1,144 @@
+footer{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px 100px;
+    background: #0d7286f4;
+    /* margin-top: 100px; */
+    /* padding-bottom: 100px; */
+}
+
+footer .containerr{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.8fr 1.2fr;
+    grid-gap: 20px;
+}
+.aboutus img{
+    width: 200px;
+    margin-left: 50px;
+}
+footer .containerr .sec h2{
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+footer .containerr .sec h2::after {
+    background: #fff none repeat scroll 0 0;
+    bottom: -10px;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    width: 57px;
+}
+footer .containerr .sec h2::before{
+    background: #fff none repeat scroll 0 0;
+    bottom: -8px;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 45px;
+}
+footer .containerr .sec p{
+    color: #fff;
+    padding: 5px 10px;
+}
+.sci{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    grid-gap: 10px;
+}
+.sci li a{
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background: #42b6cdf4;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.sci li a:hover{
+    background: #8ce8faf4;
+}
+.sci li a .fa-brands{
+    color: #fff;
+    font-size: 20px;
+}
+.quicklinks ul li{
+    padding: 10px;
+}
+.quicklinks ul li a{
+    color: rgb(218, 238, 255);
+}
+.media{
+    padding-left: 20px;
+}
+.media ul li {
+    cursor: pointer;
+    padding: 7px 5px;
+}
+.media ul li a{
+    padding: 10px;
+    font-size: 16px;
+    color: rgb(218, 238, 255);
+}
+.media ul li i{
+    border-radius: 50%;
+    position: relative;
+    font-size: 24px;
+    padding: 5px 1px;
+    color: #fff;
+}
+.info li{
+    display: flex;
+    margin-top: 20px;
+}
+
+.info li i{
+    font-size: 24px;
+    color: #fff;
+    padding: 10px;
+}
+.info li span{
+    color: rgb(218, 238, 255);
+    padding: 10px;
+    padding-left: 25px;
+}
+.info li p a{
+    color: rgb(218, 238, 255);
+    padding: 10px;
+}
+
+.copyrightText{
+    padding: 20px;
+    padding-left: 120px;
+    font-size: 14px;
+    background: #0e4954f4;
+    color: #fff;
+}
+
+@media (max-width: 991px){
+    footer{
+        padding: 40px;
+    }
+    footer .containerr{
+        grid-template-columns: repeat(2,1fr );
+    }
+    
+}
+@media (max-width: 768px){
+    footer .containerr{
+        grid-template-columns: repeat(1,1fr );
+    }
+    .copyrightText{
+        padding-left: 20px;
+        font-size: 14px;
+    }
+}
