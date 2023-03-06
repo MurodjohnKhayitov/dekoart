@@ -26,6 +26,7 @@ const items = [
 const Search = () => {
   const navigate = useNavigate();
   const [MobileMenu, setMobileMenu] = useState(false);
+  const [toggleShowMenu, settoggleShowMenu] = useState(false);
   const [itemList, setItemList] = useContext(DetailsForDekoart);
 
   // fixed Header
@@ -82,7 +83,7 @@ const Search = () => {
                       })}
                       to="/news">Yangiliklar</NavLink>
                   </li>
-                  <li>
+                  <li className={"liSubMenu"} onMouseEnter={() => settoggleShowMenu(true)}>
                     <NavLink
                       style={({ isActive }) => ({
                         color: isActive ? '#ff014f' : null,
@@ -90,7 +91,7 @@ const Search = () => {
 
                       })}
                       to="/product">Mahsulotlar</NavLink>
-                    <div className="sub-menu-1">
+                    {toggleShowMenu && <div className="sub-menu-1">
                       <ul>
                         <li>
                           <p>Suvli Emulsiya Bo'yoqlari</p>
@@ -101,7 +102,11 @@ const Search = () => {
                             return (
                               <div
                                 key={data.filter}
-                                onClick={() => HandleForId(data.id)}
+                                onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
@@ -120,7 +125,11 @@ const Search = () => {
                             return (
                               <div
                                 key={data.id}
-                                onClick={() => HandleForId(data.id)}
+                                 onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
@@ -139,7 +148,11 @@ const Search = () => {
                             return (
                               <div
                                 key={data.id}
-                                onClick={() => HandleForId(data.id)}
+                                 onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
@@ -157,7 +170,11 @@ const Search = () => {
                             return (
                               <div
                                 key={data.id}
-                                onClick={() => HandleForId(data.id)}
+                                 onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
@@ -175,7 +192,11 @@ const Search = () => {
                             return (
                               <div
                                 key={data.id}
-                                onClick={() => HandleForId(data.id)}
+                                 onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
@@ -192,7 +213,11 @@ const Search = () => {
                             return (
                               <div
                                 key={data.id}
-                                onClick={() => HandleForId(data.id)}
+                                 onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
@@ -209,14 +234,18 @@ const Search = () => {
                             return (
                               <div
                                 key={data.id}
-                                onClick={() => HandleForId(data.id)}
+                                 onClick={() => {
+                                  HandleForId(data.id)
+                                  settoggleShowMenu(false)
+
+                                }}
                               >
                                 <div>{data.name}</div>
                               </div>
                             );
                           })}
                       </ul>
-                    </div>
+                    </div>}
                   </li>
                   <li>
                     <NavLink
@@ -285,8 +314,8 @@ const Search = () => {
             <i className="fa fa-search"></i>
             <input type="text" placeholder="Search..." />
           </div>
-        </div>
-      </section>
+        </div >
+      </section >
     </>
   );
 };

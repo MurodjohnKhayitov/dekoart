@@ -10,7 +10,7 @@ import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
 
 
 // import required modules
-import { Navigation } from "swiper";
+import { Navigation } from "swiper"; 
 export default function SliderMain() {
     const [SliderInfo, setSliderInfo] = useState([
         {
@@ -59,6 +59,7 @@ export default function SliderMain() {
             </div>
         );
     };
+
     let settings1 = {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -67,6 +68,7 @@ export default function SliderMain() {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
+    
 
     };
 

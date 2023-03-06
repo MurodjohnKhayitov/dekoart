@@ -1,38 +1,38 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 import styles from './Product.module.css'
-import { GrNext, GrPrevious } from 'react-icons/gr';
+    import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from "react-slick";
-
+import { useQuery } from 'react-query';
+import { url } from '../../Host/Host';
 
 
 
 export default function ProductCarosuel() {
+    const [getProduct, setGetProduct] = useState([])
+
+    useQuery(["Product_get"], () => {
+        return fetch(`${url}/products/`).then(res => res.json())
+    }, {
+
+        onSuccess: res => {
+            setGetProduct(res)
+            console.log(res, "res");
+        },
+        onError: err => {
+            console.log(err, "err");
+        }
+    }
+
+    )
+
+
 
 
     const [itemList, setItemList] = useContext(DetailsForDekoart);
 
 
 
-    const responsive2 = {
-        superLargeDesktop: {
-            // the naming can be any, depends on you.
-            breakpoint: { max: 4000, min: 3000 },
-            items: 5,
-        },
-        desktop: {
-            breakpoint: { max: 3000, min: 1024 },
-            items: 4,
-        },
-        tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 3,
-        },
-        mobile: {
-            breakpoint: { max: 464, min: 0 },
-            items: 2,
-        },
-    };
     const NextArrow = (props) => {
         const { onClick } = props;
         return (
@@ -66,14 +66,14 @@ export default function ProductCarosuel() {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 5,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true
                 }
             },
             {
-                breakpoint: 600,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 1,
@@ -81,7 +81,7 @@ export default function ProductCarosuel() {
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 568,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1

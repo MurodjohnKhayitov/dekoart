@@ -5,7 +5,7 @@ AOS.init({
     duration: 1000
 });
 
-export default function WeAbout() {
+export default function WeAbout() { 
     return ( 
         <div className={styles.Container}>
             <div className={styles.Main}> 

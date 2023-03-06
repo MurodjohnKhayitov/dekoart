@@ -26,8 +26,8 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    
-    
+
+
 }
 
 .BreadcrumbItem a:hover {
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     height: fit-content;
     padding: 50px 0px;
-    gap: 50px;
+    row-gap: 50px;
 }
 
 .Cards {
@@ -136,4 +136,102 @@
 
 .ForTextBtn button:hover {
     opacity: 0.8
+}
+
+
+
+@media (min-width:768px) and (max-width:1023px) {
+    .Cards {
+        width: 48%;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 20px;
+        padding: 10px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+}
+
+@media (min-width:568px) and (max-width:767px) {
+    .CardGroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Cards {
+        width: 80%;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .CardGroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Cards {
+        width: 100%;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+}
+
+@media (max-width:390px) {
+    .CardGroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .Cards {
+        width: 100%;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 20px;
+        padding: 10px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+    .ForTextBtn button {
+        width: 80%;
+        color: white;
+        height: 35px;
+        font-family: "Monserrant";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        letter-spacing: 4px;
+    }
+
+    .BreadcrumbItem a {
+        font-size: 12px;
+    }
+
 }

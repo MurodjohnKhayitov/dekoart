@@ -10,7 +10,6 @@
     background-color: #F0F1F3;
 }
 
-.Text {}
 
 .Text p {
     text-align: center;
@@ -92,4 +91,82 @@
     .Cards {
         width: 100%;
     }
+}
+
+
+@media (min-width:568px) and (max-width:767px) {
+    .Cards {
+        width: 100%;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .CardsGroup {
+        padding: 0px 50px;
+    }
+
+    .Cards {
+        width: 100%;
+    }
+
+    .SimpleText {
+        width: 75%;
+        margin-left: 5px;
+    }
+
+    .SimpleText h1 {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    .SimpleText p {
+        font-size: 11px;
+        font-weight: 300;
+        color: rgb(238, 237, 237);
+    }
+}
+
+@media (max-width:390px) {
+    .Text p{
+        font-size: 22px;
+    }
+
+    .CardsGroup {
+        padding: 0px 50px;
+    }
+
+    .Cards {
+        width: 100%;
+        height: fit-content;
+        padding: 10px 5px;
+        margin: 10px 0px;
+    }
+
+    .SimpleText {
+        width: 75%;
+        margin-left: 5px;
+    }
+
+    .SimpleText h1 {
+        font-size: 12px;
+        font-weight: 300;
+        color: #fff;
+    }
+
+    .SimpleText p {
+        font-size: 10px;
+        color: rgb(238, 237, 237);
+    }
+
+    .ImgCirlce {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 4px solid #ccc;
+        overflow: hidden;
+        transition: .2s;
+
+    }
+
 }

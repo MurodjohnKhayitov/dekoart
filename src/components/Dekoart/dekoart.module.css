@@ -10,6 +10,7 @@
     padding: 0px 100px;
     color: #0f3460;
 }
+
 .BreadcrumbItem {
     padding: 15px 0px;
     margin: 20px 0px;
@@ -36,6 +37,7 @@
     background-color: white;
     color: red;
 }
+
 .Content {
     width: 100%;
     height: fit-content;
@@ -184,4 +186,246 @@
 
 .ProductItems:hover p {
     color: red;
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    .Main {
+        padding: 50px 50px;
+    }
+
+    .LeftTitle p {
+        font-size: 22px;
+        line-height: 22px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: uppercase;
+
+    }
+
+    .RightTitle p {
+        font-size: 20px;
+        line-height: 22px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: capitalize;
+
+    }
+
+    .ContentRight {
+
+        width: 27%;
+    }
+
+    .ContentLeft {
+
+        width: 70%;
+    }
+}
+
+@media (min-width:568px) and (max-width:767px) {
+
+    .Main {
+        padding: 50px 50px;
+    }
+
+    .Content {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 50px;
+    }
+
+
+    .LeftTitle p {
+        font-size: 22px;
+        line-height: 22px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: uppercase;
+
+    }
+
+    .RightTitle p {
+        font-size: 20px;
+        line-height: 22px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: capitalize;
+
+    }
+
+    .ContentRight {
+
+        width: 100%;
+    }
+
+    .ContentLeft {
+
+        width: 100%;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .Main {
+        padding: 50px 50px;
+    }
+
+    .Content {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 50px;
+        padding: 20px 10px;
+
+    }
+
+    .BreadcrumbItem a {
+        font-size: 14px;
+    }
+
+    .ContentLeft {
+
+        padding: 10px;
+    }
+    .ContentRight {
+
+        padding: 10px;
+    }
+
+    .LeftTitle p {
+        font-size: 18px;
+        line-height: 22px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: uppercase;
+
+    }
+
+    .textLeft p {
+        font-size: 16px;
+    }
+
+    .textLeftTwo p {
+        font-size: 12px;
+    }
+
+    .RightTitle p {
+        font-size: 18px;
+        line-height: 22px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: capitalize;
+
+    }
+
+    .ContentRight {
+
+        width: 100%;
+    }
+
+    .ContentLeft {
+
+        width: 100%;
+    }
+
+    .ImgGroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 50px 0px;
+    }
+
+    .ImgGroup img {
+        width: 70px;
+    }
+
+}
+
+@media (max-width:390px) {
+    .Main {
+        padding: 50px 50px;
+    }
+
+    .BreadcrumbItem a {
+        font-size: 12px;
+    }
+
+    .Content {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 50px;
+        padding: 0px 0px;
+    }
+
+    .LeftTitle {
+
+        padding: 20px 10px;
+        height: fit-content;
+    }
+
+
+    .LeftTitle p {
+        font-size: 14px;
+        line-height: 16px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: uppercase;
+
+    }
+
+    .textLeft p {
+        font-size: 12px;
+    }
+
+    .textLeftTwo p {
+        font-size: 10px;
+    }
+
+    .RightTitle {
+
+        padding: 20px 10px;
+        height: fit-content;
+    }
+
+    .RightTitle p {
+        font-size: 16px;
+        line-height: 16px;
+        color: white;
+        font-style: normal;
+        font-style: 'Monserrat';
+        text-transform: capitalize;
+
+    }
+
+    .ContentRight {
+
+
+        width: 100%;
+    }
+
+    .ContentLeft {
+        padding: 10px;
+        width: 100%;
+    }
+
+    .ImgGroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        margin: 50px 0px;
+    }
+
+    .ImgGroup img {
+        width: 70px;
+    }
+
 }

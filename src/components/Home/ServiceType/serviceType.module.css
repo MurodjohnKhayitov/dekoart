@@ -36,7 +36,8 @@
     border: 1px solid white;
     padding: 0px 100px;
 }
-.SecondContentItem{
+
+.SecondContentItem {
     margin-top: -150px;
     background-color: white;
 }
@@ -117,4 +118,281 @@
     background-position: center center;
     background-size: cover;
 
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    .SecondItemOneText h1 {
+
+        font-size: 18px;
+        font-weight: 400;
+        color: #444;
+    }
+
+    .SecondItemOneText p {
+        padding: 20px 0px;
+        font-size: 13px;
+        font-weight: 300;
+        color: #666;
+    }
+
+    .SecondItemTwoText h1 {
+
+        font-size: 18px;
+        font-weight: 400;
+        color: #444;
+    }
+
+    .SecondItemTwoText p {
+        padding: 20px 0px;
+        font-size: 13px;
+        font-weight: 300;
+        color: #666;
+    }
+}
+
+@media (min-width:568px) and (max-width:767px) {
+    .SecondContent {
+
+        height: fit-content;
+        padding: 50px;
+    }
+
+    .SecondItemOne {
+        display: block;
+        height: fit-content;
+    }
+
+    .SecondItemOneImg {
+        height: 200px;
+        width: 100%;
+    }
+
+    .SecondItemOneText {
+        width: 100%;
+        height: 200px;
+
+    }
+
+    .SecondItemTwo {
+        display: block;
+        height: fit-content;
+    }
+
+    .SecondItemTwoImg {
+        height: 200px;
+        width: 100%;
+    }
+
+    .SecondItemTwoText {
+        width: 100%;
+        height: 200px;
+
+    }
+
+    .SecondItemOneText h1 {
+
+        font-size: 18px;
+        font-weight: 400;
+        color: #444;
+    }
+
+    .SecondItemOneText p {
+        padding: 10px 0px;
+        font-size: 13px;
+        font-weight: 300;
+        color: #666;
+    }
+
+    .SecondItemTwoText h1 {
+
+        font-size: 18px;
+        font-weight: 400;
+        color: #444;
+        padding: 0px;
+    }
+
+    .SecondItemTwoText p {
+        padding: 10px 0px;
+        margin: 0;
+        font-size: 13px;
+        font-weight: 300;
+        color: #666;
+    }
+
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .FirstContent {
+        height: 250px;
+    }
+
+    .TitlesImg {
+        text-align: center;
+        padding-top: 10px;
+        color: #fff;
+        font-size: 26px;
+        font-weight: 500;
+    }
+
+    .SecondContent {
+
+        height: fit-content;
+        padding: 50px;
+    }
+
+    .SecondItemOne {
+        display: block;
+        height: fit-content;
+        padding: 10px;
+
+    }
+
+    .SecondItemOneImg {
+        height: 200px;
+        width: 100%;
+    }
+
+    .SecondItemOneText {
+        width: 100%;
+        height: 250px;
+
+    }
+
+    .SecondItemTwo {
+        display: block;
+        height: fit-content;
+        padding: 10px;
+    }
+
+    .SecondItemTwoImg {
+        height: 200px;
+        width: 100%;
+    }
+
+    .SecondItemTwoText {
+        width: 100%;
+        height: 250px;
+
+    }
+
+    .SecondItemOneText h1 {
+
+        font-size: 16px;
+        font-weight: 400;
+        color: #444;
+    }
+
+    .SecondItemOneText p {
+        padding: 10px 0px;
+        font-size: 12px;
+        font-weight: 300;
+        color: #666;
+    }
+
+    .SecondItemTwoText h1 {
+
+        font-size: 16px;
+        font-weight: 400;
+        color: #444;
+        padding: 0px;
+    }
+
+    .SecondItemTwoText p {
+        padding: 10px 0px;
+        margin: 0;
+        font-size: 12px;
+        font-weight: 300;
+        color: #666;
+    }
+}
+
+@media (max-width:390px) {
+    .FirstContent {
+        height: 250px;
+    }
+
+    .TitlesImg {
+        width: 100%;
+        text-align: center;
+        padding: 0px;
+        padding-top: 10px;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .SecondContent {
+
+        height: fit-content;
+        padding: 50px;
+    }
+
+
+    .SecondItemOne {
+        display: block;
+        height: fit-content;
+        padding: 0px;
+
+    }
+
+    .SecondItemOneImg {
+        height: 150px;
+        width: 100%;
+    }
+
+    .SecondItemOneText {
+        width: 100%;
+        height: 250px;
+        padding: 10px;
+
+
+    }
+
+    .SecondItemTwo {
+        display: block;
+        height: fit-content;
+        padding: 0px;
+    }
+
+    .SecondItemTwoImg {
+        height: 150px;
+        width: 100%;
+    }
+
+    .SecondItemTwoText {
+        width: 100%;
+        height: 250px;
+        padding: 10px;
+
+    }
+
+    .SecondItemOneText h1 {
+
+        font-size: 16px;
+        font-weight: 400;
+        color: #444;
+    }
+
+    .SecondItemOneText p {
+        padding: 10px 0px;
+        font-size: 12px;
+        font-weight: 300;
+        color: #666;
+    }
+
+    .SecondItemTwoText h1 {
+
+        font-size: 16px;
+        font-weight: 400;
+        color: #444;
+        padding: 0px;
+    }
+
+    .SecondItemTwoText p {
+        padding: 10px 0px;
+        margin: 0;
+        font-size: 12px;
+        font-weight: 300;
+        color: #666;
+    }
 }

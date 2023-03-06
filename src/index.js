@@ -3,18 +3,22 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { MyDekoartItems } from "./ContextMenu/ContextMenu";
 import { BrowserRouter } from "react-router-dom";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import 'antd/dist/antd.css';
 import "aos/dist/aos.css";
-
+import { QueryClientProvider, QueryClient } from 'react-query';
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <MyDekoartItems>
-        <App />
-      </MyDekoartItems>
+      <QueryClientProvider client={queryClient}>
+
+        <MyDekoartItems>
+          <App />
+        </MyDekoartItems>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

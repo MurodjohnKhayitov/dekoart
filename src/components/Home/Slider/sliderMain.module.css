@@ -169,3 +169,104 @@
     transform: scale(0.98);
     opacity: 0.7;
 }
+
+@media (min-width:768px) and (max-width:1023px) {
+    .CarosuelItems {
+        top: -70%;
+    }
+
+}
+
+@media (min-width:568px) and (max-width:767px) {
+    .CarosuelItems {
+        width: 100%;
+        top: -70%;
+    }
+
+    .CarosuelCard {
+        width: 70%;
+    }
+
+    .Cartext1 {
+        width: 100%;
+    }
+
+    .Cartext1 p {
+        font-size: 28px;
+        font-style: normal;
+        line-height: 25px;
+    }
+
+    .Cartext1 b {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .Cartext2 {
+        width: 100%;
+    }
+
+    .Cartext2 p {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .Cartext3 {
+        width: 100%;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .CarosuelItems {
+        width: 100%;
+        top: -70%;
+    }
+
+    .CarosuelCard {
+        width: 70%;
+        padding: 15px 10px;
+    }
+
+    .Cartext1 p {
+        font-size: 22px;
+        line-height: 20px;
+    }
+
+    .Cartext1 b {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .Cartext2 p {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
+@media (max-width:390px) {
+
+    .CarosuelItems {
+        width: 100%;
+        top: -70%;
+    }
+
+    .CarosuelCard {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    .Cartext1 p {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .Cartext1 b {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    
+    .Cartext2 p {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}

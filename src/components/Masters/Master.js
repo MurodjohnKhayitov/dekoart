@@ -14,10 +14,9 @@ import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 
 export default function Master() {
-    useEffect(() => {
+    useEffect(() => { 
         document.title = "Ustalar"
     }, [])
-
     const [CardInfo, setCardInfo] = useState([
         {
             id: 1,
@@ -105,12 +104,10 @@ export default function Master() {
 
 
     ])
-
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
                 <div className={styles.BreadcrumbItem}>
-
                     <Breadcrumb>
                         <Breadcrumb.Item>
                             <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>

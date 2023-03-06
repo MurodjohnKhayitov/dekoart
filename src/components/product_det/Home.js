@@ -12,6 +12,7 @@ import { useParams } from "react-router-dom";
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { GrNext, GrPrevious } from 'react-icons/gr';
 
 const Home = () => {
   const [itemList, setItemList] = useContext(DetailsForDekoart);
@@ -31,66 +32,60 @@ const Home = () => {
   const NextArrow = (props) => {
     const { onClick } = props;
     return (
-      <div className="control-btn" style={{ width: '50px', height: "50px", borderRadius: "50%", backgroundColor: "#f4f4f4" }} onClick={onClick}>
-        <button className="next" style={{ width: '50px', height: "50px", borderRadius: "50%", backgroundColor: "#f4f4f4", marginRight: "40px" }}>
-          <i className="fa fa-long-arrow-alt-right" style={{ color: "black" }}></i>
-        </button>
-      </div>
+        <div className={"NextArrow"} onClick={onClick}>
+            <button className="">
+                <GrNext />
+            </button>
+        </div>
     );
-  };
-  const PrevArrow = (props) => {
+};
+
+const PrevArrow = (props) => {
     const { onClick } = props;
-
     return (
-      <div className="control-btn" onClick={onClick}>
-        <button className="prev" style={{ width: '50px', height: "50px", borderRadius: "50%", backgroundColor: "#f4f4f4", marginLeft: "40px" }}>
-          <i className="fa fa-long-arrow-alt-left" style={{ color: "black" }}></i>
-        </button>
-
-      </div>
+        <div className={"PrevArrow"} onClick={onClick}>
+            <button className="">
+                <GrPrevious />
+            </button>
+        </div>
     );
-  };
-  const settings2 = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToScroll: 1,
+};
+let settings = {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    initialSlide: 0,
-
-    // dots: true,
-    // infinite: false,
+    infinite: true,
+    speed: 500,
     slidesToShow: 4,
-    // slidesToScroll: 4,
-    // initialSlide: 0,
+    slidesToScroll: 1,
+    initialSlide: 0,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
+        { 
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                initialSlide: 2
+            }
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
         }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
     ]
-  };
+};
+
 
   const [getM2M, setgetM2M] = useState("");
   const [model, setModel] = useState(false);
@@ -311,46 +306,58 @@ const Home = () => {
             })}
           <div className="CarosuelGroup">
 
-            <div className="related-products">
-              <Slider {...settings2}>
+           
+            <div className={"CardGroup"}>
+              <Slider {...settings} className={"SliderGroup"} >
                 {NewArrayOne.map((item, index) => {
                   return (
-                    <div className="related-box-details" key={index}>
-                      <div className="shodow">
-                        <div className="related-img-box">
-                          <img src={item.cover} alt="" />
-                        </div>
-                        <div className="related-text-box">
-                          <h3>{item.name}</h3>
+                    <div key={item.name} className={"CardItem"}>
+                      <div className={"ForImgCard"}>
+                        <img src={item.cover} alt="" />
+                      </div>
+                      <div className={"ForTextCard"}>
+                        <div className={"ProductTitle"}>
                           <p>{item.name}</p>
-                          <button type="button">Batacd fsil</button>
+                        </div>
+                        <div className={"ProductText"}>
+                          <p>Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.</p>
+                        </div>
+                        <div className={"ProductBtn"}>
+                          <button>Batafsil</button>
                         </div>
                       </div>
                     </div>
-                  );
+                  )
                 })}
               </Slider>
+
             </div>
-            <div className="related-products">
-              <Slider {...settings2}>
+            <div className={"CardGroup"}>
+              <Slider {...settings} className={"SliderGroup"} >
                 {NewArrayTwo.map((item, index) => {
                   return (
-                    <div className="related-box-details" key={index}>
-                      <div className="shodow">
-                        <div className="related-img-box">
-                          <img src={item.cover} alt="" />
-                        </div>
-                        <div className="related-text-box">
-                          <h3>{item.name}</h3>
+                    <div key={item.name} className={"CardItem"}>
+                      <div className={"ForImgCard"}>
+                        <img src={item.cover} alt="" />
+                      </div>
+                      <div className={"ForTextCard"}>
+                        <div className={"ProductTitle"}>
                           <p>{item.name}</p>
-                          <button type="button">Batacd fsil</button>
+                        </div>
+                        <div className={"ProductText"}>
+                          <p>Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.</p>
+                        </div>
+                        <div className={"ProductBtn"}>
+                          <button>Batafsil</button>
                         </div>
                       </div>
                     </div>
-                  );
+                  )
                 })}
               </Slider>
+
             </div>
+            
           </div>
         </div>
 

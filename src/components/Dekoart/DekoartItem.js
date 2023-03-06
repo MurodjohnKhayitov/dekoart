@@ -11,7 +11,7 @@ import sertifikat5 from '../../img/Dekoart/1550912480_guvohnoma5.jpg'
 import sertifikat6 from '../../img/Dekoart/1550912590_sertifikat-shuhrat6.jpg'
 import sertifikat7 from '../../img/Dekoart/1550912462_guvohnoma-glavnoe7.jpg'
 import sertifikat8 from '../../img/Dekoart/1550912494_sertifikat-sherzod8.jpg'
-
+ 
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
@@ -55,10 +55,10 @@ export default function DekoarItem() {
               <div className={styles.textLeft}>
                 <p><span style={{ color: "red" }}>“DEKO`ART” </span> – O`zbekistonda tashqi va ichki yuzalar uchun eng zamonaviy, yuqori sifatli lok bo`yoq, devor qoplama mahsulolarti majmuasidir. Mazkur mahsulotlar 2013 yilda tashkil qilingan</p>
                 <p><span style={{ color: "red" }}>“MARJON MOLDINGS” MCHJ </span>  tomonidan ishlab chiqarilmoqda.</p>
-                <p><span style={{ color: "#727272", fontSize: "19px", fontStyle: "normal", fontWeight: "bold" }}>INSON MANBAALARI:</span> INSON MANBAALARI: Kompaniyamiz, yosh bo`lishiga qaramasdan dinamik, tajribali, turli xalqaro kompaniyalarda malaka oshirgan mutaxassislardan iborat katta jamoadir. Mahsulot va xizmat sifatiga bo`lgan javobgarlik hissi har bir xodimimizda mujassam.</p>
-                <p><span style={{ color: "#727272", fontSize: "19px", fontStyle: "normal", fontWeight: "bold" }}>SIFAT:</span>  Faoliyatimizning har birida sifat nazoratiga alohida e`tibor berilgani holda, xalqaro standartlarga javob beruvchi ISO9001 sertifikatiga egamiz.</p>
-                <p><span style={{ color: "#727272", fontSize: "19px", fontStyle: "normal", fontWeight: "bold" }}>VAZIFAMIZ:</span>   Jamoamizning birinchi darajali vazifasi haridor va iste`molchilarni ma`mnun etishdan iborat. Bundan tashqari kompanyamizda haridorlarga konsultatif xizmat va amaliy yordam ko`rsatish tizimi hamda mohir va yosh ustalar uchun mahorat darslari tashkil qilingan. Ushu tizim va mahorat darslari, biz faoliyat olib borayotgan jo`g`rofiyadagi barcha mijozlar uchun ochiq bo`lib, mahsulotlarimizga qiziqish bildirgan har bir iste`molchi ushbu xizmat turlarimizdan foydalanishi mumkin. Bu ishlarni amalga oshirish uchun malakali usta va quruvchilar bilan hamkorlik qilib kelmoqdamiz. </p>
-                <p><span style={{ color: "#727272", fontSize: "19px", fontStyle: "normal", fontWeight: "bold" }}>MAHSULOTLARIMIZ:</span>    Kompanyamizda tashqi va ichki yuzalar uchun turli qoplama mahsulotlari, bo'yoq, lok, astar va boshqa tayyor mahsulotlar ishlab chiqariladi!</p>
+                <p><span style={{ color: "#727272",  fontStyle: "normal", fontWeight: "bold" }}>INSON MANBAALARI:</span> INSON MANBAALARI: Kompaniyamiz, yosh bo`lishiga qaramasdan dinamik, tajribali, turli xalqaro kompaniyalarda malaka oshirgan mutaxassislardan iborat katta jamoadir. Mahsulot va xizmat sifatiga bo`lgan javobgarlik hissi har bir xodimimizda mujassam.</p>
+                <p><span style={{ color: "#727272",  fontStyle: "normal", fontWeight: "bold" }}>SIFAT:</span>  Faoliyatimizning har birida sifat nazoratiga alohida e`tibor berilgani holda, xalqaro standartlarga javob beruvchi ISO9001 sertifikatiga egamiz.</p>
+                <p><span style={{ color: "#727272",  fontStyle: "normal", fontWeight: "bold" }}>VAZIFAMIZ:</span>   Jamoamizning birinchi darajali vazifasi haridor va iste`molchilarni ma`mnun etishdan iborat. Bundan tashqari kompanyamizda haridorlarga konsultatif xizmat va amaliy yordam ko`rsatish tizimi hamda mohir va yosh ustalar uchun mahorat darslari tashkil qilingan. Ushu tizim va mahorat darslari, biz faoliyat olib borayotgan jo`g`rofiyadagi barcha mijozlar uchun ochiq bo`lib, mahsulotlarimizga qiziqish bildirgan har bir iste`molchi ushbu xizmat turlarimizdan foydalanishi mumkin. Bu ishlarni amalga oshirish uchun malakali usta va quruvchilar bilan hamkorlik qilib kelmoqdamiz. </p>
+                <p><span style={{ color: "#727272",  fontStyle: "normal", fontWeight: "bold" }}>MAHSULOTLARIMIZ:</span>    Kompanyamizda tashqi va ichki yuzalar uchun turli qoplama mahsulotlari, bo'yoq, lok, astar va boshqa tayyor mahsulotlar ishlab chiqariladi!</p>
               </div>
               <div className={styles.ImgGroup}>
                 <img src={sertifikat1} alt="" />

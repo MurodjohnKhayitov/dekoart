@@ -17,7 +17,7 @@ export default function ServiceType() {
                     <div className={styles.SecondContentItem}>
                         <div className={styles.SecondItemOne}>
                             <div className={styles.SecondItemOneImg}>
-
+ 
                             </div>
                             <div className={styles.SecondItemOneText} >
                                 <h1>KOSMETIK TAMIRLASH</h1>

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './news.module.css'
 import Pro1 from '../../img/new1.jpg'
 import Pro2 from '../../img/new2.jpg'
@@ -12,15 +12,15 @@ import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 export default function News() {
     useEffect(() => {
-        document.title="Yangiliklar"
-        }, [])
+        document.title = "Yangiliklar"
+    }, [])
     const [CardInfo, setCardInfo] = useState([{
         id: 1,
         imgRel: Pro1,
         tit: 'KOMPANIYAMIZ “TASHABBUS – 2019” TOSHKENT SHAHAR BOSQICHIDA ISHTIROK ETTI.',
         descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
     },
-    { 
+    {
         id: 2,
         imgRel: Pro2,
         tit: '"ТАШАББУС-2019": МЫ ПОБЕДИЛИ / BIZ BIRINCHIMIZ.',
@@ -65,11 +65,11 @@ export default function News() {
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
-            <div className={styles.BreadcrumbItem}>
+                <div className={styles.BreadcrumbItem}>
 
                     <Breadcrumb>
                         <Breadcrumb.Item>
-                            <NavLink to="/home"><FaHome style={{ marginRight: "15px"}} /> DEKOART.UZ</NavLink>
+                            <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
                             <NavLink to="/news"> Yangiliklar</NavLink>

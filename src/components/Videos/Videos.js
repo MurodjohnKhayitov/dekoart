@@ -30,7 +30,7 @@ export default function Videos() {
 
     useEffect(() => {
         document.title = "Videolar"
-    }, [])
+    }, []) 
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>

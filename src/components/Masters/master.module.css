@@ -42,12 +42,12 @@
     flex-wrap: wrap;
     height: fit-content;
     padding: 50px 0px;
-    gap: 50px;
+    row-gap: 50px;
 }
 
 .Cards {
     width: 30%;
-    height: 500px;
+    height: fit-content;
     background-color: white;
     border-radius: 8px;
     padding: 8px;
@@ -78,8 +78,8 @@
 
 .ForText {
     width: 100%;
-    height: 45%;
-    padding-top: 20px;
+    height: 300px;
+    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     align-content: space-between;
@@ -169,4 +169,133 @@
 
 .ForTextBtn button:hover {
     opacity: 0.8
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    .Cards {
+        width: 48%;
+
+    }
+
+    .ForText {
+        padding: 15px;
+    }
+
+
+}
+
+@media (min-width:568px) and (max-width:767px) {
+    .CardGroup {
+        justify-content: center;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+
+    .Cards {
+        width: 80%;
+
+    }
+
+    .ForText {
+        padding: 15px;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+
+    .CardGroup {
+        justify-content: center;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+
+    .Cards {
+        width: 100%;
+
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 18px;
+        /* padding: 0px 20px; */
+        text-align: start;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    .ForText {
+        padding: 10px;
+    }
+}
+
+@media (max-width:390px) {
+    .CardGroup {
+        justify-content: center;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+
+    .Cards {
+        width: 100%;
+
+    }
+
+    .ForText {
+
+        height: 230px;
+        padding: 0px;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        /* padding: 0px 20px; */
+        text-align: start;
+        text-transform: uppercase;
+        color: #000000;
+    }
+
+    .ForTextPhone {
+        font-style: normal;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .ForTextTitle p span {
+        font-style: normal;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 10px;
+
+    }
+
+    .ForTextPhone p span {
+        font-style: normal;
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 10px;
+
+    }
+
+    .ForText {
+        padding: 0px;
+    }
+
+    .BreadcrumbItem a {
+
+        font-size: 14px;
+    }
 }

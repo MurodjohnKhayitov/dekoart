@@ -11,7 +11,7 @@
 .Text {
     width: 100%;
     height: 250px;
-    
+
     background-color: white;
     display: flex;
     align-items: center;
@@ -224,11 +224,8 @@
 .PrevArrow button {
     position: absolute;
     top: 40%;
-
-
     z-index: 5;
     left: 25px;
-
     text-align: center;
     cursor: pointer;
     text-decoration: none;
@@ -264,4 +261,101 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+
+
+@media (min-width:768px) and (max-width:1023px) {
+    .ProductTitle {
+        font-size: 16px;
+        font-weight: bold;
+        font-style: normal;
+        line-height: 20px;
+
+    }
+
+    .ProductText p {
+        font-size: 12px;
+        line-height: 14px;
+        /* font-style: normal; */
+        text-align: center;
+    }
+
+    .ProductBtn button {
+        font-size: 16px;
+    }
+
+}
+
+@media (min-width:568px) and (max-width:767px) {
+
+    .Carousel {
+        padding: 30px 50px;
+    }
+
+    .CarosuelText {
+        font-size: 16px;
+        font-weight: 300;
+        padding: 20px 0px;
+        color: white;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+
+    .Carousel {
+        padding: 30px 50px;
+    }
+
+    .CarosuelText {
+        font-size: 18px;
+        font-weight: 400;
+        padding: 20px 0px;
+        color: white;
+    }
+}
+
+@media (max-width:390px) {
+
+
+    .Carousel {
+        padding: 30px 50px;
+    }
+
+    .CarosuelText {
+        font-size: 16px;
+        font-weight: 300;
+        padding: 20px 0px;
+        color: white;
+    }
+
+    .Text {
+        font-size: 20px;
+        font-weight: 600;
+        font-style: normal;
+    }
+
+    .ProductBtn button {
+        background-color: #0f3460;
+        /* background-color: #256471f4; */
+        color: white;
+        height: 35px;
+        width: 100%;
+        font-family: "Monserrant";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 18px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        letter-spacing: 2px;
+    }
+
 }

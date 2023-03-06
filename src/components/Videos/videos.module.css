@@ -45,7 +45,7 @@
 
     height: fit-content;
     padding: 50px 0px;
-    gap: 50px;
+    row-gap: 50px;
 }
 
 .Cards {
@@ -140,4 +140,138 @@
 
 .ForTextBtn button:hover {
     opacity: 0.8
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    .CardGroup {
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .Cards {
+        width: 48%;
+    }
+
+    .ForTextBtn button {
+        margin-top: 20px;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 22px;
+        padding: 10px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+}
+
+@media (min-width:568px) and (max-width:767px) {
+
+    .CardGroup {
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .Cards {
+        width: 80%;
+    }
+
+    .ForTextBtn button {
+        margin-top: 20px;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 22px;
+        padding: 10px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .CardGroup {
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .Cards {
+        width: 100%;
+    }
+
+    .ForTextBtn button {
+        margin-top: 20px;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 22px;
+        padding: 10px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+}
+
+@media (max-width:390px) {
+    .CardGroup {
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .Cards {
+        width: 100%;
+    }
+
+    .ForTextBtn button {
+        margin-top: 20px;
+    }
+
+    .ForTextTitle p {
+        font-family: 'Aeonik Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 18px;
+        padding: 10px;
+        text-align: center;
+
+        color: #000000;
+    }
+
+    .Main {
+        padding: 0px 50px;
+    }
+
+    .BreadcrumbItem a {
+        font-size: 14px;
+    }
 }

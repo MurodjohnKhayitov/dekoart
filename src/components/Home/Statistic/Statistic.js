@@ -7,7 +7,7 @@ function Statistic() {
    
 
     return (
-        <section className="count">
+        <section className="count"> 
             <div className="hero">
                 <div className="rgba-hero">
                     <div className="wor">
