@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 import styles from './Product.module.css'
-    import { GrNext, GrPrevious } from 'react-icons/gr';
+import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from "react-slick";
 import { useQuery } from 'react-query';
 import { url } from '../../Host/Host';
@@ -14,10 +14,9 @@ export default function ProductCarosuel() {
     useQuery(["Product_get"], () => {
         return fetch(`${url}/products/`).then(res => res.json())
     }, {
-
         onSuccess: res => {
             setGetProduct(res)
-            console.log(res, "res");
+
         },
         onError: err => {
             console.log(err, "err");
@@ -105,25 +104,29 @@ export default function ProductCarosuel() {
                     </div>
                     <div className={styles.CardGroup}>
                         <Slider {...settings} className={styles.SliderGroup} >
-                            {itemList.map((item, index) => {
-                                return (
-                                    <div key={item.name} className={styles.CardItem}>
-                                        <div className={styles.ForImgCard}>
-                                            <img src={item.cover} alt="" />
+                            {getProduct.filter(data => data.id == 2).map((item, index) => {
+                                return item.product.map(item => {
+
+                                    return (
+                                        <div key={item.name} className={styles.CardItem}>
+                                            <div className={styles.ForImgCard}>
+                                                <img src={item?.photo_url} alt="" />
+                                            </div>
+                                            <div className={styles.ForTextCard}>
+                                                <div className={styles.ProductTitle}>
+                                                    <p>{item?.name}</p>
+                                                </div>
+                                                <div className={styles.ProductText}>
+                                                    <p>{item?.description}</p>
+                                                </div>
+                                                <div className={styles.ProductBtn}>
+                                                    <button>Batafsil</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className={styles.ForTextCard}>
-                                            <div className={styles.ProductTitle}>
-                                                <p>{item.name}</p>
-                                            </div>
-                                            <div className={styles.ProductText}>
-                                                <p>Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.</p>
-                                            </div>
-                                            <div className={styles.ProductBtn}>
-                                                <button>Batafsil</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                )
+                                    )
+                                })
+
                             })}
                         </Slider>
 

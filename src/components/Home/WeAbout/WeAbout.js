@@ -1,33 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './about.module.css'
 import AOS from "aos";
+import { url } from '../../Host/Host';
+import { useQuery } from 'react-query';
 AOS.init({
     duration: 1000
 });
 
-export default function WeAbout() { 
-    return ( 
+export default function WeAbout() {
+    const [WeAbout, setWeAbout] = useState([])
+    useQuery(["we about"], () => {
+        return fetch(`${url}/short_qa/`).then(res => res.json())
+    }, {
+        onSuccess: res => {
+            setWeAbout(res)
+
+        },
+        onError: err => {
+            console.log(err, "err");
+        }
+    }
+
+    )
+
+    return (
         <div className={styles.Container}>
-            <div className={styles.Main}> 
+            <div className={styles.Main}>
                 <div className={styles.Text}>
                     <p>Nega bizni tanlashadi</p>
                 </div>
                 <div className={styles.CardsGroup}>
-                    <div className={styles.Cards} >
-                        <div className={styles.ImgCirlce}>
-                            <img src="http://www.dekoart.uz/templates/dekoartuz/images/preim/1.png" alt="img" />
+                    {WeAbout.map(data => {
+                        return (
+                            <div className={styles.Cards} >
+                                <div className={styles.ImgCirlce}>
+                                    <img src={data?.photo_url} alt="img" />
 
-                        </div>
-                        <div className={styles.SimpleText}>
-                            <h1>24/7 XIZMATI</h1>
-                            <p>
-                                Kun-u tun hizmatingizdamiz! Haftada 7 kun istalgan vaqtingizda
-                                buyurtma qabul qilamiz.
-                            </p>
-                        </div>
+                                </div>
+                                <div className={styles.SimpleText}>
+                                    <h1>{data?.title}</h1>
+                                    <p>
+                                        {data?.description}
+                                    </p>
+                                </div>
 
-                    </div>
-                    <div className={styles.Cards}  >
+                            </div>
+
+                        )
+
+                    })
+                    }
+
+
+                    {/* < div className={styles.Cards}  >
                         <div className={styles.ImgCirlce}>
                             <img
                                 src="http://www.dekoart.uz/templates/dekoartuz/images/preim/3.png"
@@ -106,11 +131,11 @@ export default function WeAbout() {
                             </p>
                         </div>
 
-                    </div>
+                    </div> */}
 
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

@@ -7,10 +7,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
-
+import { useQuery } from 'react-query'
 
 // import required modules
-import { Navigation } from "swiper"; 
+import { Navigation } from "swiper";
+import { url } from '../../Host/Host';
 export default function SliderMain() {
     const [SliderInfo, setSliderInfo] = useState([
         {
@@ -38,6 +39,25 @@ export default function SliderMain() {
             cover: "./images/SlideCard/flash-44.jpg",
         },
     ])
+    const [dataSlide, setdataSlide] = useState([])
+
+    useQuery(["get slider"], () => {
+        return fetch(`${url}/slide/`).then(res => res.json())
+    },
+        {
+
+            onSuccess: res => {
+                setdataSlide(res)
+                // console.log(res, "resSLide");
+            },
+            onError: err => {
+                console.log(err, "errSlide");
+            }
+        }
+
+    )
+
+
     const NextArrow = (props) => {
         const { onClick } = props;
         return (
@@ -68,7 +88,7 @@ export default function SliderMain() {
         slidesToShow: 1,
         slidesToScroll: 1,
         initialSlide: 0,
-    
+
 
     };
 
@@ -76,20 +96,20 @@ export default function SliderMain() {
         <div className={styles}>
 
             <Slider {...settings1}>
-                {SliderInfo.map((value, index) => {
+                {dataSlide.map((value, index) => {
                     return (
                         <div className={styles.Box}>
-                            <img src={value.cover} alt="cover" />
+                            <img src={value.photo_url} alt="cover" />
                             <div className={styles.CarosuelItems}>
                                 <div className={styles.CarosuelCard}>
-                                    <div  className={styles.Cartext1}>
+                                    <div className={styles.Cartext1}>
                                         <p><b>Dekoart</b> bu sizning tanlovingiz</p>
                                     </div>
-                                    <div  className={styles.Cartext2}>
+                                    <div className={styles.Cartext2}>
                                         <p>Eng sifatli mahsulotlar hammasi bizda</p>
 
                                     </div>
-                                    <div  className={styles.Cartext3}>
+                                    <div className={styles.Cartext3}>
                                         <button type="">batafsil</button>
                                     </div>
                                 </div>

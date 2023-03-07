@@ -10,6 +10,8 @@ import Pro7 from '../../img/new7.jpg'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { useQuery } from 'react-query'
+import { url } from '../Host/Host'
 export default function News() {
     useEffect(() => {
         document.title = "Yangiliklar"
@@ -59,6 +61,21 @@ export default function News() {
     ])
 
 
+    const [dekoNews, setDekoNews] = useState([])
+    useQuery(["dekoNews type"], () => {
+        return fetch(`${url}/news/`).then(res => res.json())
+    }, {
+        onSuccess: res => {
+            setDekoNews(res)
+
+        },
+        onError: err => {
+            console.log(err, "err");
+        }
+    }
+    )
+    console.log(dekoNews, "dekoNews");
+
 
 
 
@@ -78,21 +95,21 @@ export default function News() {
                 </div>
                 <div className={styles.CardGroup}>
                     {
-                        CardInfo.map(data => {
+                        dekoNews.map(data => {
                             return (
 
                                 <div key={data.id} className={styles.Cards}>
                                     <div className={styles.ForImg}>
-                                        <img src={data.imgRel} alt="" />
+                                        <img src={data.photo} alt="" />
 
                                     </div>
                                     <div className={styles.ForText}>
                                         <div className={styles.ForTextdate}>
-                                            <p>01.03.2020</p>
+                                            {/* <p>01.03.2020</p> */}
 
                                         </div>
                                         <div className={styles.ForTextTitle}>
-                                            <p>{data.tit}</p>
+                                            <p>{data.title}</p>
                                         </div>
                                         <div className={styles.ForTextBtn}>
                                             <button type="">Ba'tafsil</button>
