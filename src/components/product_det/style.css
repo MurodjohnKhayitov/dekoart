@@ -47,6 +47,7 @@
 .ContainerItem {
   width: 100%;
   display: flex;
+  border: 1px solid red;
 }
 
 .detail-left {
@@ -57,7 +58,7 @@
 
 .detail-right {
   width: 60%;
-  height: 600px;
+  height: fit-content;
 }
 
 .produs-img {
@@ -223,8 +224,8 @@
 }
 
 .CarosuelGroup {
-  border: 1px solid red;
-  margin-top: 300px;
+  /* border: 1px solid red; */
+  /* margin-top: 300px; */
 }
 /* ---------------------------- */
 

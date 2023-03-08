@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { useQuery } from "react-query";
+import { url } from "../Host/Host";
 const Shops = () => {
   const [data, setData] = useState(
     [
@@ -83,6 +85,34 @@ const Shops = () => {
   useEffect(() => {
     document.title = "Savdo Do'konlari>> DEKOART.UZ"
   }, [])
+  const [productlist, setProductlist] = useState([])
+  useQuery(["productlist type"], () => {
+    return fetch(`${url}/productlist/`).then(res => res.json())
+  }, {
+    onSuccess: res => {
+      setProductlist(res)
+
+    },
+    onError: err => {
+      console.log(err, "err");
+    }
+  }
+  )
+  // const [shopMarket, setshopMarket] = useState([])
+  // useQuery(["shopMarket type"], () => {
+  //   return fetch(`${url}/dictionary/shops/`).then(res => res.json())
+  // }, {
+  //   onSuccess: res => {
+  //     setshopMarket(res)
+
+  //   },
+  //   onError: err => {
+  //     console.log(err, "err");
+  //   }
+  // }
+  // )
+  // console.log(shopMarket,"shopMarket");
+
   return (
     <>
       <section className="shop-container">
@@ -149,7 +179,7 @@ const Shops = () => {
             </div>
             <div className={"ProductList"}>
               {
-                itemList.map(data => {
+                productlist.map(data => {
                   return (
                     <div key={data.id} onClick={() => HandleId(data.id)} className={"ProductItems"}>
                       <p> <i className="fa fa-chevron-right"></i></p>

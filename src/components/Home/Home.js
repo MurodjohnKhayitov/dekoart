@@ -9,7 +9,7 @@ import WeAbout from './WeAbout/WeAbout'
 import AOS from "aos";
 
 export default function Home() {
-    useEffect(() => {
+    useEffect(() => { 
         document.title = "DEKOART.UZ"
     }, [])
 

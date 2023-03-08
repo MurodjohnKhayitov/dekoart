@@ -15,6 +15,7 @@ import Shops from "../components/Shops/Shops";
 import DekoarItem from "../components/Dekoart/DekoartItem";
 import Footer from '../common/footer/Footer.jsx'
 import Products from '../components/Product/Products';
+import NewsDetail from '../components/News/NewsDetail';
 export default function RouterMain() {
     return (
         <div>
@@ -24,6 +25,7 @@ export default function RouterMain() {
                 <Route path="/dekoart" element={<DekoarItem />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/news" element={<News />} />
+                <Route path="/news/:id" element={<NewsDetail />} />
                 <Route path="/masters" element={<Master />} />
                 <Route path="/maslahat" element={<ServiceMaslahat />} />
                 <Route path="/oqitish" element={<ServiceEdeucation />} />

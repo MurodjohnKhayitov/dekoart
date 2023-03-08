@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect ,useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
 import styles from './education.module.css'
@@ -8,6 +8,8 @@ import imgThree from '../../img/Education/1548312429_20180811_113449.jpg'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { useQuery } from 'react-query';
+import { url } from '../Host/Host';
 
 export default function ServiceEdeucation() {
   const [itemList, setItemList] = useContext(DetailsForDekoart);
@@ -18,6 +20,21 @@ export default function ServiceEdeucation() {
   useEffect(() => {
     document.title = "O'quv dasturlari>> DEKOART.UZ"
   }, [])
+  const [productlist, setProductlist] = useState([])
+    useQuery(["productlist type"], () => {
+      return fetch(`${url}/productlist/`).then(res => res.json())
+    }, {
+      onSuccess: res => {
+        setProductlist(res)
+  
+      },
+      onError: err => {
+        console.log(err, "err");
+      }
+    }
+    )
+  
+
   return (
     <div className={styles.Container}>
       <div className={styles.Main}>
@@ -84,7 +101,7 @@ export default function ServiceEdeucation() {
             </div>
             <div className={styles.ProductList}>
               {
-                itemList.map(data => {
+                productlist.map(data => {
                   return (
                     <div key={data.id} onClick={() => HandleId(data.id)} className={styles.ProductItems}>
                       <p> <i className="fa fa-chevron-right"></i></p>

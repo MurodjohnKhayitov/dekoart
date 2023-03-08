@@ -12,9 +12,11 @@ import zuhriddin from '../../img/master/zuhriddin.jpg'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { useQuery } from 'react-query'
+import { url } from '../Host/Host'
 
 export default function Master() {
-    useEffect(() => { 
+    useEffect(() => {
         document.title = "Ustalar"
     }, [])
     const [CardInfo, setCardInfo] = useState([
@@ -104,6 +106,19 @@ export default function Master() {
 
 
     ])
+    const [masters, setMasters] = useState([])
+    useQuery(["Masters type"], () => {
+        return fetch(`${url}/masters/`).then(res => res.json())
+    }, {
+        onSuccess: res => {
+            setMasters(res)
+        },
+        onError: err => {
+            console.log(err, "err");
+        }
+    }
+    )
+
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
@@ -119,24 +134,26 @@ export default function Master() {
                 </div>
                 <div className={styles.CardGroup}>
                     {
-                        CardInfo.map(data => {
+                        masters.map(data => {
                             return (
 
                                 <div key={data.id} className={styles.Cards}>
                                     <div className={styles.ForImg}>
-                                        <img src={data.imgRel} alt="" />
+                                       
+                                       
+                                        <img src={data?.photo || abdulla} alt="" />
+                                       
+                                       
 
                                     </div>
                                     <div className={styles.ForText}>
 
                                         <div className={styles.ForTextTitle}>
                                             <p><span>Ism:</span>{data.name}</p>
-                                            <p><span>исм:</span>{data.ism}</p>
+                                            {/* <p><span>исм:</span>{data.ism}</p> */}
+                                            <p><span>Tel:</span>+998951982666</p>
                                         </div>
-                                        <div className={styles.ForTextPhone}>
-                                            <p><span>Tel:</span>{data.tel1}</p>
-                                            {data?.tel2?.length !== 0 ? <p><span>Tel:</span>{data.tel2}</p> : null}
-                                        </div>
+                                       
                                         <div className={styles.ForTextBtn}>
                                             <button type="">Ba'tafsil</button>
                                         </div>

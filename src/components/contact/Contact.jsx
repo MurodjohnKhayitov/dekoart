@@ -1,10 +1,26 @@
-import React,{useEffect} from "react";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import { url } from "../Host/Host";
 import "./style.css";
 
 const Contact = () => {
   useEffect(() => {
     document.title = "Biz bilan bog'lanish>> DEKOART.UZ"
   }, [])
+  const [contact, setContact] = useState([])
+  useQuery(["Contact type"], () => {
+    return fetch(`${url}/contact/`).then(res => res.json())
+  }, {
+    onSuccess: res => {
+      setContact(res)
+
+    },
+    onError: err => {
+      console.log(err, "err");
+    }
+  }
+  )
+
   return (
     <>
       <section class="contact">
@@ -13,16 +29,24 @@ const Contact = () => {
         </div>
         <div class="container1">
           <div class="contactInfo">
-            <div class="boxx">
-              <div class="icon">
-                <i class="fa fa-map-marker"></i>
-              </div>
-              <div class="text">
-                <h3>Address</h3>
-                <p>Adsress</p>
-              </div>
-            </div>
-            <div class="boxx">
+            {
+              contact?.map(data => {
+                return (
+                  <div class="boxx">
+                    <div class="icon">
+                      <i class={data?.icon || null}></i>
+                    </div>
+                    <div class="text">
+                      <h3>{data?.type}</h3>
+                      <p>{data?.data}</p>
+                    </div>
+                  </div>
+                )
+              })
+            }
+
+
+            {/* <div class="boxx">
               <div class="icon">
                 <i class="fa fa-phone"></i>
               </div>
@@ -41,7 +65,7 @@ const Contact = () => {
                 <h3>Email</h3>
                 <p>ismoilov@gmail.com</p>
               </div>
-            </div>
+            </div> */}
           </div>
           <div class="contactForm">
             <form>

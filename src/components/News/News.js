@@ -9,7 +9,7 @@ import Pro6 from '../../img/new6.jpg'
 import Pro7 from '../../img/new7.jpg'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { url } from '../Host/Host'
 export default function News() {
@@ -74,9 +74,11 @@ export default function News() {
         }
     }
     )
-    console.log(dekoNews, "dekoNews");
+    const navigate = useNavigate();
 
-
+    const HandleId = (id) => {
+        navigate(`/news/:${id}`);
+    };
 
 
     return (
@@ -98,7 +100,7 @@ export default function News() {
                         dekoNews.map(data => {
                             return (
 
-                                <div key={data.id} className={styles.Cards}>
+                                <div key={data.id} className={styles.Cards} onClick={() => HandleId(data.id)}>
                                     <div className={styles.ForImg}>
                                         <img src={data.photo} alt="" />
 
@@ -109,7 +111,7 @@ export default function News() {
 
                                         </div>
                                         <div className={styles.ForTextTitle}>
-                                            <p>{data.title}</p>
+                                            <p>{data.description}</p>
                                         </div>
                                         <div className={styles.ForTextBtn}>
                                             <button type="">Ba'tafsil</button>

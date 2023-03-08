@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import { NavLink } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useTranslation } from "react-i18next";
 
 // Import Swiper styles
 import { GrLinkNext, GrLinkPrevious } from 'react-icons/gr';
@@ -13,6 +14,10 @@ import { useQuery } from 'react-query'
 import { Navigation } from "swiper";
 import { url } from '../../Host/Host';
 export default function SliderMain() {
+
+
+	const { t } = useTranslation(["Home"]);
+
     const [SliderInfo, setSliderInfo] = useState([
         {
             id: 1,
@@ -103,14 +108,14 @@ export default function SliderMain() {
                             <div className={styles.CarosuelItems}>
                                 <div className={styles.CarosuelCard}>
                                     <div className={styles.Cartext1}>
-                                        <p><b>Dekoart</b> bu sizning tanlovingiz</p>
+                                        <p>{t("Home:slideBigText")}</p>
                                     </div>
                                     <div className={styles.Cartext2}>
-                                        <p>Eng sifatli mahsulotlar hammasi bizda</p>
+                                        <p>{t("Home:sliderSmText")}</p>
 
                                     </div>
                                     <div className={styles.Cartext3}>
-                                        <button type="">batafsil</button>
+                                        <button type="">{t("Home:SliderBtn")}</button>
                                     </div>
                                 </div>
 

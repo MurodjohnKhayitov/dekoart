@@ -1,9 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import logo from "../../components/assets/images/deko.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import { Button, Dropdown } from 'antd';
+import { url } from "../../components/Host/Host";
+import { useQuery } from "react-query";
+
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
+
 const items = [
   {
     key: '1',
@@ -28,6 +34,11 @@ const Search = () => {
   const [MobileMenu, setMobileMenu] = useState(false);
   const [toggleShowMenu, settoggleShowMenu] = useState(false);
   const [itemList, setItemList] = useContext(DetailsForDekoart);
+  // translate     --------------
+
+  const {  t } = useTranslation(["navbar"]);
+
+
 
   // fixed Header
   window.addEventListener("scroll", function () {
@@ -38,6 +49,21 @@ const Search = () => {
   const HandleForId = (id) => {
     navigate(`/product_det/:${id}`);
   };
+
+  const [products, setProducts] = useState([])
+  useQuery(["Products type"], () => {
+    return fetch(`${url}/products/`).then(res => res.json())
+  }, {
+    onSuccess: res => {
+      setProducts(res)
+
+    },
+    onError: err => {
+      console.log(err, "err");
+    }
+  }
+  )
+
   return (
     <>
       <section className="search">
@@ -92,159 +118,33 @@ const Search = () => {
                       })}
                       to="/product">Mahsulotlar</NavLink>
                     {toggleShowMenu && <div className="sub-menu-1">
-                      <ul>
-                        <li>
-                          <p>Suvli Emulsiya Bo'yoqlari</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "WaterImplus")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.filter}
-                                onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
+                      {products.map((data) => {
+                        return (
+                          <ul>
+                            <li>
+                              <p>{data?.name}</p>
+                            </li>
+                            {data?.product?.map(value => {
+                              return (
+                                <div
+                                  key={value?.id}
+                                  onClick={() => {
+                                    HandleForId(value.id)
+                                    settoggleShowMenu(false)
 
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
+                                  }}
+                                >
+                                  <div>{value.name}</div>
+                                </div>
 
-                      <ul>
-                        <li>
-                          <p>Dekorativ</p>
-                          <p>Qoplamalar</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "DekatratuvQoplama")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.id}
-                                 onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
+                              )
+                            })
+                            }
+                          </ul>
+                        );
+                      })}
 
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
-
-                      <ul>
-                        <li>
-                          <p>Italiyancha</p>
-                          <p>Suvoqlar</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "ForItailona")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.id}
-                                 onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
-
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
-                      <ul>
-                        <li>
-                          <p>Astar Bo'yoq</p>
-                          <p>va Loklar</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "AstarLooks")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.id}
-                                 onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
-
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
-                      <ul>
-                        <li>
-                          <p>Ranglanturuvchi</p>
-                          <p>Mahsulotlar</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "ColorsItems")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.id}
-                                 onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
-
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
-                      <ul>
-                        <li>
-                          <p>EMAL VA LOKLAR</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "Emal")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.id}
-                                 onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
-
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
-                      <ul>
-                        <li>
-                          <p>MOLDINGLAR</p>
-                        </li>
-                        {itemList
-                          .filter((data) => data.filter == "Emal")
-                          .map((data) => {
-                            return (
-                              <div
-                                key={data.id}
-                                 onClick={() => {
-                                  HandleForId(data.id)
-                                  settoggleShowMenu(false)
-
-                                }}
-                              >
-                                <div>{data.name}</div>
-                              </div>
-                            );
-                          })}
-                      </ul>
+                     
                     </div>}
                   </li>
                   <li>

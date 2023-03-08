@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
 import styles from './maslahat.module.css'
@@ -7,6 +7,8 @@ import imgTwo from '../../img/maslahat/1548312143_1548312080553.png'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { useQuery } from 'react-query';
+import { url } from '../Host/Host';
 export default function ServiceMaslahat() {
     const [itemList, setItemList] = useContext(DetailsForDekoart);
     const navigate = useNavigate();
@@ -16,6 +18,20 @@ export default function ServiceMaslahat() {
     useEffect(() => {
         document.title = "MASLAHAT BERAMIZ>> DEKOART.UZ"
     }, [])
+    const [productlist, setProductlist] = useState([])
+    useQuery(["productlist type"], () => {
+      return fetch(`${url}/productlist/`).then(res => res.json())
+    }, {
+      onSuccess: res => {
+        setProductlist(res)
+  
+      },
+      onError: err => {
+        console.log(err, "err");
+      }
+    }
+    )
+  
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
@@ -73,7 +89,7 @@ export default function ServiceMaslahat() {
                         </div>
                         <div className={styles.ProductList}>
                             {
-                                itemList.map(data => {
+                                productlist.map(data => {
                                     return (
                                         <div key={data.id} onClick={() => HandleId(data.id)} className={styles.ProductItems}>
                                             <p> <i className="fa fa-chevron-right"></i></p>

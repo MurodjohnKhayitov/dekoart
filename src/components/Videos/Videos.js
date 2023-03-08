@@ -5,6 +5,8 @@ import video2 from '../../img/video2.jpeg'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+import { useQuery } from 'react-query';
+import { url } from '../Host/Host';
 export default function Videos() {
     const [CardInfo, setCardInfo] = useState([{
         id: 1,
@@ -28,9 +30,23 @@ export default function Videos() {
 
     ])
 
+    const [videos, setVideos] = useState([])
+    useQuery(["Videos type"], () => {
+        return fetch(`${url}/videos/`).then(res => res.json())
+    }, {
+        onSuccess: res => {
+            setVideos(res)
+        },
+        onError: err => {
+            console.log(err, "err");
+        }
+    }
+    )
+
+
     useEffect(() => {
         document.title = "Videolar"
-    }, []) 
+    }, [])
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
@@ -47,18 +63,18 @@ export default function Videos() {
                 </div>
                 <div className={styles.CardGroup}>
                     {
-                        CardInfo.map(data => {
+                        videos.map(data => {
                             return (
 
                                 <div key={data.id} className={styles.Cards}>
                                     <div className={styles.ForImg}>
-                                        <img src={data.imgRel} alt="" />
+                                        <img src={data.photo_url} alt="" />
 
                                     </div>
                                     <div className={styles.ForText}>
 
                                         <div className={styles.ForTextTitle}>
-                                            <p>{data.tit}</p>
+                                            <p>{data.title}</p>
                                         </div>
                                         <div className={styles.ForTextBtn}>
                                             <button type="">Ba'tafsil</button>

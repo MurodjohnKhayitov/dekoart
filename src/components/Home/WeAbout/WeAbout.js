@@ -10,7 +10,7 @@ AOS.init({
 export default function WeAbout() {
     const [WeAbout, setWeAbout] = useState([])
     useQuery(["we about"], () => {
-        return fetch(`${url}/short_qa/`).then(res => res.json())
+        return fetch(`${url}/npm run st/`).then(res => res.json())
     }, {
         onSuccess: res => {
             setWeAbout(res)

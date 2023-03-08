@@ -1,6 +1,19 @@
-import React from "react"
-
+import React, { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next";
+import i18next from "i18next";
 const Head = () => {
+  const { i18n, t } = useTranslation(["common"]);
+
+  useEffect(() => {
+    if (localStorage.getItem("i18nextLng")?.length > 2) {
+      i18next.changeLanguage("uz");
+    }
+  }, []);
+
+  const handleLanguageChange = (e) => {
+    // console.log(e,"eee");
+    i18n.changeLanguage(e.target.value);
+  };
   return (
     <>
       <section className='head'>
@@ -10,8 +23,15 @@ const Head = () => {
             <label><i className='fa fa-envelope'></i> support@ui-lib.com</label>
           </div>
           <div className='right row RText'>
-            <label>uz</label>
-            <label>ru</label>
+            <select
+              className="nav-link bg-dark border-0 ml-1 mr-2"
+              value={localStorage.getItem("i18nextLng")}
+              onChange={handleLanguageChange}
+
+            >
+              <option value="uz">Uzbek</option>
+              <option value="ru">Russian</option>
+            </select>
           </div>
         </div>
       </section>
