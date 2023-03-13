@@ -202,7 +202,7 @@
     }
 
     .Main {
-        padding: 0px 50px;
+        padding: 0px 16px;
     }
 }
 
@@ -235,7 +235,8 @@
     }
 
     .Main {
-        padding: 0px 50px;
+        padding: 0px 16px;
+
     }
 }
 
@@ -268,10 +269,11 @@
     }
 
     .Main {
-        padding: 0px 50px;
+        padding: 0px 16px;
     }
 
     .BreadcrumbItem a {
         font-size: 14px;
     }
 }
+

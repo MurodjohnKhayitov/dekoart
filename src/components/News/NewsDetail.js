@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
-import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
 import styles from './newsDetail.module.css'
 import imgOne from '../../img/Dekoart/1548160469_zavod.jpg'
 import sertifikat1 from '../../img/Dekoart/1550912492_guvohnoma-glavnoe.jpg'
@@ -11,18 +10,20 @@ import sertifikat5 from '../../img/Dekoart/1550912480_guvohnoma5.jpg'
 import sertifikat6 from '../../img/Dekoart/1550912590_sertifikat-shuhrat6.jpg'
 import sertifikat7 from '../../img/Dekoart/1550912462_guvohnoma-glavnoe7.jpg'
 import sertifikat8 from '../../img/Dekoart/1550912494_sertifikat-sherzod8.jpg'
-
+ 
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
+import { useTranslation } from 'react-i18next';
 
 export default function NewsDetail() {
     useEffect(() => {
         document.title = "Kampaniya haqida ma'lumot <<DEKOART.UZ>>"
     }, [])
-    const [itemList, setItemList] = useContext(DetailsForDekoart);
+    const { t } = useTranslation(["news"]);
+
     const navigate = useNavigate();
     const HandleId = (id) => {
         navigate(`/product_det/:${id}`);
@@ -71,7 +72,7 @@ return (
                         <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
-                        <NavLink to="/news"> Yangiliklar</NavLink>
+                        <NavLink to="/news"> {t("breadCrum1")}</NavLink>
                     </Breadcrumb.Item>
                     <Breadcrumb.Item>
                         <NavLink to={`/news/:${UrlId}`}> {newsDetail.title} </NavLink>
@@ -126,7 +127,7 @@ return (
                 </div>
                 <div className={styles.ContentRight}>
                     <div className={styles.RightTitle}>
-                        <p>Mahsulotlarimiz</p>
+                        <p>{t("produtTitle")}</p>
 
                     </div>
                     <div className={styles.ProductList}>

@@ -7,8 +7,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import 'antd/dist/antd.css';
 import "aos/dist/aos.css";
+import './i18n'
 import { QueryClientProvider, QueryClient } from 'react-query';
 const queryClient = new QueryClient()
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

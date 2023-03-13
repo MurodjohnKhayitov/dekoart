@@ -12,70 +12,45 @@ import { FaHome } from "react-icons/fa"
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { url } from '../Host/Host'
+import { useTranslation } from 'react-i18next'
+import { useContext } from 'react'
+import { DetailsForDekoart } from '../../ContextMenu/ContextMenu'
 export default function News() {
-    useEffect(() => {
-        document.title = "Yangiliklar"
-    }, [])
-    const [CardInfo, setCardInfo] = useState([{
-        id: 1,
-        imgRel: Pro1,
-        tit: 'KOMPANIYAMIZ “TASHABBUS – 2019” TOSHKENT SHAHAR BOSQICHIDA ISHTIROK ETTI.',
-        descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
-    },
-    {
-        id: 2,
-        imgRel: Pro2,
-        tit: '"ТАШАББУС-2019": МЫ ПОБЕДИЛИ / BIZ BIRINCHIMIZ.',
-        descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
-    },
-    {
-        id: 3,
-        imgRel: Pro3,
-        tit: 'DEKO`ART - MUTAXASSIS FIKRIGA QULOQ SOLING!!! / МНЕНИЕ СПЕЦИАЛИСТОВ',
-        descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
-    },
-    {
-        id: 4,
-        imgRel: Pro4,
-        tit: 'DEKO`ART - BIZ SUVDAN QO`RQMAYMIZ! / ОЙ, ЛАДЫ, ЛАДЫ, НЕ БОИМСЯ МЫ',
-        descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
-    },
-    {
-        id: 5,
-        imgRel: Pro5,
-        tit: 'DEKO`ART TELEVIDENIYADA / СМОТРИТЕ DEKO`ART В ТВ',
-        descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
-    },
-    {
-        id: 6,
-        imgRel: Pro6,
-        tit: "HAMKORLARGA SOVG'ALAR 'DEKO`ART' HAMKORLARIGA SOVGALAR  descrip: Natural granit va marmar teksturasini namoyon qiluvchi"
-    },
-    {
-        id: 7,
-        imgRel: Pro7,
-        tit: 'ПОДАРКИ ПАРТНЕРАМ "DEKO`ART"',
-        descrip: 'Natural granit va marmar teksturasini namoyon qiluvchi'
-    }
+    
+    const { t } = useTranslation(["news"]);
 
-    ])
 
 
     const [dekoNews, setDekoNews] = useState([])
-    useQuery(["dekoNews type"], () => {
-        return fetch(`${url}/news/`).then(res => res.json())
-    }, {
-        onSuccess: res => {
+  
+
+    const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+    const fetchGetAllData = (params) => {
+      Object.entries(params).forEach(i => {
+        if (!i[1]) delete params[i[0]]
+      })
+  
+      fetch(`${url}/news/?` + new URLSearchParams(params))
+        .then(res => res.json())
+        .then(res => {
             setDekoNews(res)
-
-        },
-        onError: err => {
-            console.log(err, "err");
-        }
+        })
+        .catch(err => console.log(err, "ERROrLIST"))
     }
-    )
-    const navigate = useNavigate();
+    useEffect(() => {
+        document.title = "Yangiliklar"
+      fetchGetAllData({
+        language: itemList?.typeLang,
+      })
+    }, [itemList?.typeLang])
+  
 
+
+
+
+
+    const navigate = useNavigate();
     const HandleId = (id) => {
         navigate(`/news/:${id}`);
     };
@@ -91,7 +66,7 @@ export default function News() {
                             <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <NavLink to="/news"> Yangiliklar</NavLink>
+                            <NavLink to="/news"> {t("breadCrum1")}</NavLink>
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
@@ -114,7 +89,7 @@ export default function News() {
                                             <p>{data.description}</p>
                                         </div>
                                         <div className={styles.ForTextBtn}>
-                                            <button type="">Ba'tafsil</button>
+                                            <button type="">{t("SliderBtn")}</button>
                                         </div>
 
                                     </div>

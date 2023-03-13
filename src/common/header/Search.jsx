@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import logo from "../../components/assets/images/deko.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
@@ -8,35 +8,15 @@ import { url } from "../../components/Host/Host";
 import { useQuery } from "react-query";
 
 import { useTranslation } from "react-i18next";
-import i18next from "i18next";
 
-const items = [
-  {
-    key: '1',
-    label: (
-      <NavLink to='/maslahat' >
-        Maslahat
-      </NavLink >
-    ),
-  },
-  {
-    key: '2',
-    label: (
-      <NavLink to='/oqitish' >
-        Oqitish
-      </NavLink >
-    ),
-  },
 
-];
 const Search = () => {
   const navigate = useNavigate();
   const [MobileMenu, setMobileMenu] = useState(false);
   const [toggleShowMenu, settoggleShowMenu] = useState(false);
-  const [itemList, setItemList] = useContext(DetailsForDekoart);
   // translate     --------------
 
-  const {  t } = useTranslation(["navbar"]);
+  const { t } = useTranslation(["navbar"]);
 
 
 
@@ -51,18 +31,46 @@ const Search = () => {
   };
 
   const [products, setProducts] = useState([])
-  useQuery(["Products type"], () => {
-    return fetch(`${url}/products/`).then(res => res.json())
-  }, {
-    onSuccess: res => {
-      setProducts(res)
 
-    },
-    onError: err => {
-      console.log(err, "err");
-    }
+  const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+  const fetchGetAllData = (params) => {
+    Object.entries(params).forEach(i => {
+      if (!i[1]) delete params[i[0]]
+    })
+
+    fetch(`${url}/products/?` + new URLSearchParams(params))
+      .then(res => res.json())
+      .then(res => {
+        setProducts(res)
+      })
+      .catch(err => console.log(err, "ERROrLIST"))
   }
-  )
+  useEffect(() => {
+    fetchGetAllData({
+      language: itemList?.typeLang,
+    })
+  }, [itemList?.typeLang])
+
+  const items = [
+    {
+      key: '1',
+      label: (
+        <NavLink to='/maslahat' >
+          {t("advice")}
+        </NavLink >
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <NavLink to='/oqitish' >
+          {t("edu")}
+        </NavLink >
+      ),
+    },
+  
+  ];
 
   return (
     <>
@@ -89,7 +97,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/home">Asosiy</NavLink>
+                      to="/home">{t("asosiy")}</NavLink>
                   </li>
                   <li>
                     <NavLink
@@ -98,7 +106,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/dekoart">Deko'art</NavLink>
+                      to="/dekoart">{t("dekoart")}</NavLink>
                   </li>
                   <li>
                     <NavLink
@@ -107,7 +115,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/news">Yangiliklar</NavLink>
+                      to="/news">{t("yangiliklar")}</NavLink>
                   </li>
                   <li className={"liSubMenu"} onMouseEnter={() => settoggleShowMenu(true)}>
                     <NavLink
@@ -116,7 +124,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/product">Mahsulotlar</NavLink>
+                      to="/product">{t("mahsulotlar")}</NavLink>
                     {toggleShowMenu && <div className="sub-menu-1">
                       {products.map((data) => {
                         return (
@@ -144,7 +152,7 @@ const Search = () => {
                         );
                       })}
 
-                     
+
                     </div>}
                   </li>
                   <li>
@@ -154,7 +162,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/video">Video</NavLink>
+                      to="/video">{t("video")}</NavLink>
                   </li>
                   <li>
                     <NavLink
@@ -163,7 +171,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/masters">Ustalar</NavLink>
+                      to="/masters">{t("ustalar")}</NavLink>
                   </li>
 
                   <li>
@@ -174,7 +182,7 @@ const Search = () => {
                       placement="bottom"
                       arrow
                     >
-                      <p>Xizmatlar</p>
+                      <p>{t("xizmatlar")}</p>
                     </Dropdown>
                   </li>
                   <li>
@@ -184,7 +192,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/markets">Bozor</NavLink>
+                      to="/markets">{t("bozor")}</NavLink>
                   </li>
                   <li>
                     <NavLink
@@ -193,7 +201,7 @@ const Search = () => {
                         borderBottom: isActive ? "2px solid #ff014f" : "none"
 
                       })}
-                      to="/contact">Aloqa</NavLink>
+                      to="/contact">{t("aloqa")}</NavLink>
                   </li>
                 </ul>
 

@@ -19,6 +19,17 @@ body {
   background-color: #d1d1d1;
   /* background: #F5F5F5; */
 }
+.MoonLoad {
+
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  font-size: 18px;
+  color: #0d263b;
+}
 .container {
   max-width: 90%;
   margin: auto;

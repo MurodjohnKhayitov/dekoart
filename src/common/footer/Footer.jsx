@@ -1,8 +1,9 @@
-import React ,{useState} from 'react'
+import React, { useState } from 'react'
 import './style.css'
 import logo from "../../components/assets/images/deko.png"
 import { useQuery } from 'react-query'
 import { url } from '../../components/Host/Host'
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
     const [social_link, setsocial_link] = useState([])
@@ -19,6 +20,7 @@ const Footer = () => {
     }
 
     )
+    const { t } = useTranslation(["footer"]);
 
     return (
         <>
@@ -26,7 +28,7 @@ const Footer = () => {
                 <div className="containerr">
                     <div className="sec aboutus">
                         <img src={logo} alt="" />
-                        <p>«DEKO’ART» - Bu, markaziy Osiyoda zamonaviy, yuqori sifatli lok-bo'yoq mahsulotlari, dekorativ qoplamalar va moldinglar majmuasi.</p>
+                        <p>{t("footerTitle")}</p>
                         <ul className='sci'>
                             <li><a href="#"><i className='fa-brands fa-facebook' aria-hidden='true'></i></a></li>
                             <li><a href="#"><i className='fa-brands fa-telegram' aria-hidden='true'></i></a></li>
@@ -35,36 +37,36 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="sec media">
-                        <h2>Ijtimoiy Tarmoqlar</h2>
+                        <h2>{t("social")}</h2>
                         <ul>
                             {
-                            social_link.map(data=>{
-                            return(
-                                <li><i className={data?.icon}></i><a href={data?.link}>{data?.name}</a></li>
-                                )
-                            })
+                                social_link.map(data => {
+                                    return (
+                                        <li><i className={data?.icon}></i><a href={data?.link}>{data?.name}</a></li>
+                                    )
+                                })
                             }
-                     
+
                         </ul>
                     </div>
                     <div className="sec quicklinks">
-                        <h2>Foydali Link</h2>
+                        <h2>{t("links")}</h2>
                         <ul>
-                            <li><a href="#">Asosiy</a></li>
-                            <li><a href="#">Mahsulotlar</a></li>
-                            <li><a href="#">Video</a></li>
-                            <li><a href="#">Ustalar</a></li>
-                            <li><a href="#">Bozor</a></li>
-                            <li><a href="#">Aloqa</a></li>
+                            <li><a href="#">{t("asosiy")} </a></li>
+                            <li><a href="#">{t("dekoart")}      </a></li>
+                            <li><a href="#">{t("yangiliklar")}</a></li>
+                            <li><a href="#">{t("mahsulotlar")}  </a></li>
+                            <li><a href="#">{t("video")}</a></li>
+                            <li><a href="#">{t("ustalar")}</a></li>
                         </ul>
                     </div>
 
                     <div className="sec contactt">
-                        <h2>Bizning Aloqa</h2>
+                        <h2>{t("contact")}</h2>
                         <ul className="info">
                             <li>
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>Toshkent shaxri Bektimer tumani</span>
+                                <span>{t("address")}</span>
                             </li>
                             <li>
                                 <i class="fa-solid fa-phone"></i>

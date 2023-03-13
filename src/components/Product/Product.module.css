@@ -55,7 +55,7 @@
 }
 
 .CardItem {
-    width: 23% !important;
+    width: 23%;
     height: 470px;
     border: 1px solid #c4c4c4;
     border-radius: 10px;
@@ -63,7 +63,6 @@
     background-color: white;
     /* padding: 5px; */
     cursor: pointer;
-    margin-left: 10px;
     padding: 8px;
     user-select: none;
 
@@ -171,4 +170,129 @@
 .ProductBtn button:active {
     transform: scale(0.98);
     opacity: 0.7;
+}
+
+
+
+@media (min-width:768px) and (max-width:1023px) {
+    .CardItem {
+        width: 33%;
+    }
+}
+
+@media (min-width:568px) and (max-width:767px) {
+    .Main {
+        padding: 0px 16px;
+    }
+
+    .CardItem {
+        width: 33%;
+        padding: 4px;
+
+    }
+
+    .ProductTitle p {
+        font-size: 16px;
+        font-weight: bold;
+        font-style: normal;
+        line-height: 20px;
+    }
+
+    .ProductText p {
+        font-size: 13px;
+    }
+
+    .ProductBtn button {
+        background-color: #0f3460;
+        /* background-color: #256471f4; */
+        color: white;
+        height: 40px;
+        width: 100%;
+        font-family: "Monserrant";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        letter-spacing: 4px;
+    }
+
+}
+
+@media (min-width:390px) and (max-width:567px) {
+    .Main {
+        padding: 0px 16px;
+    }
+
+    .CardItem {
+        width: 48%;
+        padding: 4px;
+
+    }
+
+    .ProductTitle p {
+        font-size: 16px;
+        font-weight: bold;
+        font-style: normal;
+        line-height: 20px;
+    }
+
+    .ProductText p {
+        font-size: 13px;
+    }
+
+    .ProductBtn button {
+        background-color: #0f3460;
+        /* background-color: #256471f4; */
+        color: white;
+        height: 40px;
+        width: 100%;
+        font-family: "Monserrant";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        cursor: pointer;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        overflow: hidden;
+        transition: 0.5s;
+        letter-spacing: 4px;
+    }
+
+}
+
+@media (max-width:390px) {
+    .Main {
+        padding: 0px 16px;
+    }
+
+    .CardItem {
+        width: 100%;
+        padding: 4px;
+
+    }
+
+    .ProductTitle p {
+        font-size: 18px;
+        font-weight: bold;
+        font-style: normal;
+        line-height: 20px;
+    }
+
+    .ProductText p {
+        font-size: 13px;
+    }
 }

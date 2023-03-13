@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState,  useEffect } from "react";
 import "./style.css";
-import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import { useNavigate } from "react-router-dom";
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
@@ -9,7 +8,7 @@ import { useQuery } from "react-query";
 import { url } from "../Host/Host";
 const Shops = () => {
   const [data, setData] = useState(
-    [
+    [ 
       {
         name: "Dombirobod qurilish bozori",
         address: "Dombirobod qurilish bozori 65-do`kon – Abbosxon Toshmuhamedov",
@@ -77,7 +76,6 @@ const Shops = () => {
       },
 
     ])
-  const [itemList, setItemList] = useContext(DetailsForDekoart);
   const navigate = useNavigate();
   const HandleId = (id) => {
     navigate(`/product_det/:${id}`);

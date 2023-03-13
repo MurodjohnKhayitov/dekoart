@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import data from "./data";
 import Model from "./Model";
 import "./style.css";
@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Card from "./Card";
-import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import { useParams } from "react-router-dom";
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Breadcrumb, message, } from 'antd';
@@ -18,7 +17,6 @@ import { url } from "../Host/Host";
 import colImg from '../../img/col1.jpg'
 import fasadimg from '../../img/img1.jpg'
 const Home = () => {
-  const [itemList, setItemList] = useContext(DetailsForDekoart);
   const { id } = useParams();
   const UrlId = id.replace(":", "");
 
@@ -101,18 +99,32 @@ const Home = () => {
     return setModel(true);
   };
 
-  // const [NewArray, setNewArray] = useState([]);
-  const NewArrayOne = [];
-  const NewArrayTwo = [];
+  const [productsLists, setProductsLists] = useState([])
+  useQuery(["ProductsLists type"], () => {
+    return fetch(`${url}/productlist/`).then(res => res.json())
+  }, {
+    onSuccess: res => {
+      setProductsLists(res)
+    },
+    onError: err => {
+      console.log(err, "err");
+    }
+  }
+  )
 
-  itemList.forEach((data) => {
-    if (data.id > 0 && data.id <= 12) {
-      NewArrayOne.push(data);
-    }
-    if (data.id > 12 && data.id < 25) {
-      NewArrayTwo.push(data);
-    }
-  });
+
+  // const [NewArray, setNewArray] = useState([]);
+  // const NewArrayOne = [];
+  // const NewArrayTwo = [];
+
+  // itemList.forEach((data) => {
+  //   if (data.id > 0 && data.id <= 12) {
+  //     NewArrayOne.push(data);
+  //   }
+  //   if (data.id > 12 && data.id < 25) {
+  //     NewArrayTwo.push(data);
+  //   }
+  // });
 
   const [productId, setProductId] = useState([])
   useQuery(["ProductId type"], () => {
@@ -120,6 +132,7 @@ const Home = () => {
   }, {
     onSuccess: res => {
       setProductId(res)
+      console.log(res, "resErrorProductId");
 
     },
     onError: err => {
@@ -127,7 +140,9 @@ const Home = () => {
     }
   }
   )
-  // console.log(productId,"productId");
+  productId.figure_out.map(data => {
+    console.log(data, "figure_outfigure_out");
+  })
 
   return (
     <>
@@ -142,11 +157,11 @@ const Home = () => {
               <NavLink to="/product"> Mahsulotlar</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              {productId.map((value) => {
-                  return (
-                    <NavLink to={`product_det/:${UrlId}`}> {value.name}</NavLink>
-                  );
-                })}
+              {productId?.map((value) => {
+                return (
+                  <NavLink to={`product_det/:${UrlId}`}> {value.name}</NavLink>
+                );
+              })}
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>
@@ -160,24 +175,7 @@ const Home = () => {
                   <img src={productId?.photo_url || "noImg"} alt="" />
                 </div>
                 <div className="galery">
-                  <Slider {...settings1} >
-                    {productId?.figure_out?.map((item, index) => {
-                      return (
-                        <div className="box-galery" key={index}>
-                          <div className="card-img">
-                            <img
-                              src={item?.photo_url || fasadimg}
-                              className="card-img-top"
-                              onClick={() =>
-                                getData(item?.photo_url || fasadimg)
-                              }
-                              alt="photo_url"
-                            />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </Slider>
+                  
 
                   <div className="color-catolog">
                     {productId?.color_catalog?.map((item, index) => {
@@ -202,8 +200,8 @@ const Home = () => {
               </div>
             </div>
             <div className="detail-right">
-              <h1>{productId.category}</h1>
-              <p>{productId.name}</p>
+              <h1>{productId?.category || "Category Name"}</h1>
+              <p>{productId?.name || "Simple Name"}</p>
               <div className="calculator">
                 <button className="icon-calc" type="button">
                   <i className="fa fa-calculator"></i>Kalkulyator
@@ -303,11 +301,11 @@ const Home = () => {
               <div className="video-youtub">
                 <iframe
 
-                  src={productId.video_url}
+                  src={productId?.video_url}
                   title="Ottocento Dekoart"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               </div>
             </div>
@@ -315,61 +313,61 @@ const Home = () => {
           {/* //   );
             // })} */}
 
-        <div className="CarosuelGroup">
+          <div className="CarosuelGroup">
 
 
-          <div className={"CardGroup"}>
-            <Slider {...settings} className={"SliderGroup"} >
-              {NewArrayOne.map((item, index) => {
-                return (
-                  <div key={item.name} className={"CardItem"}>
-                    <div className={"ForImgCard"}>
-                      <img src={item.cover} alt="" />
+            <div className={"CardGroup"}>
+              <Slider {...settings} className={"SliderGroup"} >
+                {productsLists.map((item, index) => {
+                  return (
+                    <div key={item.name} className={"CardItem"}>
+                      <div className={"ForImgCard"}>
+                        <img src={item.photo_url} alt="" />
+                      </div>
+                      <div className={"ForTextCard"}>
+                        <div className={"ProductTitle"}>
+                          <p>{item.name}</p>
+                        </div>
+                        <div className={"ProductText"}>
+                          <p>{item.description}</p>
+                        </div>
+                        <div className={"ProductBtn"}>
+                          <button>Batafsil</button>
+                        </div>
+                      </div>
                     </div>
-                    <div className={"ForTextCard"}>
-                      <div className={"ProductTitle"}>
-                        <p>{item.name}</p>
+                  )
+                })}
+              </Slider>
+
+            </div>
+            <div className={"CardGroup"}>
+              <Slider {...settings} className={"SliderGroup"} >
+                {productsLists.map((item, index) => {
+                  return (
+                    <div key={item.name} className={"CardItem"}>
+                      <div className={"ForImgCard"}>
+                        <img src={item.photo_url} alt="" />
                       </div>
-                      <div className={"ProductText"}>
-                        <p>Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.</p>
-                      </div>
-                      <div className={"ProductBtn"}>
-                        <button>Batafsil</button>
+                      <div className={"ForTextCard"}>
+                        <div className={"ProductTitle"}>
+                          <p>{item.name}</p>
+                        </div>
+                        <div className={"ProductText"}>
+                          <p>{item.description}</p>
+                        </div>
+                        <div className={"ProductBtn"}>
+                          <button>Batafsil</button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </Slider>
+                  )
+                })}
+              </Slider>
+
+            </div>
 
           </div>
-          <div className={"CardGroup"}>
-            <Slider {...settings} className={"SliderGroup"} >
-              {NewArrayTwo.map((item, index) => {
-                return (
-                  <div key={item.name} className={"CardItem"}>
-                    <div className={"ForImgCard"}>
-                      <img src={item.cover} alt="" />
-                    </div>
-                    <div className={"ForTextCard"}>
-                      <div className={"ProductTitle"}>
-                        <p>{item.name}</p>
-                      </div>
-                      <div className={"ProductText"}>
-                        <p>Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.</p>
-                      </div>
-                      <div className={"ProductBtn"}>
-                        <button>Batafsil</button>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </Slider>
-
-          </div>
-
-        </div>
         </div>
 
       </section>

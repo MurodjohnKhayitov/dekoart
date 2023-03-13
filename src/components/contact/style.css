@@ -1,218 +1,254 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url(https://artline-decor.ru/images/mebel-natalie/services/kontakty.jpg);
+  background-size: cover;
+}
+
+.contact .content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.contact .content h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: rgb(79, 168, 250);
+  ;
+}
+
+.contact .content p {
+  font-weight: 300;
+  color: rgb(79, 168, 250);
+}
+
+.container1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  border: 1px solid red;
+}
+
+.container1 .contactInfo {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+}
+
+.container1 .contactInfo .boxx {
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+}
+
+.container1 .contactInfo .boxx .icon {
+  min-width: 60px;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.container1 .contactInfo .boxx .text {
+  display: flex;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #fff;
+  flex-direction: column;
+  font-weight: 300;
+}
+
+.container1 .contactInfo .boxx .text h3 {
+  font-weight: 500;
+  color: #00bcd4;
+}
+
+.container1 .contactInfo .boxx .text p {
+  font-weight: 500;
+  font-size: 18px;
+  width: 290px;
+}
+
+.contactForm {
+  width: 40%;
+  padding: 40px;
+  background: #fff;
+  border: 1px solid red;
+
+}
+
+.contactForm h2 {
+  font-size: 30px;
+  color: #333;
+  font-weight: 500;
+}
+
+.contactForm .inputBox {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.contactForm .inputBox input,
+.contactForm .inputBox textarea {
+  width: 100%;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  resize: none;
+}
+
+.contactForm .inputBox span {
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  color: #666;
+}
+
+.contactForm .inputBox input:focus~span,
+.contactForm .inputBox input:valid~span,
+.contactForm .inputBox textarea:focus~span,
+.contactForm .inputBox textarea:valid~span {
+  color: #e91e63;
+  font-size: 12px;
+  transform: translateY(-20px);
+}
+
+.contactForm .inputBox input[type="submit"] {
+  width: 100px;
+  background: #00bcd4;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.map-wrapper {
+  width: 90%;
+  border: 2px solid black;
+  margin: 20px 75px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.googlemap {
+  width: 100%;
+}
+
+
+/* xxl 1400 */
+@media (max-width: 1400px) {}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 991px) {
+  .contact {
+    padding: 50px;
   }
-  .contact{
-    position: relative;
-    min-height: 100vh;
-    padding: 50px 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .container1 {
     flex-direction: column;
-    background: url(https://artline-decor.ru/images/mebel-natalie/services/kontakty.jpg);
-    background-size: cover;
   }
-  
-  .contact .content{
-    max-width: 800px;
-    text-align: center;
+
+  .container1 .contactInfo {
+    margin-bottom: 40px;
   }
-  .contact .content h2{
-    font-size: 36px;
-    font-weight: 800;
-    color: rgb(79, 168, 250);;
-  }
-  .contact .content p{
-    font-weight: 300;
-    color: rgb(79, 168, 250);
-  }
-  .container1{
+
+  .container1 .contactInfo,
+  .contactForm {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
   }
-  .container1 .contactInfo{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-  }
-  .container1 .contactInfo .boxx{
-    position: relative;
-    padding: 20px 0;
-    display: flex;
-  }
-  .container1 .contactInfo .boxx .icon{
-    min-width: 60px;
-    height: 60px;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    font-size: 22px;
-  }
-  .container1 .contactInfo .boxx .text{
-    display: flex;
-    margin-left: 20px;
-    font-size: 16px;
-    color: #fff;
-    flex-direction: column;
-    font-weight: 300;
-  }
-  .container1 .contactInfo .boxx .text h3{
-    font-weight: 500;
-    color: #00bcd4;
-  }
-  .container1 .contactInfo .boxx .text p{
-    font-weight: 500;
-    font-size: 18px;
-    width: 290px;
-  }
-  .contactForm{
-    width: 40%;
-    padding: 40px;
-    background: #fff;
-  }
-  .contactForm h2{
-    font-size: 30px;
-    color: #333;
-    font-weight: 500;
-  }
-  .contactForm .inputBox{
-    position: relative;
-    width: 100%;
-    margin-top: 10px;
-  }
-  .contactForm .inputBox input,.contactForm .inputBox textarea{
-    width: 100%;
-    padding: 5px 0;
-    font-size: 16px;
-    margin: 10px 0;
-    border: none;
-    border-bottom: 2px solid #333;
-    outline: none;
-    resize: none;
-  }
-  
-  .contactForm .inputBox span{
-    position: absolute;
-    left: 0;
-    padding: 5px 0;
-    font-size: 16px;
-    margin: 10px 0;
-    pointer-events: none;
-    transition: 0.5s;
-    color: #666;
-  }
-  .contactForm .inputBox input:focus ~ span,.contactForm .inputBox input:valid ~ span,.contactForm .inputBox textarea:focus ~ span,.contactForm .inputBox textarea:valid ~ span{
-    color: #e91e63;
-    font-size: 12px;
-    transform: translateY(-20px);
-  }
-  .contactForm .inputBox input[type="submit"]{
-    width: 100px;
-    background: #00bcd4;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    font-size: 18px;
-  }
-  
-  .map-wrapper{
+
+  .map-wrapper {
+    height: 400px;
     width: 90%;
-    border: 2px solid black;
-    margin: 20px 75px;
-    /* justify-content: center; */
+    margin: 10px 20px;
+    justify-content: center;
     align-items: center;
   }
-  .googlemap{
-    width: 100%;
+
+  .googlemap {
+    height: 400px;
+    justify-content: center;
+    align-items: center;
   }
-  
-  
-  /* xxl 1400 */
-  @media (max-width: 1400px) {
-   
+}
+
+@media (max-width: 767px) {
+  .contact {
+    padding: 20px 16px;
   }
-  @media (max-width: 1200px) {
-   
+}
+
+@media (max-width: 576px) {
+  .contact .content h2 {
+    font-size: 24px;
   }
-  @media (max-width: 991px){
-    .contact{
-      padding: 50px;
-    }
-    .container1{
-      flex-direction: column;
-    }
-    .container1 .contactInfo{
-      margin-bottom: 40px;
-    }
-    .container1 .contactInfo,.contactForm{
-      width: 100%;
-    }
-    .map-wrapper{
-      height: 400px;
-      width: 90%;
-      margin: 10px 20px;
-      justify-content: center;
-      align-items: center;
-    }
-    .googlemap{
-      height: 400px;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  @media (max-width: 767px) {
-    
-  }
-  @media (max-width: 576px) {
-    .contact .content h2{
-      font-size: 24px;
-    }
-    .container1 .contactInfo .boxx .text p{
+
+  .container1 .contactInfo .boxx .text p {
     font-weight: 300;
     font-size: 16px;
     width: 200px;
   }
+}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 450px) {
+  .contact .content h2 {
+    font-size: 20px;
   }
-  @media (max-width: 480px) {
-  }
-  @media (max-width: 450px) {
-    .contact .content h2{
-      font-size: 20px;
-    }
-    .container1 .contactInfo .boxx .text p{
+
+  .container1 .contactInfo .boxx .text p {
     font-weight: 200;
     font-size: 14px;
     width: 200px;
   }
-  .map-wrapper{
+
+  .map-wrapper {
     height: 300px;
   }
-  .googlemap{
+
+  .googlemap {
     height: 300px;
   }
-  .container1 .contactInfo .boxx .icon{
+
+  .container1 .contactInfo .boxx .icon {
     min-width: 40px;
     height: 40px;
   }
+}
+
+@media (max-width: 400px) {}
+
+@media (max-width: 362px) {
+  .contact .content h2 {
+    font-size: 16px;
   }
-  @media (max-width: 400px) {
-    
-  }
-  @media (max-width: 362px) {
-    .contact .content h2{
-      font-size: 16px;
-    }
-  }
-  
-  
-  
-  
+}

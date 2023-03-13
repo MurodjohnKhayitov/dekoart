@@ -16,34 +16,9 @@ import { url } from '../../Host/Host';
 export default function SliderMain() {
 
 
-	const { t } = useTranslation(["Home"]);
+    const { t } = useTranslation(["home"]);
 
-    const [SliderInfo, setSliderInfo] = useState([
-        {
-            id: 1,
-            title: "50% Off For Your First Shopping",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-            cover: "./images/SlideCard/flash-11.jpg",
-        },
-        {
-            id: 2,
-            title: "50% Off For Your First Shopping",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-            cover: "./images/SlideCard/flash-22.jpg",
-        },
-        {
-            id: 3,
-            title: "50% Off For Your First Shopping",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-            cover: "./images/SlideCard/flash-33.jpg",
-        },
-        {
-            id: 4,
-            title: "50% Off For Your First Shopping",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quis lobortis consequat eu, quam etiam at quis ut convallis.",
-            cover: "./images/SlideCard/flash-44.jpg",
-        },
-    ])
+   
     const [dataSlide, setdataSlide] = useState([])
 
     useQuery(["get slider"], () => {
@@ -108,14 +83,14 @@ export default function SliderMain() {
                             <div className={styles.CarosuelItems}>
                                 <div className={styles.CarosuelCard}>
                                     <div className={styles.Cartext1}>
-                                        <p>{t("Home:slideBigText")}</p>
+                                        <p>{t("slideBigText")}</p>
                                     </div>
                                     <div className={styles.Cartext2}>
-                                        <p>{t("Home:sliderSmText")}</p>
+                                        <p>{t("sliderSmText")}</p>
 
                                     </div>
                                     <div className={styles.Cartext3}>
-                                        <button type="">{t("Home:SliderBtn")}</button>
+                                        <button type="">{t("SliderBtn")}</button>
                                     </div>
                                 </div>
 

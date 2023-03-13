@@ -1,14 +1,18 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next';
+import { NavLink } from 'react-router-dom';
 import styles from './service.module.css'
 export default function Service() {
+    const { t } = useTranslation(["home"]);
+
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
                 <div className={styles.Text}>
 
-                    <p>XIZMATLARIMIZ</p>
-                    <p>
-                        BIZ AMALGA OSHIRGAN ISHLARNING KO'RINISHLARI</p>
+                    <p>{t("serviceTitle")}</p>
+                    <p>{t("serviceText")}
+                    </p>
 
 
                 </div>
@@ -19,14 +23,13 @@ export default function Service() {
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
-                                XONADONLARNI TA'MIRLASH
+                                {t("cardTitle1")}
                             </div>
                             <div className={styles.Maintext}>
-                                Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.
-
+                                {t("cardText1")}
                             </div>
                             <div className={styles.MainBtn}>
-                                <button type="">Batafsil</button>
+                                <NavLink to="/masters">{t("SliderBtn")}</NavLink>
                             </div>
                         </div>
                     </div>
@@ -36,14 +39,13 @@ export default function Service() {
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
-
-                                UYLARNI TA'MIRLASH                            </div>
+                                {t("cardTitle2")}
+                            </div>
                             <div className={styles.Maintext}>
-                                Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.
-
+                                {t("cardText2")}
                             </div>
                             <div className={styles.MainBtn}>
-                                <button type="">Batafsil</button>
+                                <NavLink to="/masters">{t("SliderBtn")}</NavLink>
                             </div>
                         </div>
                     </div>
@@ -53,12 +55,13 @@ export default function Service() {
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
-                                OFISLARNI TA'MIRLASH                            </div>
+                                {t("cardTitle3")}
+                            </div>
                             <div className={styles.Maintext}>
-                                Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.
+                                {t("cardText3")}
                             </div>
                             <div className={styles.MainBtn}>
-                                <button type="">Batafsil</button>
+                                <NavLink to="/masters">{t("SliderBtn")}</NavLink>
                             </div>
                         </div>
                     </div>
@@ -68,12 +71,13 @@ export default function Service() {
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
-                                KOTTEJLARNI TA'MIRLASH                            </div>
+                                {t("cardTitle4")}
+                            </div>
                             <div className={styles.Maintext}>
-                                Dizayn loyihalarini ishlab chiqish va binolarni yangilash bo'yicha xizmatlarning to'liq majmuasi.
+                                {t("cardText4")}
                             </div>
                             <div className={styles.MainBtn}>
-                                <button type="">Batafsil</button>
+                                <NavLink to="/masters">{t("SliderBtn")}</NavLink>
                             </div>
                         </div>
                     </div>

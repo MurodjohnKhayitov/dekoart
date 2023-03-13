@@ -1,6 +1,5 @@
-import React, { useContext, useEffect,useState } from 'react'
+import React, {  useEffect,useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
 import styles from './maslahat.module.css'
 import imgOne from '../../img/maslahat/imgOne.jpg'
 import imgTwo from '../../img/maslahat/1548312143_1548312080553.png'
@@ -9,12 +8,14 @@ import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
+import { useTranslation } from 'react-i18next';
 export default function ServiceMaslahat() {
-    const [itemList, setItemList] = useContext(DetailsForDekoart);
     const navigate = useNavigate();
     const HandleId = (id) => {
         navigate(`/product_det/:${id}`);
     };
+    const { t } = useTranslation(["serviceAdv"]);
+
     useEffect(() => {
         document.title = "MASLAHAT BERAMIZ>> DEKOART.UZ"
     }, [])
@@ -42,34 +43,36 @@ export default function ServiceMaslahat() {
                             <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <NavLink to="/usluga"> Xizmatlar</NavLink>
+                            <NavLink to="/usluga"> {t("breadCrum1")}</NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <NavLink to="/maslahat"> MASLAHATLARI BERAMIZ</NavLink>
+                            <NavLink to="/maslahat">  {t("breadCrum2")}</NavLink>
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                 <div className={styles.Content}>
                     <div className={styles.ContentLeft}>
                         <div className={styles.LeftTitle}>
-                            <p>MASLAHATLAR BERAMIZ</p>
+                            <p>{t("leftTitle")}</p>
                         </div>
                         <div className={styles.MainItem}>
                             <div className={styles.ImgOne}>
                                 <img src={imgOne} alt="" />
-                                <p>Maslahatlar beramiz</p>
+                                <p>{t("imgTitle")}</p>
                             </div>
                             <div className={styles.textLeft}>
-                                <p>«Dekoart» mutaxassislari, zamonaviy pardozlash ishlariga aloqador o`z tajribalarini barcha bilan o`rtoqlashishga tayyor. Biz har bir mahsulotimizning afzalliklari va hususiyatari, shuningdek bu mahsulotlardan to`g`ri foydalanish yollari haqida batafsil ma`lumot beramiz.</p>
-                                <p>Maslahat guruhi a`zolarimiz, nafaqat mahsulot tanlashda, balki boshlangan yoki davom ettirilayotgan har bir pardozlash holati uchun eng ma`qbul variantlarni aniqlashda kerakli yordam ko`rsataoladilar. Bizning ko`magimizda ichki va tashqi makonlardagi og`ir mehnat– zavq baxsh etuvchi jarayonga aylanadi.  </p>
+                                <p>{t("textOne")}</p>
+                                <p>{t("textTwo")} </p>
 
                             </div>
                             <div className={styles.ImgTwo}>
                                 <img src={imgTwo} alt="" />
                             </div>
                             <div className={styles.textLeftTwo}>
-                                <p>Fikr-mulohaza yoki xabarni <b style={{ color: "green", cursor: "pointer" }}>qayta aloqa yordamida</b> yuborishingiz mumkin,</p>
-                                <p>yoki ushbu raqamlar orqali bog'laning:
+                                <p>{t("idea1")}
+                                 <b style={{ color: "green", cursor: "pointer" }}>
+                                    {t("idea2")}</b> {t("idea3")}</p>
+                                <p>{t("idea4")}
                                     <b>
                                         +(998) 95 198-26-66;
                                         +(998) 99 855-26-66;
@@ -84,7 +87,7 @@ export default function ServiceMaslahat() {
                     </div>
                     <div className={styles.ContentRight}>
                         <div className={styles.RightTitle}>
-                            <p>Mahsulotlarimiz</p>
+                            <p>{t("produtTitle")}</p>
 
                         </div>
                         <div className={styles.ProductList}>

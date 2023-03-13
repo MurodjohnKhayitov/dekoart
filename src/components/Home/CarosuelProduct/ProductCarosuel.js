@@ -1,34 +1,41 @@
-import React, { useContext, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 import styles from './Product.module.css'
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import Slider from "react-slick";
 import { useQuery } from 'react-query';
 import { url } from '../../Host/Host';
+import { useTranslation } from 'react-i18next';
+import { useContext } from 'react';
 
 
 
 export default function ProductCarosuel() {
     const [getProduct, setGetProduct] = useState([])
+    const { t } = useTranslation(["home"]);
 
-    useQuery(["Product_get"], () => {
-        return fetch(`${url}/products/`).then(res => res.json())
-    }, {
-        onSuccess: res => {
-            setGetProduct(res)
 
-        },
-        onError: err => {
-            console.log(err, "err");
-        }
+    const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+    const fetchGetAllData = (params) => {
+        Object.entries(params).forEach(i => {
+            if (!i[1]) delete params[i[0]]
+        })
+
+        fetch(`${url}/products/?` + new URLSearchParams(params))
+            .then(res => res.json())
+            .then(res => {
+                setGetProduct(res)
+            })
+            .catch(err => console.log(err, "ERROrLIST"))
     }
+    useEffect(() => {
+        fetchGetAllData({
+            language: itemList?.typeLang,
+        })
+    }, [itemList?.typeLang])
 
-    )
 
-
-
-
-    const [itemList, setItemList] = useContext(DetailsForDekoart);
 
 
 
@@ -94,13 +101,13 @@ export default function ProductCarosuel() {
             <div className={styles.Main}>
                 <div className={styles.Text}>
 
-                    <p>Ustunlik Tomonlarimiz</p>
+                    <p>{t("ustunlik")}</p>
 
 
                 </div>
                 <div className={styles.Carousel}>
                     <div className={styles.CarosuelText}>
-                        Tashqi va Ichki Makonlarga
+                        {t("makonlar")}
                     </div>
                     <div className={styles.CardGroup}>
                         <Slider {...settings} className={styles.SliderGroup} >
@@ -120,7 +127,7 @@ export default function ProductCarosuel() {
                                                     <p>{item?.description}</p>
                                                 </div>
                                                 <div className={styles.ProductBtn}>
-                                                    <button>Batafsil</button>
+                                                    <button>{t("SliderBtn")}</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './master.module.css'
 import abdulla from '../../img/master/abdulla.jpg'
 import adham from '../../img/master/adham.jpg'
@@ -14,110 +14,38 @@ import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { url } from '../Host/Host'
+import { useTranslation } from 'react-i18next'
+import { DetailsForDekoart } from '../../ContextMenu/ContextMenu'
 
 export default function Master() {
     useEffect(() => {
         document.title = "Ustalar"
     }, [])
-    const [CardInfo, setCardInfo] = useState([
-        {
-            id: 1,
-            imgRel: farxod1,
-            name: "ahmedov farxod",
-            ism: "Ахмедов Фарход",
-            tel1: "+998946344444 (Deko`art Ofis)",
-            tel2: "+998951982666 "
+    const { t } = useTranslation(["masters"]);
 
-        },
-        {
-            id: 2,
-            imgRel: bekzod,
-            name: "Bekturdiev behzod",
-            ism: "Бектураев Бехзод",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 3,
-            imgRel: javahir,
-            name: "dehqanov javohir",
-            ism: "Дехконов Жавохир",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 4,
-            imgRel: Jamshid,
-            name: "Zufarov jamshid",
-            ism: "Зуфаров Жамшид",
-            tel1: "+998946344444 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 5,
-            imgRel: sayyodjon,
-            name: "kamolov sayyodjon",
-            ism: " Камолов Саййоджон",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 6,
-            imgRel: adham,
-            name: "mannonov adham",
-            ism: "Маннонов Адхам",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 7,
-            imgRel: zuhriddin,
-            name: "nuriddinov zuhriddin",
-            ism: "Нуриддинов Зухриддин",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 8,
-            imgRel: ali,
-            name: "Raxmatov abduvali",
-            ism: "Рахматов Абдували",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-        {
-            id: 9,
-            imgRel: abdulla,
-            name: "tog'ayev abdulla",
-            ism: "Тогаев Абдулла",
-            tel1: "+998951982666 (Deko`art Ofis)",
-            tel2: ""
-
-        },
-
-
-
-
-    ])
     const [masters, setMasters] = useState([])
-    useQuery(["Masters type"], () => {
-        return fetch(`${url}/masters/`).then(res => res.json())
-    }, {
-        onSuccess: res => {
-            setMasters(res)
-        },
-        onError: err => {
-            console.log(err, "err");
-        }
+   
+
+    const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+    const fetchGetAllData = (params) => {
+        Object.entries(params).forEach(i => {
+            if (!i[1]) delete params[i[0]]
+        })
+
+        fetch(`${url}/masters/?` + new URLSearchParams(params))
+            .then(res => res.json())
+            .then(res => {
+                setMasters(res)
+            })
+            .catch(err => console.log(err, "ERROrLIST"))
     }
-    )
+    useEffect(() => {
+        document.title = "Ustalar"
+        fetchGetAllData({
+            language: itemList?.typeLang,
+        })
+    }, [itemList?.typeLang])
 
     return (
         <div className={styles.Container}>
@@ -128,7 +56,7 @@ export default function Master() {
                             <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
                         </Breadcrumb.Item>
                         <Breadcrumb.Item>
-                            <NavLink to="/news"> Ustalar</NavLink>
+                            <NavLink to="/news"> {t("breadCrum1")}</NavLink>
                         </Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
@@ -139,12 +67,7 @@ export default function Master() {
 
                                 <div key={data.id} className={styles.Cards}>
                                     <div className={styles.ForImg}>
-                                       
-                                       
                                         <img src={data?.photo || abdulla} alt="" />
-                                       
-                                       
-
                                     </div>
                                     <div className={styles.ForText}>
 
@@ -153,9 +76,9 @@ export default function Master() {
                                             {/* <p><span>исм:</span>{data.ism}</p> */}
                                             <p><span>Tel:</span>+998951982666</p>
                                         </div>
-                                       
+
                                         <div className={styles.ForTextBtn}>
-                                            <button type="">Ba'tafsil</button>
+                                            <button type="">{t("SliderBtn")}</button>
                                         </div>
 
                                     </div>

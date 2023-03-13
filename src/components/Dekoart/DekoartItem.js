@@ -1,4 +1,4 @@
-import React, { useContext, useEffect,useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
 import styles from './dekoart.module.css'
@@ -17,29 +17,52 @@ import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
+import { useTranslation } from 'react-i18next';
 
 export default function DekoarItem() {
+  const { t } = useTranslation(["dekoart"]);
+
   useEffect(() => {
     document.title = "Kampaniya haqida ma'lumot <<DEKOART.UZ>>"
   }, [])
-  const [itemList, setItemList] = useContext(DetailsForDekoart);
   const navigate = useNavigate();
   const HandleId = (id) => {
     navigate(`/product_det/:${id}`);
   };
   const [productlist, setProductlist] = useState([])
-  useQuery(["productlist type"], () => {
-    return fetch(`${url}/productlist/`).then(res => res.json())
-  }, {
-    onSuccess: res => {
-      setProductlist(res)
 
-    },
-    onError: err => {
-      console.log(err, "err");
-    }
+  // useQuery(["productlist type"], () => {
+  //   return fetch(`${url}/productlist/`).then(res => res.json())
+  // }, {
+  //   onSuccess: res => {
+  //     setProductlist(res)
+
+  //   },
+  //   onError: err => {
+  //     console.log(err, "err");
+  //   }
+  // }
+  // )
+  const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+  const fetchGetAllData = (params) => {
+    Object.entries(params).forEach(i => {
+      if (!i[1]) delete params[i[0]]
+    })
+
+    fetch(`${url}/productlist/?` + new URLSearchParams(params))
+      .then(res => res.json())
+      .then(res => {
+        setProductlist(res)
+      })
+      .catch(err => console.log(err, "ERROrLIST"))
   }
-  )
+  useEffect(() => {
+    fetchGetAllData({
+      language: itemList?.typeLang,
+    })
+  }, [itemList?.typeLang])
+
 
   return (
     <div className={styles.Container}>
@@ -51,17 +74,17 @@ export default function DekoarItem() {
               <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/company_about"> Kampaniya haqida</NavLink>
+              <NavLink to="/company_about"> {t("breadCrum1")}</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/dekoart"> Kompaniya haqida ma`lumot</NavLink>
+              <NavLink to="/dekoart">{t("breadCrum2")}</NavLink>
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>
         <div className={styles.Content}>
           <div className={styles.ContentLeft}>
             <div className={styles.LeftTitle}>
-              <p>KOMPANIYA HAQIDA MA`LUMOT</p>
+              <p>{t("LeftTitle")}</p>
             </div>
             <div className={styles.MainItem}>
               <div className={styles.ImgOne}>
@@ -69,12 +92,11 @@ export default function DekoarItem() {
               </div>
 
               <div className={styles.textLeft}>
-                <p><span style={{ color: "red" }}>“DEKO`ART” </span> – O`zbekistonda tashqi va ichki yuzalar uchun eng zamonaviy, yuqori sifatli lok bo`yoq, devor qoplama mahsulolarti majmuasidir. Mazkur mahsulotlar 2013 yilda tashkil qilingan</p>
-                <p><span style={{ color: "red" }}>“MARJON MOLDINGS” MCHJ </span>  tomonidan ishlab chiqarilmoqda.</p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>INSON MANBAALARI:</span> INSON MANBAALARI: Kompaniyamiz, yosh bo`lishiga qaramasdan dinamik, tajribali, turli xalqaro kompaniyalarda malaka oshirgan mutaxassislardan iborat katta jamoadir. Mahsulot va xizmat sifatiga bo`lgan javobgarlik hissi har bir xodimimizda mujassam.</p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>SIFAT:</span>  Faoliyatimizning har birida sifat nazoratiga alohida e`tibor berilgani holda, xalqaro standartlarga javob beruvchi ISO9001 sertifikatiga egamiz.</p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>VAZIFAMIZ:</span>   Jamoamizning birinchi darajali vazifasi haridor va iste`molchilarni ma`mnun etishdan iborat. Bundan tashqari kompanyamizda haridorlarga konsultatif xizmat va amaliy yordam ko`rsatish tizimi hamda mohir va yosh ustalar uchun mahorat darslari tashkil qilingan. Ushu tizim va mahorat darslari, biz faoliyat olib borayotgan jo`g`rofiyadagi barcha mijozlar uchun ochiq bo`lib, mahsulotlarimizga qiziqish bildirgan har bir iste`molchi ushbu xizmat turlarimizdan foydalanishi mumkin. Bu ishlarni amalga oshirish uchun malakali usta va quruvchilar bilan hamkorlik qilib kelmoqdamiz. </p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>MAHSULOTLARIMIZ:</span>    Kompanyamizda tashqi va ichki yuzalar uchun turli qoplama mahsulotlari, bo'yoq, lok, astar va boshqa tayyor mahsulotlar ishlab chiqariladi!</p>
+                <p><span style={{ color: "red" }}>{t("poneSpan")} </span>{t("pone")}</p>
+                <p><span style={{ color: "red" }}>{t("ptwoSpan")} </span> {t("ptwo")}</p>
+                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>{t("pthreeSpan")}</span> {t("pthree")}</p>
+                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>{t("pfourSpan")}</span>  {t("pfour")} </p>
+                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>{t("pfiveSpan")}</span> {t("pfive")}</p>
               </div>
               <div className={styles.ImgGroup}>
                 <img src={sertifikat1} alt="" />
@@ -89,8 +111,10 @@ export default function DekoarItem() {
               </div>
 
               <div className={styles.textLeftTwo}>
-                <p>Fikr-mulohaza yoki xabarni <b style={{ color: "green", cursor: "pointer" }}>qayta aloqa yordamida</b> yuborishingiz mumkin,</p>
-                <p>yoki ushbu raqamlar orqali bog'laning:
+                <p>{t("idea1")}
+                  <b style={{ color: "green", cursor: "pointer" }}>{t("idea2")}</b>
+                  {t("idea3")}</p>
+                <p>{t("idea4")}
                   <b>
                     +(998) 95 198-26-66;
                     +(998) 99 855-26-66;
@@ -106,7 +130,7 @@ export default function DekoarItem() {
           </div>
           <div className={styles.ContentRight}>
             <div className={styles.RightTitle}>
-              <p>Mahsulotlarimiz</p>
+              <p>{t("psexSpan")}</p>
 
             </div>
             <div className={styles.ProductList}>

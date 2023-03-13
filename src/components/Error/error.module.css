@@ -1,0 +1,43 @@
+.Container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 100px;
+}
+
+.ForImg {
+    width: fit-content;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
+.ForImg img {
+    width: 100%;
+    /* height: 100%; */
+}
+
+.ForText {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.ForText p {
+    font-size: 28px;
+    font-family: "Monserrat";
+    font-style: normal;
+    font-weight: 600;
+
+
+}
+.ForText p a{
+   color: blue;
+   border-bottom: 1px solid blue;
+
+
+}
