@@ -676,6 +676,13 @@
   .color-img {
     width: 30%;
   }
+
+  .product-about p {
+    font-size: 18px;
+    text-align: justify;
+    line-height: 22px;
+  }
+
 }
 
 @media (max-width:390px) {
@@ -786,7 +793,8 @@
   }
 
   .product-about p {
-    font-size: 10px;
+    font-size: 14px;
+    text-align: justify;
     line-height: 15px;
   }
 

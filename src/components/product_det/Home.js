@@ -18,8 +18,9 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import noDataImg from '../../assets/noData/NoData.png'
 import { Button, Modal } from 'antd';
+import { Player, BigPlayButton } from 'video-react';
 
-const Home = () => { 
+const Home = () => {
   const { id } = useParams();
   const UrlId = id.replace(":", "");
 
@@ -361,12 +362,15 @@ const Home = () => {
               </div>
               {
                 productId?.video_url && <div className="video-youtub">
-                  <iframe
+                  <Player src={productId?.video_url}>
+                    <BigPlayButton position="center" />
+                  </Player>
+                  {/* <iframe
                     src={productId?.video_url}
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen></iframe>
+                    allowFullScreen></iframe> */}
                 </div>
               }
             </div>
@@ -408,7 +412,7 @@ const Home = () => {
                 infinite={true}
                 autoPlay={false}
                 autoPlaySpeed={5000}
-                responsive={responsive1} 
+                responsive={responsive1}
               >
                 {NewArrayTwo.map((item) => {
                   return (

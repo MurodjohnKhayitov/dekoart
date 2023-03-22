@@ -329,7 +329,7 @@ header ul li a:hover {
     top: 0;
     margin: auto;
     transition: all 0.5s ease-in-out;
-    width: 80%;
+    width: 90%;
     background-color: white;
     z-index: 888;
   }
@@ -468,16 +468,19 @@ header ul li a:hover {
     color: red;
     text-transform: uppercase;
     font-weight: bold;
+    text-align: start;
 
   }
 
   .ProductText {
+    text-align: start;
   }
 
   .ProductText p {
     display: inline;
     font-size: 16px;
     line-height: 42px;
+    text-align: start;
 
   }
 
