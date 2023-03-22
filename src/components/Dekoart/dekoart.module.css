@@ -227,7 +227,7 @@
 @media (min-width:568px) and (max-width:767px) {
 
     .Main {
-        padding: 50px 50px;
+        padding: 30px 16px;
     }
 
     .Content {
@@ -270,7 +270,7 @@
 
 @media (min-width:390px) and (max-width:567px) {
     .Main {
-        padding: 50px 50px;
+        padding: 30px 16px;
     }
 
     .Content {
@@ -282,7 +282,7 @@
     }
 
     .BreadcrumbItem a {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .ContentLeft {
@@ -349,11 +349,11 @@
 
 @media (max-width:390px) {
     .Main {
-        padding: 50px 50px;
+        padding: 30px 16px;
     }
 
     .BreadcrumbItem a {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .Content {

@@ -4,7 +4,9 @@ import logo from "../../components/assets/images/deko.png"
 import { useQuery } from 'react-query'
 import { url } from '../../components/Host/Host'
 import { useTranslation } from 'react-i18next'
-
+import { NavLink } from 'react-router-dom'
+import { MdEmail, MdLocationPin } from "react-icons/md";
+import { FaFacebook, FaPhoneAlt, FaTelegram, FaInstagram, FaYoutube, FaTwitter } from "react-icons/fa";
 const Footer = () => {
     const [social_link, setsocial_link] = useState([])
     useQuery(["we about"], () => {
@@ -30,22 +32,25 @@ const Footer = () => {
                         <img src={logo} alt="" />
                         <p>{t("footerTitle")}</p>
                         <ul className='sci'>
-                            <li><a href="#"><i className='fa-brands fa-facebook' aria-hidden='true'></i></a></li>
-                            <li><a href="#"><i className='fa-brands fa-telegram' aria-hidden='true'></i></a></li>
-                            <li><a href="#"><i className='fa-brands fa-instagram' aria-hidden='true'></i></a></li>
-                            <li><a href="#"><i className='fa-brands fa-youtube' aria-hidden='true'></i></a></li>
+                            <li> <NavLink to='/'><FaFacebook size={25} style={{ color: "white" }} /></NavLink> </li>
+                            <li> <NavLink to='/'><FaTelegram size={25} style={{ color: "white" }} /></NavLink> </li>
+                            <li> <NavLink to='/'><FaInstagram size={25} style={{ color: "white" }} /></NavLink> </li>
+                            <li> <NavLink to='/'><FaYoutube size={25} style={{ color: "white" }} /></NavLink> </li>
+
                         </ul>
                     </div>
                     <div className="sec media">
                         <h2>{t("social")}</h2>
                         <ul>
-                            {
-                                social_link.map(data => {
-                                    return (
-                                        <li><i className={data?.icon}></i><a href={data?.link}>{data?.name}</a></li>
-                                    )
-                                })
-                            }
+
+                            <li ><FaYoutube size={25} style={{ color: "white" }} /><NavLink>You Tube</NavLink></li>
+                            <li ><FaInstagram size={25} style={{ color: "white" }} /><NavLink>Instagram</NavLink></li>
+                            <li ><FaTelegram size={25} style={{ color: "white" }} /><NavLink>Telegram</NavLink></li>
+                            <li ><FaFacebook size={25} style={{ color: "white" }} /><NavLink>Facebook</NavLink></li>
+                            <li ><FaTwitter size={25} style={{ color: "white" }} /><NavLink>Twitter</NavLink></li>
+                            <li ><MdEmail size={25} style={{ color: "white" }} /><NavLink>Email</NavLink></li>
+
+
 
                         </ul>
                     </div>
@@ -65,15 +70,15 @@ const Footer = () => {
                         <h2>{t("contact")}</h2>
                         <ul className="info">
                             <li>
-                                <i class="fa-solid fa-location-dot"></i>
+                                <MdLocationPin size={25} style={{color:"white"}}/>
                                 <span>{t("address")}</span>
                             </li>
                             <li>
-                                <i class="fa-solid fa-phone"></i>
+                                <FaPhoneAlt size={25} style={{color:"white"}}/>
                                 <p className='tel'><a href="">+998998770815</a><br /><a href="">+998998770815</a> </p>
                             </li>
                             <li>
-                                <i className='fa fa-envelope'></i>
+                                <MdEmail size={25} style={{color:"white"}}/>
                                 <p><a href="#">dekoartuz@gmail.com</a></p>
                             </li>
                         </ul>

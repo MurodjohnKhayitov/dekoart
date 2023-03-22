@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -10,9 +10,8 @@ const Video_Details = () => {
   const VideoId = id.replace(":", "");
   const navigate = useNavigate();
   const HandleId = (id) => {
-    navigate(`/product_det/:${id}`); 
+    navigate(`/product_det/:${id}`);
   };
-  console.log(VideoId,"VideoId");
   const [videoIdGet, setVideoIdGet] = useState([])
   useQuery(["VideoIdGet type"], () => {
     return fetch(`${url}/videos/${VideoId}`).then(res => res.json())
@@ -53,18 +52,16 @@ const Video_Details = () => {
               <p>{videoIdGet?.title || "no data"}</p>
             </div>
             <div className={styles.MainItem}>
-              <div className="video-youtub" style={{width:"100%"}}>
+              <div className={styles.video_youtub} >
                 <iframe
-                  src={videoIdGet.video_url}
+                  style={{ width: "100%",height:"100%" }}
+                  src={videoIdGet?.video_url}
                   title="Ottocento Dekoart"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 ></iframe>
               </div>
-
-
-
               <div className={styles.textLeftTwo}>
                 <p>{t("idea1")} <b style={{ color: "green", cursor: "pointer" }}>{t("idea2")}</b>{t("idea3")}</p>
                 <p>{t("idea4")}
@@ -88,7 +85,7 @@ const Video_Details = () => {
             </div>
             <div className={styles.ProductList}>
               {
-                videoProductlist.map(data => {
+                videoProductlist?.map(data => {
                   return (
                     <div key={data.id} onClick={() => HandleId(data.id)} className={styles.ProductItems}>
                       <p> <i className="fa fa-chevron-right"></i></p>

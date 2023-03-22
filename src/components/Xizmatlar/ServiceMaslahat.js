@@ -1,4 +1,4 @@
-import React, {  useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './maslahat.module.css'
 import imgOne from '../../img/maslahat/imgOne.jpg'
@@ -9,6 +9,8 @@ import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
 import { useTranslation } from 'react-i18next';
+import { MdOutlineNavigateNext } from "react-icons/md";
+
 export default function ServiceMaslahat() {
     const navigate = useNavigate();
     const HandleId = (id) => {
@@ -21,18 +23,18 @@ export default function ServiceMaslahat() {
     }, [])
     const [productlist, setProductlist] = useState([])
     useQuery(["productlist type"], () => {
-      return fetch(`${url}/productlist/`).then(res => res.json())
+        return fetch(`${url}/productlist/`).then(res => res.json())
     }, {
-      onSuccess: res => {
-        setProductlist(res)
-  
-      },
-      onError: err => {
-        console.log(err, "err");
-      }
+        onSuccess: res => {
+            setProductlist(res)
+
+        },
+        onError: err => {
+            console.log(err, "err");
+        }
     }
     )
-  
+
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
@@ -70,8 +72,8 @@ export default function ServiceMaslahat() {
                             </div>
                             <div className={styles.textLeftTwo}>
                                 <p>{t("idea1")}
-                                 <b style={{ color: "green", cursor: "pointer" }}>
-                                    {t("idea2")}</b> {t("idea3")}</p>
+                                    <b style={{ color: "green", cursor: "pointer" }}>
+                                        {t("idea2")}</b> {t("idea3")}</p>
                                 <p>{t("idea4")}
                                     <b>
                                         +(998) 95 198-26-66;
@@ -95,7 +97,7 @@ export default function ServiceMaslahat() {
                                 productlist.map(data => {
                                     return (
                                         <div key={data.id} onClick={() => HandleId(data.id)} className={styles.ProductItems}>
-                                            <p> <i className="fa fa-chevron-right"></i></p>
+                                            <p><MdOutlineNavigateNext size={30} /></p>
                                             <p>{data.name}</p>
                                         </div>
                                     )

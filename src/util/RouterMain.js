@@ -16,8 +16,11 @@ const Shops = React.lazy(() => import('../components/Shops/Shops'))
 const DekoarItem = React.lazy(() => import('../components/Dekoart/DekoartItem'))
 const Footer = React.lazy(() => import('../common/footer/Footer.jsx'))
 const Products = React.lazy(() => import('../components/Product/Products'))
+const DecoCento = React.lazy(() => import('../components/Product//DecoCento/Decocento.js'))
+const Sadaf = React.lazy(() => import('../components/Product/Sadaf/Sadaf.js'))
 const NewsDetail = React.lazy(() => import('../components/News/NewsDetail'))
 const Master = React.lazy(() => import('../components/Masters/Master'))
+const Master_Det = React.lazy(() => import('../components/Masters/Master_det'))
 const ErrorPage = React.lazy(() => import('../components/Error/Errorpage'))
 
 export default function RouterMain() {
@@ -55,6 +58,11 @@ export default function RouterMain() {
                         <Master />
                     </React.Suspense>
                 } />
+                <Route path='/masters/:id' element={
+                    <React.Suspense fallback={<div className={"MoonLoad"} ><MoonLoader size={100} color="#0d263b" /></div>}>
+                        <Master_Det />
+                    </React.Suspense>
+                } />
                 <Route path='/maslahat' element={
                     <React.Suspense fallback={<div className={"MoonLoad"} ><MoonLoader size={100} color="#0d263b" /></div>}>
                         <ServiceMaslahat />
@@ -73,6 +81,16 @@ export default function RouterMain() {
                 <Route path='/product' element={
                     <React.Suspense fallback={<div className={"MoonLoad"} ><MoonLoader size={100} color="#0d263b" /></div>}>
                         <Products />
+                    </React.Suspense>
+                } />
+                <Route path='/80-ottocentoperlamutr.html' element={
+                    <React.Suspense fallback={<div className={"MoonLoad"} ><MoonLoader size={100} color="#0d263b" /></div>}>
+                        <DecoCento />
+                    </React.Suspense>
+                } />
+                <Route path='/54-sadaf.html' element={
+                    <React.Suspense fallback={<div className={"MoonLoad"} ><MoonLoader size={100} color="#0d263b" /></div>}>
+                        <Sadaf />
                     </React.Suspense>
                 } />
                 <Route path='/product_det/:id' element={

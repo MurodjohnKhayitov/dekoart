@@ -6,10 +6,12 @@ import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import { Button, Dropdown } from 'antd';
 import { url } from "../../components/Host/Host";
 import { useQuery } from "react-query";
+import { BiChevronDown } from "react-icons/bi";
+import { Divider, Popover, Segmented } from 'antd';
 
 import { useTranslation } from "react-i18next";
-
-
+ 
+ 
 const Search = () => {
   const navigate = useNavigate();
   const [MobileMenu, setMobileMenu] = useState(false);
@@ -25,10 +27,12 @@ const Search = () => {
     const search = document.querySelector(".search");
     search.classList.toggle("active", window.scrollY > 10);
   });
-
-  const HandleForId = (id) => {
-    navigate(`/product_det/:${id}`);
-  };
+  const [getDetailId, setgetDetailId] = useState('')
+  useEffect(() => {
+    if (getDetailId) {
+      navigate(`/product_det/:${getDetailId}`);
+    }
+  }, [getDetailId])
 
   const [products, setProducts] = useState([])
 
@@ -69,8 +73,50 @@ const Search = () => {
         </NavLink >
       ),
     },
-  
+
   ];
+  // ----------------Wear state management----------------------------
+  const [openwear, setOpenwear] = useState(false);
+
+  const handleOpenChangeWear = (newOpen) => {
+    setOpenwear(newOpen);
+  };
+  const handleWearValue = (value) => {
+    setOpenwear(false);
+  }
+
+  const contentWear = (
+    <div className="dataListItemsAll">
+
+      {products.map((data) => {
+        return (
+          <ul key={data?.name}>
+            <li>
+              <p>{data?.name}</p>
+            </li>
+            {data?.product?.map(value => {
+              return (
+                <div
+                  key={value?.id}
+                  onClick={() => {
+                    setgetDetailId(value.id)
+                    handleWearValue()
+
+                  }}
+                  className={"ProductnameList"}
+                >
+                  <p>{value.name}</p>
+                </div>
+
+              )
+            })
+            }
+          </ul>
+        )
+      })
+      }
+    </div>
+  );
 
   return (
     <>
@@ -117,44 +163,49 @@ const Search = () => {
                       })}
                       to="/news">{t("yangiliklar")}</NavLink>
                   </li>
-                  <li className={"liSubMenu"} onMouseEnter={() => settoggleShowMenu(true)}>
-                    <NavLink
-                      style={({ isActive }) => ({
-                        color: isActive ? '#ff014f' : null,
-                        borderBottom: isActive ? "2px solid #ff014f" : "none"
+                  <li>
+                    <Popover
+                      open={openwear}
+                      onOpenChange={handleOpenChangeWear}
+                      trigger="hover"
+                      options={['Hide']}
+                      placement="bottom"
+                      className="PopoverItem"
+                      content={contentWear} >
+                      <NavLink
 
-                      })}
-                      to="/product">{t("mahsulotlar")}</NavLink>
-                    {toggleShowMenu && <div className="sub-menu-1">
-                      {products.map((data) => {
-                        return (
-                          <ul>
-                            <li>
-                              <p>{data?.name}</p>
-                            </li>
-                            {data?.product?.map(value => {
-                              return (
-                                <div
-                                  key={value?.id}
-                                  onClick={() => {
-                                    HandleForId(value.id)
-                                    settoggleShowMenu(false)
-
-                                  }}
-                                >
-                                  <div>{value.name}</div>
-                                </div>
-
-                              )
-                            })
-                            }
-                          </ul>
-                        );
-                      })}
-
-
-                    </div>}
+                        style={({ isActive }) => ({
+                          color: isActive ? '#ff014f' : null,
+                        })}
+                        to="/product">{t("mahsulotlar")}</NavLink>
+                    </Popover>
                   </li>
+                  
+                    <div className="ProductListAllData">
+                      {products?.map(data => {
+                        return (
+                          <div key={data?.id} className="ProductItemOneData">
+                            <div className="ProductTitle">
+                              <p>{data?.name}</p>
+                            </div>
+                            {data?.product?.map(item => {
+                              return (
+                                <div key={item?.value}
+                                  onClick={() => {
+                                    setgetDetailId(item.id)
+                                  }} className="ProductText">
+                                  <p>{item?.name}</p>
+                                </div>
+                              ) 
+                            }) 
+
+                            }
+                          </div>
+                        )
+                      })
+                      }
+                    </div>
+
                   <li>
                     <NavLink
                       style={({ isActive }) => ({

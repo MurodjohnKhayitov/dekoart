@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 import styles from './Product.module.css'
-import { GrNext, GrPrevious } from 'react-icons/gr';
-import Slider from "react-slick";
-import { useQuery } from 'react-query';
+// import Slider from "react-slick";
+// import { useQuery } from 'react-query';
 import { url } from '../../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
+import noImg from '../../../img/pro3.jpg'
 
-
-
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 export default function ProductCarosuel() {
     const [getProduct, setGetProduct] = useState([])
-    const { t } = useTranslation(["home"]);
+    const { t } = useTranslation(["home"]); 
 
 
     const [itemList, setItemList] = useContext(DetailsForDekoart)
@@ -37,105 +37,75 @@ export default function ProductCarosuel() {
 
 
 
-
-
-    const NextArrow = (props) => {
-        const { onClick } = props;
-        return (
-            <div className={styles.NextArrow} onClick={onClick}>
-                <button className="next">
-                    <GrNext />
-                </button>
-            </div>
-        );
+    const responsive1 = {
+        superLargeDesktop: {
+            // the naming can be any, depends on you.
+            breakpoint: { max: 4000, min: 3000 },
+            items: 4,
+        },
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 4,
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 768 },
+            items: 3,
+        },
+        mobile: {
+            breakpoint: { max: 767, min: 480 },
+            items: 2,
+        },
+        mobile1: {
+            breakpoint: { max: 480, min: 0 },
+            items: 1,
+        },
     };
-
-    const PrevArrow = (props) => {
-        const { onClick } = props;
-        return (
-            <div className={styles.PrevArrow} onClick={onClick}>
-                <button className="prev">
-                    <GrPrevious />
-                </button>
-            </div>
-        );
-    };
-    let settings = {
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    initialSlide: 2
-                }
-            },
-            {
-                breakpoint: 568,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
+    
 
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
                 <div className={styles.Text}>
-
                     <p>{t("ustunlik")}</p>
-
-
                 </div>
                 <div className={styles.Carousel}>
                     <div className={styles.CarosuelText}>
                         {t("makonlar")}
                     </div>
                     <div className={styles.CardGroup}>
-                        <Slider {...settings} className={styles.SliderGroup} >
-                            {getProduct.filter(data => data.id == 2).map((item, index) => {
-                                return item.product.map(item => {
-
+                        <Carousel
+                            className={styles.CarouselMenu}
+                            infinite={true}
+                            autoPlay={false}
+                            autoPlaySpeed={5000}
+                            responsive={responsive1}
+                        >
+                            {getProduct?.filter(data => data.id == 2)?.map(item => {
+                                return item?.product?.map(data => {
                                     return (
-                                        <div key={item.name} className={styles.CardItem}>
+                                        <div className={styles.CardItem}>
                                             <div className={styles.ForImgCard}>
-                                                <img src={item?.photo_url} alt="" />
+                                                <img src={data?.photo_url || noImg} alt="" />
                                             </div>
                                             <div className={styles.ForTextCard}>
                                                 <div className={styles.ProductTitle}>
-                                                    <p>{item?.name}</p>
+                                                    <div id="terms-content" dangerouslySetInnerHTML={{ __html: data?.name || "noData"}} />
+
                                                 </div>
                                                 <div className={styles.ProductText}>
-                                                    <p>{item?.description}</p>
+                                                    <div id="terms-content" style={{color:"#c4c4c4"}} dangerouslySetInnerHTML={{ __html: data?.title || "noTitle"}} />
                                                 </div>
                                                 <div className={styles.ProductBtn}>
                                                     <button>{t("SliderBtn")}</button>
                                                 </div>
                                             </div>
                                         </div>
+
                                     )
                                 })
 
                             })}
-                        </Slider>
+                        </Carousel>
 
                     </div>
 

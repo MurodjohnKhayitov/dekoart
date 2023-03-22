@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import data from "./data";
+import React, { useEffect, useState } from "react";
 import Model from "./Model";
 import "./style.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import Card from "./Card";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Breadcrumb, message, } from 'antd';
 import { FaHome } from "react-icons/fa"
@@ -16,16 +14,20 @@ import { useQuery } from "react-query";
 import { url } from "../Host/Host";
 import colImg from '../../img/col1.jpg'
 import fasadimg from '../../img/img1.jpg'
-const Home = () => {
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import noDataImg from '../../assets/noData/NoData.png'
+import { Button, Modal } from 'antd';
+
+const Home = () => { 
   const { id } = useParams();
   const UrlId = id.replace(":", "");
 
   // ----------------------Carousel
   const settings1 = {
-    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
   };
 
@@ -86,18 +88,23 @@ const Home = () => {
       }
     ]
   };
-
+  // ---------------------GOItem
+  const navigate = useNavigate();
+  const HandleId = (id) => {
+    navigate(`/product_det/:${id}`);
+  };
+  // ---------------------GOItem
 
   const [getM2M, setgetM2M] = useState("");
   const [model, setModel] = useState(false);
   const [tempdata, setTempdata] = useState([]);
 
-  const getData = (img, title, desc) => {
-    let tempData = [img, title, desc];
-    console.warn(tempData);
+  const getData = (img) => {
+    let tempData = [img];
     setTempdata((item) => [1, ...tempData]);
     return setModel(true);
   };
+
 
   const [productsLists, setProductsLists] = useState([])
   useQuery(["ProductsLists type"], () => {
@@ -113,36 +120,106 @@ const Home = () => {
   )
 
 
-  // const [NewArray, setNewArray] = useState([]);
-  // const NewArrayOne = [];
-  // const NewArrayTwo = [];
+  const [NewArray, setNewArray] = useState([]);
+  const NewArrayOne = [];
+  const NewArrayTwo = [];
 
-  // itemList.forEach((data) => {
-  //   if (data.id > 0 && data.id <= 12) {
-  //     NewArrayOne.push(data);
-  //   }
-  //   if (data.id > 12 && data.id < 25) {
-  //     NewArrayTwo.push(data);
-  //   }
-  // });
+  productsLists.forEach((data) => {
+    if (data.id > 0 && data.id <= 12) {
+      NewArrayOne.push(data);
+    }
+    if (data.id > 12) {
+      NewArrayTwo.push(data);
+    }
+  });
 
   const [productId, setProductId] = useState([])
-  useQuery(["ProductId type"], () => {
-    return fetch(`${url}/products/${UrlId}`).then(res => res.json())
-  }, {
-    onSuccess: res => {
-      setProductId(res)
-      console.log(res, "resErrorProductId");
 
-    },
-    onError: err => {
-      console.log(err, "err");
-    }
+  const getDetailsProduct = () => {
+    fetch(`${url}/products/${UrlId}`)
+      .then(res => res.json())
+      .then(res => {
+        setProductId(res)
+      })
+      .catch(err => console.log(err))
+
   }
-  )
-  productId.figure_out.map(data => {
-    console.log(data, "figure_outfigure_out");
-  })
+
+  useEffect(() => {
+    getDetailsProduct()
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [UrlId])
+
+  const responsive1 = {
+    superLargeDesktop: {      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 4,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 768 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 767, min: 480 },
+      items: 2,
+    },
+    mobile1: {
+      breakpoint: { max: 480, min: 0 },
+      items: 1,
+    },
+
+  };
+
+
+
+  const [isModalGalleryOne, setIsModalGalleryOne] = useState(false);
+  const [falleryId, setfalleryId] = useState(0)
+
+  const showModalGalleryOne = (id) => {
+    setIsModalGalleryOne(true);
+    setfalleryId(id);
+  };
+
+  const handleCancelGallery = () => {
+    setIsModalGalleryOne(false);
+  };
+
+  // ----------------------------------Type Img Group--------
+  const [isModalCategory, setIsModalCategory] = useState(false);
+  const [categoryId, setCategoryId] = useState(0)
+
+  const showModalCategory = (id) => {
+    setIsModalCategory(true);
+    setCategoryId(id);
+
+  };
+
+  const handleCancelCategory = () => {
+    setIsModalCategory(false);
+
+  };
+
+
+
+  // const DefaultValueItem = () => {
+  //   if (!isModalGalleryOne) {
+  //     setfalleryId(0)
+  //   }
+  //   if (!isModalCategory) {
+  //     setCategoryId(0)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   DefaultValueItem()
+  // }, [isModalCategory, isModalGalleryOne])
 
   return (
     <>
@@ -157,11 +234,9 @@ const Home = () => {
               <NavLink to="/product"> Mahsulotlar</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              {productId?.map((value) => {
-                return (
-                  <NavLink to={`product_det/:${UrlId}`}> {value.name}</NavLink>
-                );
-              })}
+
+              <NavLink to={`product_det/:${UrlId}`}> {productId.name}</NavLink>
+
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>
@@ -172,36 +247,88 @@ const Home = () => {
             <div className="detail-left">
               <div className="img-box">
                 <div className="produs-img">
-                  <img src={productId?.photo_url || "noImg"} alt="" />
+                  <img src={productId?.photo_url || noDataImg} alt="" />
                 </div>
                 <div className="galery">
-                  
-
-                  <div className="color-catolog">
-                    {productId?.color_catalog?.map((item, index) => {
+                  <Slider {...settings1} >
+                    {productId?.figure_out?.map((item) => {
                       return (
-                        <div className="color-galery" key={index}>
-                          <div className="color-img">
+                        <div className="box-galery" key={item?.id}>
+                          <div className="card-img">
                             <img
-                              src={item?.imgCol || colImg}
-                              className="color-img-top"
-                              onClick={() =>
-                                getData(item?.imgCol || colImg)
+                              src={item?.photo_url || noDataImg}
+                              className="card-img-top"
+                              onClick={() => {
+                                showModalGalleryOne(item?.id)
+                                getData(
+                                  item.photo_url,
+
+                                )
                               }
-                              alt="colImg"
+                              }
+                              alt="..."
                             />
-                            <p>{item?.num || "null"}</p>
                           </div>
                         </div>
                       );
                     })}
-                  </div>
+                  </Slider>
+
+                  <Modal
+                    footer={null}
+                    open={isModalGalleryOne}
+                    onCancel={handleCancelGallery}>
+                    {productId?.figure_out?.filter(data => data.id == falleryId).map((item) => {
+                      return (
+                        <div className="GalleryOne">
+                          <img src={item?.photo_url} alt="" />
+                        </div>
+                      )
+                    })}
+                  </Modal>
+
+                  <Modal
+                    footer={null}
+                    open={isModalCategory}
+                    onCancel={handleCancelCategory}>
+                    {productId?.color_catalog?.filter(data => data.id == categoryId).map((item) => {
+                      return (
+                        <div className="GalleryOne">
+                          <img src={item?.photo_url} alt="" />
+                        </div>
+                      )
+                    })}
+                  </Modal>
+                  {
+                    productId?.color_catalog && <div className="color-catolog">
+                      {productId?.color_catalog?.map((item, index) => {
+                        return (
+                          <div key={index} className="color-img">
+                            <img
+                              style={{ cursor: "pointer" }}
+                              src={item?.photo_url || noDataImg}
+                              className="color-img-top"
+                              onClick={() => {
+                                showModalCategory(item?.id)
+                                getData(item?.photo_url || noDataImg)
+                              }
+                              }
+                              alt="colImg"
+                            />
+                            <p>{item?.name || "null"}</p>
+                          </div>
+                        );
+                      })}
+                    </div>}
                 </div>
               </div>
             </div>
             <div className="detail-right">
-              <h1>{productId?.category || "Category Name"}</h1>
-              <p>{productId?.name || "Simple Name"}</p>
+              <div className="ForAynantitleForText">
+                <h1 className="DekoartTitle" id="terms-content" dangerouslySetInnerHTML={{ __html: productId?.name || "NoTitle" }} />
+                <p className="DekoartText" id="terms-content" dangerouslySetInnerHTML={{ __html: productId?.title || "NoTitle" }} />
+
+              </div>
               <div className="calculator">
                 <button className="icon-calc" type="button">
                   <i className="fa fa-calculator"></i>Kalkulyator
@@ -226,144 +353,86 @@ const Home = () => {
                     ) : null}
                   </p>
                 </div>
-
-                {/* <div className="calcul">
-                        <a href="#">Hisoblash</a>
-                        <h5>Asosiy Material</h5>
-                        <div className="result-calc">
-                          <p>DEKO'CENTO(Perla Bianco)</p>
-                          <div className="resul">
-                            <p>4.00kg</p>
-                            <p>10dona</p>
-                          </div>
-                        </div>
-                      </div> */}
               </div>
 
               <div className="product-about">
-                <p>
-                  <span>Ta’rifi:</span>Akrilik kopolimerlar asosli
-                  ishlatishga tayyor dekorativ qoplama.
-                </p>
-                <p>
-                  <span>Xarakteristikasi:</span> Surilganida, travertin
-                  tabiiy tosh qoplamasiga, ko’rinish xususiyatlari
-                  bo’yicha juda o’xshash fakturalar chiqarish mumkin. Uzoq
-                  muddatga chidaydigan tashqi va ichki yuzalar qoplamasi.
-                </p>
-                <p>
-                  <span>Ishlatilish joylari:</span> Binolarning tashqi va
-                  ichki devor yuzalarining pardozi. Sement suvoq qilingan
-                  yuzalarga, beton, gips, taxta ustiga yaxshi suriladi.
-                </p>
-                <p>
-                  <span>Yuzaylarning tayyorlanishi:</span> Yog’li dog’lar,
-                  kir va begona jismlar uzoqlashtiriladi. Shishib chiqqan,
-                  do’ppaygan va boshqa noteks yuza qismlari tekislanadi.
-                  Yoriqlar va teshiklar to’ldiriladi. Yuza tayyorlangandan
-                  so’ng DEKOPRIMER bo’yoq astar suriladi.
-                </p>
-                <p>
-                  <span>Ishlatilishi:</span> Yuzaga, astar bo’yoq
-                  surilgandan kamida 12 soatdan keyin po’lat andava bilan
-                  suriladi. Birinchi bo’lib devorga 1,5-2 mm qalinlikda
-                  tekis suriladi va qattiq shyotka yoki mos uskuna
-                  yordamida chuqurchalar xosil qilinadi, bir oz
-                  qattiqlashgandan keyin po’lat andava bilan silliqlanadi.
-                  Suvoq yetarlicha qurigandan keyin chizg’ich bilan
-                  terilgan tosh shakli berish uchun chiziladi. TRAVERTIN
-                  to’liq qurishi 24 soat.
-                </p>
-                <p>
-                  <span>So’ngi pardozlash:</span> Shakl berilgan yuza
-                  to’liq qurigandan keyin yuzaga valik bilan DEKOLAK (yoki
-                  boshqa shaffof akril lok) 1:5 nisbatta suv bilan
-                  aralashtirilib suriladi. Yuza to’liq qurigach DEKOCOLOR
-                  bo’yog’i surilib qurimasidan yuzadagi ortiqcha suyuqlik
-                  namlangan gubka, yoki birorbir yomshoq yuzali material
-                  bilan olib tashlanadi. Bo’yoq tabaqasi to’liq qurigandan
-                  keyin DEKOLAK (yoki boshqa shaffof akril lok) 1:3
-                  nisbatda suv bilan aralashtirilib maklovitsa bilan
-                  bo’shliq qoldirmasdan suriladi.
-                </p>
-                <p>
-                  <span>Sarfiyat:</span> 1.6-1.8 kg - 1 м2 .
-                </p>
-                <p>
-                  <span>Qadoqlanishi:</span> 25 kg plastik idishlarda.
-                </p>
-                <p>
-                  <span>Saqlanish muddati:</span> Xona xaroratida, yopiq
-                  idishda - 1 yil.{" "}
-                </p>
-              </div>
+                <p id="terms-content" dangerouslySetInnerHTML={{ __html: productId?.description || "NO description" }} />
 
-              <div className="video-youtub">
-                <iframe
-
-                  src={productId?.video_url}
-                  title="Ottocento Dekoart"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
               </div>
+              {
+                productId?.video_url && <div className="video-youtub">
+                  <iframe
+                    src={productId?.video_url}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen></iframe>
+                </div>
+              }
             </div>
           </div>
-          {/* //   );
-            // })} */}
-
           <div className="CarosuelGroup">
-
-
             <div className={"CardGroup"}>
-              <Slider {...settings} className={"SliderGroup"} >
-                {productsLists.map((item, index) => {
+              <Carousel
+                className="SliderGroup"
+                infinite={true}
+                autoPlay={false}
+                autoPlaySpeed={5000}
+                responsive={responsive1}
+              >
+                {NewArrayOne?.map((item) => {
                   return (
-                    <div key={item.name} className={"CardItem"}>
+                    <div key={item?.name} className={"CardItem"}>
                       <div className={"ForImgCard"}>
-                        <img src={item.photo_url} alt="" />
+                        <img src={item?.photo_url || noDataImg} alt="" />
                       </div>
                       <div className={"ForTextCard"}>
-                        <div className={"ProductTitle"}>
-                          <p>{item.name}</p>
+                        <div onClick={() => HandleId(item?.id)} className={"ProductTitle"}>
+                          <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.name || "NoTitle" }} />
                         </div>
                         <div className={"ProductText"}>
-                          <p>{item.description}</p>
+                          <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.title || "NoTitle" }} />
                         </div>
                         <div className={"ProductBtn"}>
-                          <button>Batafsil</button>
+                          <button onClick={() => HandleId(item?.id)}>Batafsil</button>
                         </div>
                       </div>
                     </div>
                   )
                 })}
-              </Slider>
-
+              </Carousel>
             </div>
             <div className={"CardGroup"}>
-              <Slider {...settings} className={"SliderGroup"} >
-                {productsLists.map((item, index) => {
+              <Carousel
+                className="SliderGroup"
+                infinite={true}
+                autoPlay={false}
+                autoPlaySpeed={5000}
+                responsive={responsive1} 
+              >
+                {NewArrayTwo.map((item) => {
                   return (
                     <div key={item.name} className={"CardItem"}>
                       <div className={"ForImgCard"}>
-                        <img src={item.photo_url} alt="" />
+                        <img src={item?.photo_url || noDataImg} alt="" />
                       </div>
                       <div className={"ForTextCard"}>
-                        <div className={"ProductTitle"}>
-                          <p>{item.name}</p>
+                        <div onClick={() => HandleId(item?.id)} className={"ProductTitle"}>
+                          <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.name || "NoTitle" }} />
+
                         </div>
                         <div className={"ProductText"}>
-                          <p>{item.description}</p>
+                          <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.title || "NoTitle" }} />
+
                         </div>
                         <div className={"ProductBtn"}>
-                          <button>Batafsil</button>
+                          <button onClick={() => HandleId(item?.id)} >Batafsil</button>
                         </div>
                       </div>
                     </div>
                   )
                 })}
-              </Slider>
+              </Carousel>
 
             </div>
 

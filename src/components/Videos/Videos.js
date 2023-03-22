@@ -9,6 +9,7 @@ import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
+import { MdOutlineNavigateNext } from "react-icons/md";
 export default function Videos() {
     const { t } = useTranslation(["video"]);
 
@@ -64,23 +65,18 @@ export default function Videos() {
                     {
                         videos?.map(data => {
                             return (
-                                <div key={data.id} className={styles.Cards} onClick={() => HandleId(data.id)}>
+                                <div key={data.id} className={styles.Cards}>
                                     <div className={styles.ForImg}>
                                         <img src={data.photo_url} alt="" />
-
                                     </div>
                                     <div className={styles.ForText}>
-
                                         <div className={styles.ForTextTitle}>
                                             <p>{data.title}</p>
                                         </div>
-                                        <div className={styles.ForTextBtn}>
-                                            <button type="">{t("SliderBtn")}</button>
+                                        <div className={styles.ForTextBtn} onClick={() => HandleId(data.id)}>
+                                            <p><MdOutlineNavigateNext size={30} className={"nextIcons"} /> {t("SliderBtn")}</p>
                                         </div>
-
                                     </div>
-
-
                                 </div>
                             )
                         })

@@ -1,4 +1,4 @@
-import React, {  useEffect ,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from './education.module.css'
 import imgOne from '../../img/Education/1548312389_20180811_110612.jpg'
@@ -10,8 +10,9 @@ import { NavLink } from 'react-router-dom'
 import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
 import { useTranslation } from 'react-i18next';
+import { MdOutlineNavigateNext } from "react-icons/md";
 
-export default function ServiceEdeucation() { 
+export default function ServiceEdeucation() {
   const navigate = useNavigate();
   const HandleId = (id) => {
     navigate(`/product_det/:${id}`);
@@ -22,19 +23,19 @@ export default function ServiceEdeucation() {
     document.title = "O'quv dasturlari>> DEKOART.UZ"
   }, [])
   const [productlist, setProductlist] = useState([])
-    useQuery(["productlist type"], () => {
-      return fetch(`${url}/productlist/`).then(res => res.json())
-    }, {
-      onSuccess: res => {
-        setProductlist(res)
-  
-      },
-      onError: err => {
-        console.log(err, "err");
-      }
+  useQuery(["productlist type"], () => {
+    return fetch(`${url}/productlist/`).then(res => res.json())
+  }, {
+    onSuccess: res => {
+      setProductlist(res)
+
+    },
+    onError: err => {
+      console.log(err, "err");
     }
-    )
-  
+  }
+  )
+
 
   return (
     <div className={styles.Container}>
@@ -79,8 +80,8 @@ export default function ServiceEdeucation() {
               </div>
               <div className={styles.textLeftTwo}>
                 <p>{t("idea1")}
-                 <b style={{ color: "green", cursor: "pointer" }}>
-                  {t("idea2")}</b>{t("idea3")}</p>
+                  <b style={{ color: "green", cursor: "pointer" }}>
+                    {t("idea2")}</b>{t("idea3")}</p>
                 <p>{t("idea4")}
                   <b>
                     +(998) 95 198-26-66;
@@ -105,7 +106,7 @@ export default function ServiceEdeucation() {
                 productlist.map(data => {
                   return (
                     <div key={data.id} onClick={() => HandleId(data.id)} className={styles.ProductItems}>
-                      <p> <i className="fa fa-chevron-right"></i></p>
+                      <p><MdOutlineNavigateNext size={30} /></p>
                       <p>{data.name}</p>
                     </div>
                   )

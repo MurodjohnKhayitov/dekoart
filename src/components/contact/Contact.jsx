@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
@@ -27,7 +28,6 @@ const Contact = () => {
       .catch(err => console.log(err, "ERROrLIST"))
   }
   useEffect(() => {
-    document.title = "Biz bilan bog'lanish>> DEKOART.UZ"
     fetchGetAllData({
       language: itemList?.typeLang,
     })
@@ -36,6 +36,12 @@ const Contact = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{`Biz bilan bog'lanish>> DEKOART.UZ`}</title>
+        <meta name="description" content="DEKOART” – Ozbekistonda tashqi va ichki yuzalar uchun eng zamonaviy, yuqori sifatli lok boyoq, devor qoplama mahsulolartidir." />
+        <meta name="description" content="DEKOART TEKSTURA Teksturali fasad qoplamasiTa'rifi: Akrilik kopolimerlar asosli ishlatishga tayyor dekorativ qoplama.Xarakteristikasi:" />
+        <meta name="keywords" content="sadaf decocento dekoart krasska lak buyoq " />
+      </Helmet>
       <section class="contact">
         <div class="content">
           <h2>{t("title")}</h2>
@@ -50,8 +56,9 @@ const Contact = () => {
                       <i class={data?.icon || null}></i>
                     </div>
                     <div class="text">
-                      <h3>{data?.type}</h3>
-                      <p>{data?.data}</p>
+                      <h3 id="terms-content" dangerouslySetInnerHTML={{ __html: data?.type }} />
+                      <p id="terms-content" dangerouslySetInnerHTML={{ __html: data?.data }} />
+
                     </div>
                   </div>
                 )
@@ -59,7 +66,7 @@ const Contact = () => {
             }
 
 
-           
+
           </div>
           <div class="contactForm">
             <form>
@@ -80,7 +87,7 @@ const Contact = () => {
                 <button style={{ padding: "10px 30px", borderRadius: "10px", backgroundColor: "#0f3460", color: "white" }}>{t("send")}</button>
               </div>
             </form>
-          </div> 
+          </div>
         </div>
       </section>
       <div class="map-area">

@@ -2,24 +2,24 @@ import React from 'react'
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import styles from './service.module.css'
+import ImgOne from '../../assets/serviceHome/service1.jpg'
+import ImgTwo from '../../assets/serviceHome/service2.jpg'
+import ImgThree from '../../assets/serviceHome/service3.jpg'
+import ImgFour from '../../assets/serviceHome/service4.jpg'
 export default function Service() {
     const { t } = useTranslation(["home"]);
-
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
                 <div className={styles.Text}>
 
                     <p>{t("serviceTitle")}</p>
-                    <p>{t("serviceText")}
-                    </p>
-
-
+                    <p>{t("serviceText")}</p>
                 </div>
                 <div className={styles.CardGroup}>
                     <div className={styles.Cards}>
                         <div className={styles.CardImg}>
-                            <img src="http://dekoart.uz/uploads/posts/2018-11/medium/1543230848_full_photo_2016-07-28_18-00-20.jpg" alt="img" />
+                            <img src={ImgOne} alt="img" />
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
@@ -35,7 +35,7 @@ export default function Service() {
                     </div>
                     <div className={styles.Cards}>
                         <div className={styles.CardImg}>
-                            <img src="http://dekoart.uz/uploads/posts/2018-11/medium/1543231039_full_farxod15.jpg" alt="img" />
+                            <img src={ImgTwo} alt="img" />
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
@@ -51,7 +51,7 @@ export default function Service() {
                     </div>
                     <div className={styles.Cards}>
                         <div className={styles.CardImg}>
-                            <img src="http://dekoart.uz/uploads/posts/2018-11/medium/1543231094_full_farxod27.jpg" alt="img" />
+                            <img src={ImgThree} alt="img" />
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>
@@ -67,7 +67,7 @@ export default function Service() {
                     </div>
                     <div className={styles.Cards}>
                         <div className={styles.CardImg}>
-                            <img src="http://dekoart.uz/uploads/posts/2018-11/medium/1543231070_full_farxod7.jpg" alt="img" />
+                            <img src={ImgFour} alt="img" />
                         </div>
                         <div className={styles.CardTitle}>
                             <div className={styles.MainTitles}>

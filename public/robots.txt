@@ -1,3 +1,15 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Sitemap: https://www.dekoart.uz
+Disallow:/home
+Disallow:/dekoart
+Disallow:/news
+Disallow:/news/:id
+Disallow:/contact
+Disallow:/masters
+Disallow:/masters/:id
+Disallow:/maslahat
+Disallow:/oqitish
+Disallow:/markets
+Disallow:/product
+Disallow:/video
+Disallow:/video/:id

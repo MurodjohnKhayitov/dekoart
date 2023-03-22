@@ -1,31 +1,25 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styles from './master.module.css'
 import abdulla from '../../img/master/abdulla.jpg'
-import adham from '../../img/master/adham.jpg'
-import ali from '../../img/master/ali.jpg'
-import bekzod from '../../img/master/bekzod.jpg'
-import farxod1 from '../../img/master/farxod1.jpg'
-import Jamshid from '../../img/master//Jamshid.jpg'
-import javahir from '../../img/master/javahir.jpg'
-import sayyodjon from '../../img/master/sayyodjon.jpg'
-import zuhriddin from '../../img/master/zuhriddin.jpg'
-import { Breadcrumb, message, } from 'antd';
+
+import { Breadcrumb,  } from 'antd';
 import { FaHome } from "react-icons/fa"
-import { NavLink } from 'react-router-dom'
-import { useQuery } from 'react-query'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { url } from '../Host/Host'
 import { useTranslation } from 'react-i18next'
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu'
+import { Helmet } from 'react-helmet'
 
 export default function Master() {
-    useEffect(() => {
-        document.title = "Ustalar"
-    }, [])
+
     const { t } = useTranslation(["masters"]);
 
-    const [masters, setMasters] = useState([])
-   
+    const navigate = useNavigate();
+    const HandleId = (id) => {
+        navigate(`/masters/:${id}`);
+    };
 
+    const [masters, setMasters] = useState([])
     const [itemList, setItemList] = useContext(DetailsForDekoart)
 
     const fetchGetAllData = (params) => {
@@ -41,7 +35,6 @@ export default function Master() {
             .catch(err => console.log(err, "ERROrLIST"))
     }
     useEffect(() => {
-        document.title = "Ustalar"
         fetchGetAllData({
             language: itemList?.typeLang,
         })
@@ -49,6 +42,12 @@ export default function Master() {
 
     return (
         <div className={styles.Container}>
+            <Helmet>
+                <title>{`Ustalar`}</title>
+                <meta name="description" content="DEKOART” – Ozbekistonda tashqi va ichki yuzalar uchun eng zamonaviy, yuqori sifatli lok boyoq, devor qoplama mahsulolartidir." />
+                <meta name="description" content="DEKOART TEKSTURA Teksturali fasad qoplamasiTa'rifi: Akrilik kopolimerlar asosli ishlatishga tayyor dekorativ qoplama.Xarakteristikasi:" />
+                <meta name="keywords" content="sadaf decocento dekoart krasska lak buyoq " />
+            </Helmet>
             <div className={styles.Main}>
                 <div className={styles.BreadcrumbItem}>
                     <Breadcrumb>
@@ -65,7 +64,7 @@ export default function Master() {
                         masters.map(data => {
                             return (
 
-                                <div key={data.id} className={styles.Cards}>
+                                <div key={data.id} className={styles.Cards} onClick={() => HandleId(data?.id)}>
                                     <div className={styles.ForImg}>
                                         <img src={data?.photo || abdulla} alt="" />
                                     </div>
@@ -73,8 +72,8 @@ export default function Master() {
 
                                         <div className={styles.ForTextTitle}>
                                             <p><span>Ism:</span>{data.name}</p>
-                                            {/* <p><span>исм:</span>{data.ism}</p> */}
                                             <p><span>Tel:</span>+998951982666</p>
+
                                         </div>
 
                                         <div className={styles.ForTextBtn}>

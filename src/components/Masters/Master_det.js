@@ -1,26 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu';
-import styles from './dekoart.module.css'
-import imgOne from '../../img/Dekoart/1548160469_zavod.jpg'
-import sertifikat1 from '../../img/Dekoart/1550912492_guvohnoma-glavnoe.jpg'
-import sertifikat2 from '../../img/Dekoart/1550912494_guvohnoma2.jpg'
-import sertifikat3 from '../../img/Dekoart/1550912577_sertifikat-sootvet3.jpg'
-import sertifikat4 from '../../img/Dekoart/1550912553_sertifikat-system4.jpg'
-import sertifikat5 from '../../img/Dekoart/1550912480_guvohnoma5.jpg'
-import sertifikat6 from '../../img/Dekoart/1550912590_sertifikat-shuhrat6.jpg'
-import sertifikat7 from '../../img/Dekoart/1550912462_guvohnoma-glavnoe7.jpg'
-import sertifikat8 from '../../img/Dekoart/1550912494_sertifikat-sherzod8.jpg'
+import styles from './masterDet.module.css'
 
-import { Breadcrumb, } from 'antd';
+
+import { Breadcrumb } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
+// import { useQuery } from 'react-query';
 import { url } from '../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
-import { MdOutlineNavigateNext } from "react-icons/md";
 
-export default function DekoarItem() {
+export default function Master_Det() {
   const { t } = useTranslation(["dekoart"]);
 
 
@@ -28,11 +20,9 @@ export default function DekoarItem() {
   const HandleId = (id) => {
     navigate(`/product_det/:${id}`);
   };
-  const [productlist, setProductlist] = useState([])
-
-
   const [itemList, setItemList] = useContext(DetailsForDekoart)
 
+  const [productlist, setProductlist] = useState([])
   const fetchGetAllData = (params) => {
     Object.entries(params).forEach(i => {
       if (!i[1]) delete params[i[0]]
@@ -45,8 +35,29 @@ export default function DekoarItem() {
       })
       .catch(err => console.log(err, "ERROrLIST"))
   }
+  const { id } = useParams();
+  const UrlId = id.replace(":", "");
+  const [masters, setMasters] = useState([])
+  const fetchVideoGEtData = (params) => {
+    Object.entries(params).forEach(i => {
+      if (!i[1]) delete params[i[0]]
+    })
+
+    fetch(`${url}/masters/${UrlId}?` + new URLSearchParams(params))
+      .then(res => res.json())
+      .then(res => {
+        setMasters(res)
+      })
+      .catch(err => console.log(err, "ERROrLIST"))
+  }
+
+
+
   useEffect(() => {
     fetchGetAllData({
+      language: itemList?.typeLang,
+    })
+    fetchVideoGEtData({
       language: itemList?.typeLang,
     })
   }, [itemList?.typeLang])
@@ -55,7 +66,7 @@ export default function DekoarItem() {
   return (
     <div className={styles.Container}>
       <Helmet>
-        <title>{`Kampaniya haqida ma'lumot <<DEKOART.UZ>>`}</title>
+        <title>{`Ustalar haqida ma'lumot`}</title>
         <meta name="description" content="DEKOART” – Ozbekistonda tashqi va ichki yuzalar uchun eng zamonaviy, yuqori sifatli lok boyoq, devor qoplama mahsulolartidir." />
         <meta name="description" content="DEKOART TEKSTURA Teksturali fasad qoplamasiTa'rifi: Akrilik kopolimerlar asosli ishlatishga tayyor dekorativ qoplama.Xarakteristikasi:" />
         <meta name="keywords" content="sadaf decocento dekoart krasska lak buyoq " />
@@ -78,44 +89,26 @@ export default function DekoarItem() {
         <div className={styles.Content}>
           <div className={styles.ContentLeft}>
             <div className={styles.LeftTitle}>
-              <p>{t("LeftTitle")}</p>
+              <p>{masters?.name}</p>
             </div>
             <div className={styles.MainItem}>
-              <div className={styles.ImgOne}>
-                <img src={imgOne} alt="" />
-              </div>
+              {
+                masters?.attachment?.map(data => {
+                  return (
+                    data?.photo_url && <div className={styles.ImgOne}>
+                      <img src={data?.photo_url} alt="" />
+                    </div>
+                  )
+                })
+              }
 
-              <div className={styles.textLeft}>
-                <p><span style={{ color: "red" }}>{t("poneSpan")} </span>{t("pone")}</p>
-                <p><span style={{ color: "red" }}>{t("ptwoSpan")} </span> {t("ptwo")}</p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>{t("pthreeSpan")}</span> {t("pthree")}</p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>{t("pfourSpan")}</span>  {t("pfour")} </p>
-                <p><span style={{ color: "#727272", fontStyle: "normal", fontWeight: "bold" }}>{t("pfiveSpan")}</span> {t("pfive")}</p>
-              </div>
-              <div className={styles.ImgGroup}>
-                <img src={sertifikat1} alt="" />
-                <img src={sertifikat2} alt="" />
-                <img src={sertifikat3} alt="" />
-                <img src={sertifikat4} alt="" />
-                <img src={sertifikat5} alt="" />
-                <img src={sertifikat6} alt="" />
-                <img src={sertifikat7} alt="" />
-                <img src={sertifikat8} alt="" />
-
-              </div>
 
               <div className={styles.textLeftTwo}>
-                <p>{t("idea1")}
-                  <b style={{ color: "green", cursor: "pointer" }}>{t("idea2")}</b>
-                  {t("idea3")}</p>
-                <p>{t("idea4")}
-                  <b>
-                    +(998) 95 198-26-66;
-                    +(998) 99 855-26-66;
-                    +(998) 99 486-26-66;
-                  </b>
 
-                </p>
+                <p id="terms-content" dangerouslySetInnerHTML={{ __html: masters?.description }} />
+
+
+
               </div>
 
 
@@ -132,7 +125,7 @@ export default function DekoarItem() {
                 productlist.map(data => {
                   return (
                     <div key={data.id} onClick={() => HandleId(data.id)} className={styles.ProductItems}>
-                      <p><MdOutlineNavigateNext size={30} /></p>
+                      <p> <i className="fa fa-chevron-right"></i></p>
                       <p>{data?.name || "name"}</p>
                     </div>
                   )

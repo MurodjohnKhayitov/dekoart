@@ -3,15 +3,36 @@
   background-color: #0f3460;
   padding: 10px 0;
   color: #fff;
+
 }
 
 .head i {
   margin-right: 10px;
 }
 
+.head .d_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .head label {
   margin-right: 30px;
   font-size: 13px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.right div {
+  display: flex;
 }
 
 /*------head-----------*/
@@ -150,6 +171,7 @@ header ul li a:hover {
   padding-right: 20px;
 }
 
+
 .sub-menu-1 ul {
   width: 14%;
 }
@@ -185,11 +207,108 @@ header ul li a:hover {
 
 }
 
+.navlink ul li a {
+
+  text-transform: capitalize;
+}
+
+.navlink ul li p {
+  text-transform: capitalize;
+}
+
 .navlink ul li:hover .sub-menu-1 ul {
   display: block;
 }
 
+.dataListItemsAll {
+  display: flex;
+  margin-top: 10px;
+  column-gap: 10px;
+  row-gap: 30px;
+}
+
+.dataListItemsAll ul {
+  /* display: flex; */
+  justify-content: space-between;
+  width: 150px;
+
+}
+
+
+
+.ProductnameList p {
+  cursor: pointer;
+  padding: 10px 0px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #0f3460;
+}
+
+
+.dataListItemsAll ul li p {
+  text-transform: uppercase;
+  color: red;
+
+}
+
+.dataListItemsAll ul div p:hover {
+  color: red;
+}
+
+.PopoverItem {
+  width: 100%;
+  height: 100%;
+  padding: 30px 0px;
+}
+
+/* -------------------- */
+
+.productsStyleShow .ProductListAllData {
+  display: none;
+}
+
+.ProductListAllData {
+  display: none;
+
+
+}
+
+
+
+
+.ProductTitle p {
+  color: red;
+  line-height: 22px;
+}
+
+
+/* -------------------- */
+.link{}
+
 @media (max-width: 1024px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .dataListItemsAll {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .dataListItemsAll ul {
+    /* display: flex; */
+    justify-content: space-between;
+    width: 200px;
+  }
+
+
+
+  .navlink ul li .sub-menu-1 ul {
+
+    display: block;
+  }
+
   header ul {
     padding-top: 30px;
   }
@@ -200,7 +319,7 @@ header ul li a:hover {
   }
 
   .nav-links-MobileMenu {
-    max-height: 500px;
+    max-height: 80vh;
     overflow-y: scroll;
     position: absolute;
     display: block;
@@ -211,31 +330,49 @@ header ul li a:hover {
     margin: auto;
     transition: all 0.5s ease-in-out;
     width: 80%;
-    height: 100vh;
     background-color: white;
     z-index: 888;
   }
 
+  .liSubMenu {
+    width: 100%;
+
+  }
+
   .sub-menu-1 {
-    display: block;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #c3c3c3;
+    border-radius: 8px;
   }
 
   .nav-links-MobileMenu ul li:hover .sub-menu-1 {
-    display: block;
+    background: white;
+    /* top: 130px; */
+    text-align: left;
+    position: static;
+    justify-content: center;
+    line-height: normal;
+    border: 1px solid black;
+  }
+
+  /* .navlink ul li:hover .sub-menu-1 {
+    display: flex;
     position: absolute;
     background: white;
     left: 12%;
-    /* top: 130px; */
     text-align: left;
     justify-content: center;
     line-height: normal;
     z-index: 99;
-    border: 1px solid black;
-  }
+    border: 1px solid #a9a9a9;
+  } */
 
   .sub-menu-1 ul {
-    width: 100%;
-    margin-top: -22px;
+    width: 250px;
+    margin-top: 2px;
+
   }
 
   .navlink ul li:hover .sub-menu-1 ul li {
@@ -252,6 +389,7 @@ header ul li a:hover {
   header .link {
     display: none;
   }
+  
 
   .search-box {
     display: none;
@@ -277,7 +415,7 @@ header ul li a:hover {
   }
 
   .close {
-    right: 25%;
+    right: 30%;
   }
 
   .close.home-btn {
@@ -291,7 +429,8 @@ header ul li a:hover {
   }
 
   .left {
-    width: 190px;
+    width: fit-content;
+    display: flex;
   }
 
   .right {
@@ -300,6 +439,51 @@ header ul li a:hover {
 
   .header.active {
     height: 10vh;
+  }
+
+  /* ----------------------- */
+
+  .ProductListAllData {
+    display: block;
+    width: 100%;
+    height: fit-content;
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    column-gap: 20px;
+    row-gap: 20px;
+
+  }
+
+  .ProductItemOneData {
+    width: 250px;
+    height: fit-content;
+    text-align: start;
+
+  }
+
+  .ProductTitle p {
+    font-size: 18px;
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+
+  }
+
+  .ProductText {
+  }
+
+  .ProductText p {
+    display: inline;
+    font-size: 16px;
+    line-height: 42px;
+
+  }
+
+  .ProductText p:hover {
+    color: red;
+
   }
 }
 
@@ -323,6 +507,71 @@ header ul li a:hover {
 .sub-menu-1 ul div:hover {
   color: red;
 
+}
+
+
+
+@media (max-width:568px) {
+  .dataListItemsAll ul {
+
+    width: 100%;
+    padding: 0px 20px;
+  }
+
+  .ProductItemOneData {
+    /* width: fit-content; */
+    padding: 20px;
+    text-align: start;
+  }
+
+  .ProductText p {
+    margin-top: 15px;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+
+  .ProductListAllData {
+    display: block;
+    width: 100%;
+    height: fit-content;
+    padding: 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+
+  }
+
+  .ProductItemOneData {
+    width: 250px;
+    height: fit-content;
+
+  }
+
+  .ProductTitle p {
+    font-size: 18px;
+    color: red;
+    text-transform: uppercase;
+    font-weight: bold;
+
+  }
+
+  .ProductText p {
+    font-size: 16px;
+    line-height: 42px;
+    color: #0f3460;
+
+  }
+
+  .ProductText p:hover {
+    color: red;
+
+  }
 }
 
 @media (max-width: 1360px) {

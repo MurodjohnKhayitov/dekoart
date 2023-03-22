@@ -1,16 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './serviceType.module.css'
-import AOS from "aos";
-import { useQuery } from 'react-query';
+// import AOS from "aos";
+// import { useQuery } from 'react-query';
 import { url } from '../../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
-AOS.init({
-    duration: 1000
-});
 
 export default function ServiceType() {
-    const url1 = 'https://dekoartserver.pythonanywhere.com/api/v1/repair_type/'
     const [repairType, setrepairType] = useState([])
     const { t } = useTranslation(["home"]);
 
@@ -53,11 +49,12 @@ export default function ServiceType() {
 
                                     <div className={styles.SecondItemOne}>
                                         <div className={styles.SecondItemOneImg}>
-
+                                            <img src={data?.photo_url} alt="img" />
                                         </div>
                                         <div className={styles.SecondItemOneText} >
                                             <h1>{data?.name}</h1>
-                                            <p>{data?.description}</p>
+                                            <p id="terms-content" dangerouslySetInnerHTML={{ __html: data.description }} />
+
 
                                         </div>
 
@@ -70,8 +67,12 @@ export default function ServiceType() {
                                     < div className={styles.SecondItemTwo}>
                                         <div className={styles.SecondItemTwoText}>
                                             <h1>{data?.name}</h1>
-                                            <p>{data?.description}</p></div>
+                                            <p id="terms-content" dangerouslySetInnerHTML={{ __html: data.description }} />
+
+                                        </div>
                                         <div className={styles.SecondItemTwoImg}>
+                                            <img src={data?.photo_url} alt="img" />
+
                                         </div>
                                     </div>
                                 )

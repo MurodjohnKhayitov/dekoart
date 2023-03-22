@@ -15,41 +15,31 @@ import { url } from '../Host/Host'
 import { useTranslation } from 'react-i18next'
 import { useContext } from 'react'
 import { DetailsForDekoart } from '../../ContextMenu/ContextMenu'
+import { MdOutlineNavigateNext } from "react-icons/md";
+
 export default function News() {
-    
     const { t } = useTranslation(["news"]);
-
-
-
     const [dekoNews, setDekoNews] = useState([])
-  
-
     const [itemList, setItemList] = useContext(DetailsForDekoart)
 
     const fetchGetAllData = (params) => {
-      Object.entries(params).forEach(i => {
-        if (!i[1]) delete params[i[0]]
-      })
-  
-      fetch(`${url}/news/?` + new URLSearchParams(params))
-        .then(res => res.json())
-        .then(res => {
-            setDekoNews(res)
+        Object.entries(params).forEach(i => {
+            if (!i[1]) delete params[i[0]]
         })
-        .catch(err => console.log(err, "ERROrLIST"))
+
+        fetch(`${url}/news/?` + new URLSearchParams(params))
+            .then(res => res.json())
+            .then(res => {
+                setDekoNews(res)
+            })
+            .catch(err => console.log(err, "ERROrLIST"))
     }
     useEffect(() => {
         document.title = "Yangiliklar"
-      fetchGetAllData({
-        language: itemList?.typeLang,
-      })
+        fetchGetAllData({
+            language: itemList?.typeLang,
+        })
     }, [itemList?.typeLang])
-  
-
-
-
-
-
     const navigate = useNavigate();
     const HandleId = (id) => {
         navigate(`/news/:${id}`);
@@ -78,18 +68,17 @@ export default function News() {
                                 <div key={data.id} className={styles.Cards} onClick={() => HandleId(data.id)}>
                                     <div className={styles.ForImg}>
                                         <img src={data.photo} alt="" />
-
                                     </div>
                                     <div className={styles.ForText}>
-                                        <div className={styles.ForTextdate}>
-                                            {/* <p>01.03.2020</p> */}
 
-                                        </div>
                                         <div className={styles.ForTextTitle}>
-                                            <p>{data.description}</p>
+                                            <p id="terms-content" dangerouslySetInnerHTML={{ __html: data.title }} />
+
+                                            <span id="terms-content" dangerouslySetInnerHTML={{ __html: data.description }} />
                                         </div>
                                         <div className={styles.ForTextBtn}>
-                                            <button type="">{t("SliderBtn")}</button>
+                                            <p><MdOutlineNavigateNext size={30}  /> {t("SliderBtn")}</p>
+                                            {/* <button type="">{t("SliderBtn")}</button> */}
                                         </div>
 
                                     </div>

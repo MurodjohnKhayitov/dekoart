@@ -15,7 +15,7 @@ export default function Products() {
     //     return fetch(`${url}/productlist/`).then(res => res.json())
     // }, {
     //     onSuccess: res => {
-    //         setProduct(res)
+    //         setProduct(res) 
     //     },
     //     onError: err => {
     //         console.log(err, "err");
@@ -81,7 +81,8 @@ export default function Products() {
                                             <p>{item?.name}</p>
                                         </div>
                                         <div className={styles.ProductText}>
-                                            <p>{item?.title || "title"}</p>
+                                        <div id="terms-content" dangerouslySetInnerHTML={{ __html: item.title }} />
+
                                         </div>
                                         <div className={styles.ProductBtn}>
                                             <button>{t("SliderBtn")}</button>

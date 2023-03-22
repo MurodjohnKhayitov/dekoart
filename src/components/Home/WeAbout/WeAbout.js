@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import styles from './about.module.css'
 import AOS from "aos";
 import { url } from '../../Host/Host';
-import { useQuery } from 'react-query';
+// import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 AOS.init({
@@ -51,9 +51,9 @@ export default function WeAbout() {
                                 </div>
                                 <div className={styles.SimpleText}>
                                     <h1>{data?.title}</h1>
-                                    <p>
-                                        {data?.description}
-                                    </p>
+                                    <p id="terms-content" dangerouslySetInnerHTML={{ __html: data.description }} />
+
+                                 
                                 </div>
 
                             </div>

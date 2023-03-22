@@ -133,6 +133,8 @@
 
 .ProductBtn {
     width: 100%;
+    display: flex;
+    justify-content: center;
 
 }
 
@@ -142,7 +144,8 @@
     /* background-color: #256471f4; */
     color: white;
     height: 44px;
-    width: 100%;
+    width: 65%;
+
     font-family: "Monserrant";
     font-style: normal;
     font-weight: 400;
@@ -176,7 +179,17 @@
 
 @media (min-width:768px) and (max-width:1023px) {
     .CardItem {
-        width: 33%;
+        width: 35%;
+    }
+
+    .Main {
+        padding: 0px 16px;
+    }
+
+    .CardGroup {
+        flex-wrap: wrap;
+        border: 1px solid red;
+
     }
 }
 
@@ -233,7 +246,7 @@
     }
 
     .CardItem {
-        width: 48%;
+        width: 49%;
         padding: 4px;
 
     }
