@@ -39,6 +39,10 @@ export default function News() {
         fetchGetAllData({
             language: itemList?.typeLang,
         })
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }, [itemList?.typeLang])
     const navigate = useNavigate();
     const HandleId = (id) => {

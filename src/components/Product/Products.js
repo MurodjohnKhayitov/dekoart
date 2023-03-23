@@ -43,6 +43,10 @@ export default function Products() {
         fetchGetAllData({
             language: itemList?.typeLang,
         })
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }, [itemList?.typeLang])
 
 

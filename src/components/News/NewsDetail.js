@@ -19,9 +19,12 @@ import { url } from '../Host/Host';
 import { useTranslation } from 'react-i18next';
 
 export default function NewsDetail() {
-    // useEffect(() => {
-    //     document.title = "Kampaniya haqida ma'lumot <<DEKOART.UZ>>"
-    // }, [])
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, [])
     const { t } = useTranslation(["news"]);
 
     const navigate = useNavigate();
@@ -57,10 +60,7 @@ export default function NewsDetail() {
         }
     }
     )
-    // useEffect(() => {
-    //     document.title = newsDetail.title
-    // }
-    // },[])
+
     return (
         <div className={styles.Container}>
             <div className={styles.Main}>
@@ -77,7 +77,7 @@ export default function NewsDetail() {
                             <NavLink to={`/news/:${UrlId}`}> {newsDetail?.title} </NavLink>
                         </Breadcrumb.Item>
                     </Breadcrumb>
-                </div> 
+                </div>
                 <div className={styles.Content}>
                     <div className={styles.ContentLeft}>
                         <div className={styles.LeftTitle}>
@@ -93,8 +93,8 @@ export default function NewsDetail() {
                                     return (
 
                                         <div className={styles.ImgOne}>
-                                            <img src={data?.photo_url } alt="NoData" />
-                                            <p id="terms-content" dangerouslySetInnerHTML={{ __html: data?.title || "NoData"}} />
+                                            <img src={data?.photo_url} alt="NoData" />
+                                            <p id="terms-content" dangerouslySetInnerHTML={{ __html: data?.title || "NoData" }} />
 
                                         </div>
                                     )

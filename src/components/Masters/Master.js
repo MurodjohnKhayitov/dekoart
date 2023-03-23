@@ -38,6 +38,10 @@ export default function Master() {
         fetchGetAllData({
             language: itemList?.typeLang,
         })
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
     }, [itemList?.typeLang])
 
     return (

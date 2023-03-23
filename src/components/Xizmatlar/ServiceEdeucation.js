@@ -21,6 +21,10 @@ export default function ServiceEdeucation() {
 
   useEffect(() => {
     document.title = "O'quv dasturlari>> DEKOART.UZ"
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [])
   const [productlist, setProductlist] = useState([])
   useQuery(["productlist type"], () => {

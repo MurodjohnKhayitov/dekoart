@@ -158,7 +158,9 @@ table tr div {
     border-radius: 3px;
 
 }
-
+.MainTitles{
+text-align: center;
+}
 .Maintext p {
     font-size: 25px;
     line-height: 25px;

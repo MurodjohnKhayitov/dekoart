@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -40,6 +40,12 @@ const Video_Details = () => {
     }
   }
   )
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [])
 
   const { t } = useTranslation(["video"]);
 
@@ -54,7 +60,7 @@ const Video_Details = () => {
             <div className={styles.MainItem}>
               <div className={styles.video_youtub} >
                 <iframe
-                  style={{ width: "100%",height:"100%" }}
+                  style={{ width: "100%", height: "100%" }}
                   src={videoIdGet?.video_url}
                   title="Ottocento Dekoart"
                   frameborder="0"

@@ -20,6 +20,10 @@ export default function ServiceMaslahat() {
 
     useEffect(() => {
         document.title = "MASLAHAT BERAMIZ>> DEKOART.UZ"
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
     }, [])
     const [productlist, setProductlist] = useState([])
     useQuery(["productlist type"], () => {

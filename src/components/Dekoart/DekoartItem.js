@@ -49,6 +49,10 @@ export default function DekoarItem() {
     fetchGetAllData({
       language: itemList?.typeLang,
     })
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [itemList?.typeLang])
 
 

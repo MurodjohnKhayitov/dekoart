@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Model from "./Model";
 import "./style.css";
 import "slick-carousel/slick/slick.css";
@@ -19,6 +19,8 @@ import "react-multi-carousel/lib/styles.css";
 import noDataImg from '../../assets/noData/NoData.png'
 import { Button, Modal } from 'antd';
 import { Player, BigPlayButton } from 'video-react';
+import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
+import ReactPlayer from 'react-player'
 
 const Home = () => {
   const { id } = useParams();
@@ -28,7 +30,7 @@ const Home = () => {
   const settings1 = {
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 3,
     slidesToScroll: 1,
   };
 
@@ -136,23 +138,40 @@ const Home = () => {
 
   const [productId, setProductId] = useState([])
 
-  const getDetailsProduct = () => {
-    fetch(`${url}/products/${UrlId}`)
+  // const getDetailsProduct = () => {
+  //   fetch(`${url}/products/${UrlId}`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setProductId(res)
+  //     })
+  //     .catch(err => console.log(err))
+
+  // }
+  const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+  const getDetailsProduct = (params) => {
+    Object.entries(params).forEach(i => {
+      if (!i[1]) delete params[i[0]]
+    })
+
+    fetch(`${url}/products/${UrlId}?` + new URLSearchParams(params))
       .then(res => res.json())
       .then(res => {
         setProductId(res)
       })
-      .catch(err => console.log(err))
-
+      .catch(err => console.log(err, "ERROrLIST"))
   }
 
+
   useEffect(() => {
-    getDetailsProduct()
+    getDetailsProduct({
+      language: itemList?.typeLang,
+    })
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, [UrlId])
+  }, [UrlId, itemList?.typeLang])
 
   const responsive1 = {
     superLargeDesktop: {      // the naming can be any, depends on you.
@@ -276,6 +295,7 @@ const Home = () => {
                   </Slider>
 
                   <Modal
+                    className="GalleryFahter"
                     footer={null}
                     open={isModalGalleryOne}
                     onCancel={handleCancelGallery}>
@@ -289,6 +309,8 @@ const Home = () => {
                   </Modal>
 
                   <Modal
+                    className="GalleryFahter"
+
                     footer={null}
                     open={isModalCategory}
                     onCancel={handleCancelCategory}>
@@ -362,15 +384,14 @@ const Home = () => {
               </div>
               {
                 productId?.video_url && <div className="video-youtub">
-                  <Player src={productId?.video_url}>
-                    <BigPlayButton position="center" />
-                  </Player>
-                  {/* <iframe
-                    src={productId?.video_url}
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen></iframe> */}
+
+                  <ReactPlayer
+                    width='100%'
+                    height='100%'
+                    style={{ width: "100%", height: "100%" }}
+                    url={productId?.video_url} />
+
+
                 </div>
               }
             </div>
@@ -392,7 +413,7 @@ const Home = () => {
                       </div>
                       <div className={"ForTextCard"}>
                         <div onClick={() => HandleId(item?.id)} className={"ProductTitle"}>
-                          <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.name || "NoTitle" }} />
+                          <p style={{ color: "black" }} id="terms-content" dangerouslySetInnerHTML={{ __html: item?.name || "NoTitle" }} />
                         </div>
                         <div className={"ProductText"}>
                           <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.title || "NoTitle" }} />
@@ -422,7 +443,7 @@ const Home = () => {
                       </div>
                       <div className={"ForTextCard"}>
                         <div onClick={() => HandleId(item?.id)} className={"ProductTitle"}>
-                          <p id="terms-content" dangerouslySetInnerHTML={{ __html: item?.name || "NoTitle" }} />
+                          <p style={{ color: "black" }} id="terms-content" dangerouslySetInnerHTML={{ __html: item?.name || "NoTitle" }} />
 
                         </div>
                         <div className={"ProductText"}>
@@ -444,7 +465,7 @@ const Home = () => {
         </div>
 
       </section>
-      {model === true ? (
+      {/* {model === true ? (
         <Model
           img={tempdata[1]}
           title={tempdata[2]}
@@ -453,7 +474,7 @@ const Home = () => {
         />
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 };

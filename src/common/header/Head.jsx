@@ -43,7 +43,6 @@ const Head = () => {
                 Ru
                 <input style={{ display: "none" }} id="CheckRu" type="radio" name="checkLang" value={"ru"} />
               </label>
-
             </div>
 
           </div>

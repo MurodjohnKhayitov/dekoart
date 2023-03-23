@@ -8,8 +8,10 @@ import { useQuery } from "react-query";
 import { url } from "../Host/Host";
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import { MdOutlineNavigateNext } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 const Shops = () => {
+  const { t } = useTranslation(["shop"]);
 
   const navigate = useNavigate();
   const HandleId = (id) => {
@@ -18,7 +20,6 @@ const Shops = () => {
   const [productlist, setProductlist] = useState([])
 
 
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
 
   const fetchGetAllData = (params) => {
     Object.entries(params).forEach(i => {
@@ -34,24 +35,43 @@ const Shops = () => {
   }
 
   const [marketofDekoart, setMarketOfDekoart] = useState([])
-  useQuery(["marketofDekoart type"], () => {
-    return fetch(`${url}/dictionary/shops/`).then(res => res.json())
-  }, {
-    onSuccess: res => {
-      setMarketOfDekoart(res)
 
-    },
-    onError: err => {
-      console.log(err, "err");
-    }
+
+  const [itemList, setItemList] = useContext(DetailsForDekoart)
+
+  const GetShopDetail = (params) => {
+    Object.entries(params).forEach(i => {
+      if (!i[1]) delete params[i[0]]
+    })
+
+    fetch(`${url}/dictionary/shops/?` + new URLSearchParams(params))
+      .then(res => res.json())
+      .then(res => {
+        setMarketOfDekoart(res)
+      })
+      .catch(err => console.log(err, "ERROrLIST"))
   }
-  )
+
+
+  useEffect(() => {
+    GetShopDetail({
+      language: itemList?.typeLang,
+    })
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [ itemList?.typeLang])
 
   useEffect(() => {
     document.title = "Savdo Do'konlari>> DEKOART.UZ"
     fetchGetAllData({
       language: itemList?.typeLang,
     })
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
   }, [itemList?.typeLang])
 
   return (
@@ -64,10 +84,10 @@ const Shops = () => {
               <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/rinok"> Bozorlar</NavLink>
+              <NavLink to="/rinok"> {t("breadCrum1")}</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/oqitish"> Savdo Dokonlari</NavLink>
+              <NavLink to="/oqitish"> {t("breadCrum2")}</NavLink>
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>
@@ -75,20 +95,23 @@ const Shops = () => {
           <div className="content-left">
             <div className="content-left-box">
               <div className={"Maintext"}>
-                <p>SAVDO DO`KONLARI</p>
+                <p>{t("breadCrum2")}</p>
+
 
               </div>
 
-              <p className="MainTitles">O`ZBEKISTON BO`YLAB “DEKO`ART” SAVDO MARKAZLARI MANZILLARI</p>
+              {/* <p className="MainTitles">O`ZBEKISTON BO`YLAB “DEKO`ART” SAVDO MARKAZLARI MANZILLARI</p> */}
+              <p className="MainTitles">{t("mainTitle")}</p>
+
               <div className="content-data">
                 <table>
                   <tr className="mainTitleTheme">
-                    <th>Hudud Nomi</th>
+                    <th>{t("city")}</th>
                     <th>
-                      Savdo Markazi / Do`kon Manzili Sotuvchi Isim Sharifi
+                    {t("address")}
                     </th>
-                    <th>Telefon Raqami</th>
-                    <th>Ish Soati</th>
+                    <th> {t("phoneNumber")} </th>
+                    <th>  {t("timer")}</th>
                   </tr>
                   {
                     marketofDekoart.map(data => {
@@ -145,7 +168,7 @@ const Shops = () => {
 
           <div className={"ContentRight"}>
             <div className={"RightTitle"}>
-              <p>Mahsulotlarimiz</p>
+              <p>{t("produtTitle")}</p>
 
             </div>
             <div className={"ProductList"}>

@@ -10,8 +10,8 @@ import { BiChevronDown } from "react-icons/bi";
 import { Divider, Popover, Segmented } from 'antd';
 
 import { useTranslation } from "react-i18next";
- 
- 
+
+
 const Search = () => {
   const navigate = useNavigate();
   const [MobileMenu, setMobileMenu] = useState(false);
@@ -180,31 +180,31 @@ const Search = () => {
                         to="/product">{t("mahsulotlar")}</NavLink>
                     </Popover>
                   </li>
-                  
-                    <div className="ProductListAllData">
-                      {products?.map(data => {
-                        return (
-                          <div key={data?.id} className="ProductItemOneData">
-                            <div className="ProductTitle">
-                              <p>{data?.name}</p>
-                            </div>
-                            {data?.product?.map(item => {
-                              return (
-                                <div key={item?.value}
-                                  onClick={() => {
-                                    setgetDetailId(item.id)
-                                  }} className="ProductText">
-                                  <p>{item?.name}</p>
-                                </div>
-                              ) 
-                            }) 
 
-                            }
+                  <div className="ProductListAllData">
+                    {products?.map(data => {
+                      return (
+                        <div key={data?.id} className="ProductItemOneData">
+                          <div className="ProductTitle">
+                            <p>{data?.name}</p>
                           </div>
-                        )
-                      })
-                      }
-                    </div>
+                          {data?.product?.map(item => {
+                            return (
+                              <div key={item?.value}
+                                onClick={() => {
+                                  setgetDetailId(item.id)
+                                }} className="ProductText">
+                                <p>{item?.name}</p>
+                              </div>
+                            )
+                          })
+
+                          }
+                        </div>
+                      )
+                    })
+                    }
+                  </div>
 
                   <li>
                     <NavLink
@@ -236,6 +236,17 @@ const Search = () => {
                       <p>{t("xizmatlar")}</p>
                     </Dropdown>
                   </li>
+                  <div className="ServiceOpenMenuDropdown">
+                    <p>
+                      <NavLink to='/maslahat' >
+                        {t("advice")}
+                      </NavLink >
+                    </p>
+                    <p>
+                      <NavLink to='/oqitish' >
+                        {t("edu")}
+                      </NavLink ></p>
+                  </div>
                   <li>
                     <NavLink
                       style={({ isActive }) => ({

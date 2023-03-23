@@ -60,6 +60,10 @@ export default function Master_Det() {
     fetchVideoGEtData({
       language: itemList?.typeLang,
     })
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+  });
   }, [itemList?.typeLang])
 
 
