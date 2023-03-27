@@ -381,11 +381,12 @@
     }
 
     .textLeft p {
-        font-size: 12px;
+        font-size: 14px;
+        text-align: justify;
     }
 
     .textLeftTwo p {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .RightTitle {

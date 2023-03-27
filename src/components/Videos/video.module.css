@@ -50,7 +50,7 @@
   width: 100%;
   height: 100%;
 
-  padding: 0px 100px;
+  padding: 50px 100px;
   color: #0f3460;
 }
 
@@ -129,17 +129,20 @@
   padding: 45px 0px;
 }
 
-.ImgOne {
+.ForText {
   display: flex;
   justify-content: center;
-  text-align: center;
-
+  margin-top: 50px;
 }
 
-.ImgOne img {
-  width: 400px;
-  margin: auto;
+.ForText p {
 
+  font-size: 25px;
+  line-height: 25px;
+  font-style: normal;
+  color: #0f3460;
+  font-style: 'Monserrat';
+  text-transform: uppercase;
 }
 
 .textLeft p {
@@ -230,6 +233,7 @@
 .ProductItems:hover p {
   color: red;
 }
+
 .video_youtub {
   width: 90%;
   height: 400px;

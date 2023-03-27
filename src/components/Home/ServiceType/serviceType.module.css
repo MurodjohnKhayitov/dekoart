@@ -52,7 +52,7 @@
 .SecondItemOneImg {
     width: 50%;
     height: 100%;
-   
+
 
 }
 
@@ -115,7 +115,7 @@
 .SecondItemTwoImg {
     width: 50%;
     height: 100%;
- 
+
 
 }
 
@@ -241,7 +241,7 @@
     .SecondContent {
 
         height: fit-content;
-        padding: 50px;
+        padding: 50px 16px;
     }
 
     .SecondItemOne {
@@ -258,7 +258,7 @@
 
     .SecondItemOneText {
         width: 100%;
-        height: 250px;
+        height: fit-content;
 
     }
 
@@ -275,7 +275,7 @@
 
     .SecondItemTwoText {
         width: 100%;
-        height: 250px;
+        height: fit-content;
 
     }
 
@@ -291,6 +291,7 @@
         font-size: 12px;
         font-weight: 300;
         color: #666;
+
     }
 
     .SecondItemTwoText h1 {
@@ -328,7 +329,7 @@
     .SecondContent {
 
         height: fit-content;
-        padding: 50px;
+        padding: 50px 16px;
     }
 
 
@@ -346,7 +347,7 @@
 
     .SecondItemOneText {
         width: 100%;
-        height: 250px;
+        height: fit-content;
         padding: 10px;
 
 
@@ -365,7 +366,7 @@
 
     .SecondItemTwoText {
         width: 100%;
-        height: 250px;
+        height: fit-content;
         padding: 10px;
 
     }
@@ -379,9 +380,10 @@
 
     .SecondItemOneText p {
         padding: 10px 0px;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 300;
         color: #666;
+        text-align: justify;
     }
 
     .SecondItemTwoText h1 {
@@ -395,8 +397,10 @@
     .SecondItemTwoText p {
         padding: 10px 0px;
         margin: 0;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 300;
         color: #666;
+        text-align: justify;
+
     }
 }

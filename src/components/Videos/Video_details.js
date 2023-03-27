@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "react-query";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {  NavLink, useNavigate, useParams } from "react-router-dom";
 import { url } from "../Host/Host";
 import styles from "./video.module.css";
+import ReactPlayer from 'react-player'
+import { Breadcrumb } from 'antd';
+import { FaHome } from "react-icons/fa"
+
 const Video_Details = () => {
 
   const { id } = useParams();
@@ -51,22 +55,38 @@ const Video_Details = () => {
 
   return (
     <div className={styles.Container}>
+
       <div className={styles.Main}>
+        <div className={"BreadcrumbItem"}>
+
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <NavLink to="/home"><FaHome style={{ marginRight: "15px" }}/> DEKOART.UZ</NavLink>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              <NavLink to="/product">Videolar</NavLink>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              <NavLink to={`video/:${VideoId}`}>{videoIdGet?.title}</NavLink>
+            </Breadcrumb.Item>
+          </Breadcrumb>
+        </div>
         <div className={styles.Content}>
           <div className={styles.ContentLeft}>
             <div className={styles.LeftTitle}>
               <p>{videoIdGet?.title || "no data"}</p>
             </div>
             <div className={styles.MainItem}>
+
               <div className={styles.video_youtub} >
-                <iframe
+                <ReactPlayer
+                  width='100%'
+                  height='100%'
                   style={{ width: "100%", height: "100%" }}
-                  src={videoIdGet?.video_url}
-                  title="Ottocento Dekoart"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                ></iframe>
+                  url={videoIdGet?.video_url} />
+              </div>
+              <div className={styles.ForText}>
+                <p>{videoIdGet?.title}</p>
               </div>
               <div className={styles.textLeftTwo}>
                 <p>{t("idea1")} <b style={{ color: "green", cursor: "pointer" }}>{t("idea2")}</b>{t("idea3")}</p>

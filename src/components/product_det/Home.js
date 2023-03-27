@@ -1,24 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
-import Model from "./Model";
 import "./style.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useNavigate, useParams } from "react-router-dom";
 // import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { Breadcrumb, message, } from 'antd';
+import { Breadcrumb } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
-import { GrNext, GrPrevious } from 'react-icons/gr';
 import { useQuery } from "react-query";
 import { url } from "../Host/Host";
-import colImg from '../../img/col1.jpg'
-import fasadimg from '../../img/img1.jpg'
+
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import noDataImg from '../../assets/noData/NoData.png'
-import { Button, Modal } from 'antd';
-import { Player, BigPlayButton } from 'video-react';
+import {  Modal } from 'antd';
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import ReactPlayer from 'react-player'
 
@@ -34,63 +30,10 @@ const Home = () => {
     slidesToScroll: 1,
   };
 
-  // ------------------Carousel------ 
-  const NextArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <div className={"NextArrow"} onClick={onClick}>
-        <button className="">
-          <GrNext />
-        </button>
-      </div>
-    );
-  };
 
-  const PrevArrow = (props) => {
-    const { onClick } = props;
-    return (
-      <div className={"PrevArrow"} onClick={onClick}>
-        <button className="">
-          <GrPrevious />
-        </button>
-      </div>
-    );
-  };
-  let settings = {
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
+
+ 
+ 
   // ---------------------GOItem
   const navigate = useNavigate();
   const HandleId = (id) => {
@@ -99,15 +42,8 @@ const Home = () => {
   // ---------------------GOItem
 
   const [getM2M, setgetM2M] = useState("");
-  const [model, setModel] = useState(false);
-  const [tempdata, setTempdata] = useState([]);
 
-  const getData = (img) => {
-    let tempData = [img];
-    setTempdata((item) => [1, ...tempData]);
-    return setModel(true);
-  };
-
+ 
 
   const [productsLists, setProductsLists] = useState([])
   useQuery(["ProductsLists type"], () => {
@@ -123,7 +59,6 @@ const Home = () => {
   )
 
 
-  const [NewArray, setNewArray] = useState([]);
   const NewArrayOne = [];
   const NewArrayTwo = [];
 
@@ -147,7 +82,7 @@ const Home = () => {
   //     .catch(err => console.log(err))
 
   // }
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
+  const [itemList] = useContext(DetailsForDekoart)
 
   const getDetailsProduct = (params) => {
     Object.entries(params).forEach(i => {
@@ -280,10 +215,7 @@ const Home = () => {
                               className="card-img-top"
                               onClick={() => {
                                 showModalGalleryOne(item?.id)
-                                getData(
-                                  item.photo_url,
-
-                                )
+                               
                               }
                               }
                               alt="..."
@@ -299,7 +231,7 @@ const Home = () => {
                     footer={null}
                     open={isModalGalleryOne}
                     onCancel={handleCancelGallery}>
-                    {productId?.figure_out?.filter(data => data.id == falleryId).map((item) => {
+                    {productId?.figure_out?.filter(data => data.id === falleryId).map((item) => {
                       return (
                         <div className="GalleryOne">
                           <img src={item?.photo_url} alt="" />
@@ -314,7 +246,7 @@ const Home = () => {
                     footer={null}
                     open={isModalCategory}
                     onCancel={handleCancelCategory}>
-                    {productId?.color_catalog?.filter(data => data.id == categoryId).map((item) => {
+                    {productId?.color_catalog?.filter(data => data.id === categoryId).map((item) => {
                       return (
                         <div className="GalleryOne">
                           <img src={item?.photo_url} alt="" />
@@ -333,7 +265,6 @@ const Home = () => {
                               className="color-img-top"
                               onClick={() => {
                                 showModalCategory(item?.id)
-                                getData(item?.photo_url || noDataImg)
                               }
                               }
                               alt="colImg"
@@ -359,7 +290,7 @@ const Home = () => {
                 <div className="calc">
                   <span>Devor maydoni:</span>
                   <input
-                    type="text"
+                    type="number"
                     value={getM2M}
                     onChange={(e) => setgetM2M(e.target.value)}
                     placeholder="m2 kiriting"
@@ -367,14 +298,12 @@ const Home = () => {
                   <span>м²</span>
                 </div>
                 <div className="Result">
-                  <p>
-                    {getM2M ? (
-                      <h1>
-                        {getM2M} m2 joyga {parseInt(getM2M * 1.8)} kg
-                        mahsulot ishlatiladi
-                      </h1>
-                    ) : null}
-                  </p>
+                  {getM2M ? (
+                    <h1>
+                      <span>{getM2M} </span> m<sup>2</sup> joyga <span>{parseInt(getM2M * 1.8)}</span> kg
+                      mahsulot ishlatiladi
+                    </h1>
+                  ) : null}
                 </div>
               </div>
 
@@ -397,6 +326,11 @@ const Home = () => {
             </div>
           </div>
           <div className="CarosuelGroup">
+            <div className="NewChange">
+              <div className="NewChangeLine"></div>
+              <div className="NewChangeTitle">related products</div>
+              <div className="NewChangeLine"></div>
+            </div>
             <div className={"CardGroup"}>
               <Carousel
                 className="SliderGroup"

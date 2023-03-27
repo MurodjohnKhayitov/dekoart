@@ -4,10 +4,9 @@ import styles from './sadaf.module.css'
 import imgOne from '../../assets/Sadaf.jpg'
 
 
-import { Breadcrumb, message, } from 'antd';
+import { Breadcrumb } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
-import { useQuery } from 'react-query';
 import { url } from '../../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
@@ -25,7 +24,7 @@ export default function DekoarItem() {
   const [productlist, setProductlist] = useState([])
 
 
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
+  const [itemList] = useContext(DetailsForDekoart)
 
   const fetchGetAllData = (params) => {
     Object.entries(params).forEach(i => {
@@ -70,7 +69,7 @@ export default function DekoarItem() {
         <div className={styles.Content}>
           <div className={styles.ContentLeft}>
             <div className={styles.LeftTitle}>
-              <p>DecoCento</p>
+              <p>Sadaf</p>
             </div>
             <div className={styles.MainItem}>
               <div className={styles.ImgOne}>

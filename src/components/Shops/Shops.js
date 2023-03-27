@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { Breadcrumb, message, } from 'antd';
+import { Breadcrumb } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
-import { useQuery } from "react-query";
 import { url } from "../Host/Host";
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import { MdOutlineNavigateNext } from "react-icons/md";
@@ -37,7 +36,7 @@ const Shops = () => {
   const [marketofDekoart, setMarketOfDekoart] = useState([])
 
 
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
+  const [itemList] = useContext(DetailsForDekoart)
 
   const GetShopDetail = (params) => {
     Object.entries(params).forEach(i => {
@@ -61,7 +60,7 @@ const Shops = () => {
       top: 0,
       behavior: "smooth",
     });
-  }, [ itemList?.typeLang])
+  }, [itemList?.typeLang])
 
   useEffect(() => {
     document.title = "Savdo Do'konlari>> DEKOART.UZ"
@@ -71,7 +70,7 @@ const Shops = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-  });
+    });
   }, [itemList?.typeLang])
 
   return (
@@ -105,21 +104,23 @@ const Shops = () => {
 
               <div className="content-data">
                 <table>
-                  <tr className="mainTitleTheme">
-                    <th>{t("city")}</th>
-                    <th>
-                    {t("address")}
-                    </th>
-                    <th> {t("phoneNumber")} </th>
-                    <th>  {t("timer")}</th>
-                  </tr>
+                  <thead>
+                    <tr className="mainTitleTheme">
+                      <th>{t("city")}</th>
+                      <th>
+                        {t("address")}
+                      </th>
+                      <th> {t("phoneNumber")} </th>
+                      <th>  {t("timer")}</th>
+                    </tr>
+                  </thead>
                   {
                     marketofDekoart.map(data => {
                       return data.region.map(data => {
                         return (
                           <>
                             < tr >
-                              <td colspan="4" className="manzil">
+                              <td colSpan="4" className="manzil">
                                 <p id="ManzilText" dangerouslySetInnerHTML={{ __html: data.name }} />
                               </td>
                             </tr>
@@ -176,7 +177,7 @@ const Shops = () => {
                 productlist.map(data => {
                   return (
                     <div key={data.id} onClick={() => HandleId(data.id)} className={"ProductItems"}>
-                      <p><MdOutlineNavigateNext size={30}  /></p>
+                      <p><MdOutlineNavigateNext size={30} /></p>
                       <p>{data.name}</p>
                     </div>
                   )

@@ -99,6 +99,10 @@ footer .containerr .sec p {
     align-items: center;
     padding: 7px 5px;
 }
+.media ul li a{
+    display: flex;
+    align-items: center;
+}
 
 .media ul li a {
     padding: 10px;

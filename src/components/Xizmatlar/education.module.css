@@ -307,10 +307,14 @@
 
     .textLeft p {
         font-size: 16px;
+        text-align: justify;
+
     }
 
     .textLeftTwo p {
-        font-size: 12px;
+        font-size: 14px;
+        text-align: justify;
+
     }
 
     .RightTitle p {
@@ -344,6 +348,13 @@
 
     .ImgGroup img {
         width: 70px;
+    }
+    .ImgOne {
+        width: 100%;
+    }
+
+    .ImgOne img {
+        width: 100%;
     }
 
 }
@@ -382,11 +393,12 @@
     }
 
     .textLeft p {
-        font-size: 12px;
+        font-size: 14px;
+        text-align: justify;
     }
 
     .textLeftTwo p {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .RightTitle {
@@ -425,6 +437,13 @@
 
     .ImgGroup img {
         width: 70px;
+    }
+    .ImgOne {
+        width: 100%;
+    }
+
+    .ImgOne img {
+        width: 100%;
     }
 
 }

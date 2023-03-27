@@ -1,13 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import logo from "../../components/assets/images/deko.png";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import {  NavLink, useNavigate } from "react-router-dom";
 
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
-import { Button, Dropdown } from 'antd';
+import {  Dropdown } from 'antd';
 import { url } from "../../components/Host/Host";
-import { useQuery } from "react-query";
-import { BiChevronDown } from "react-icons/bi";
-import { Divider, Popover, Segmented } from 'antd';
+
+import {  Popover } from 'antd';
 
 import { useTranslation } from "react-i18next";
 
@@ -15,7 +14,6 @@ import { useTranslation } from "react-i18next";
 const Search = () => {
   const navigate = useNavigate();
   const [MobileMenu, setMobileMenu] = useState(false);
-  const [toggleShowMenu, settoggleShowMenu] = useState(false);
   // translate     --------------
 
   const { t } = useTranslation(["navbar"]);
@@ -36,7 +34,7 @@ const Search = () => {
 
   const [products, setProducts] = useState([])
 
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
+  const [itemList] = useContext(DetailsForDekoart)
 
   const fetchGetAllData = (params) => {
     Object.entries(params).forEach(i => {
@@ -184,13 +182,13 @@ const Search = () => {
                   <div className="ProductListAllData">
                     {products?.map(data => {
                       return (
-                        <div key={data?.id} className="ProductItemOneData">
+                        <div key={data?.name} className="ProductItemOneData">
                           <div className="ProductTitle">
                             <p>{data?.name}</p>
                           </div>
                           {data?.product?.map(item => {
                             return (
-                              <div key={item?.value}
+                              <div key={item?.id}
                                 onClick={() => {
                                   setgetDetailId(item.id)
                                 }} className="ProductText">

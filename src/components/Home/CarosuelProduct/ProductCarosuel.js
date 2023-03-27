@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 import styles from './Product.module.css'
+import { useNavigate } from 'react-router-dom';
 // import Slider from "react-slick";
 // import { useQuery } from 'react-query';
 import { url } from '../../Host/Host';
@@ -12,10 +13,14 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 export default function ProductCarosuel() {
     const [getProduct, setGetProduct] = useState([])
-    const { t } = useTranslation(["home"]); 
+    const { t } = useTranslation(["home"]);
 
-
-    const [itemList, setItemList] = useContext(DetailsForDekoart)
+    // ---------------------GOItem
+    const navigate = useNavigate();
+    const HandleId = (id) => {
+        navigate(`/product_det/:${id}`);
+    };
+    const [itemList] = useContext(DetailsForDekoart)
 
     const fetchGetAllData = (params) => {
         Object.entries(params).forEach(i => {
@@ -60,7 +65,7 @@ export default function ProductCarosuel() {
             items: 1,
         },
     };
-    
+
 
     return (
         <div className={styles.Container}>
@@ -80,7 +85,7 @@ export default function ProductCarosuel() {
                             autoPlaySpeed={5000}
                             responsive={responsive1}
                         >
-                            {getProduct?.filter(data => data.id == 2)?.map(item => {
+                            {getProduct?.filter(data => data.id === 2)?.map(item => {
                                 return item?.product?.map(data => {
                                     return (
                                         <div className={styles.CardItem}>
@@ -88,15 +93,15 @@ export default function ProductCarosuel() {
                                                 <img src={data?.photo_url || noImg} alt="" />
                                             </div>
                                             <div className={styles.ForTextCard}>
-                                                <div className={styles.ProductTitle}>
-                                                    <div id="terms-content" dangerouslySetInnerHTML={{ __html: data?.name || "noData"}} />
+                                                <div onClick={() => HandleId(item?.id)} className={styles.ProductTitle}>
+                                                    <div id="terms-content" dangerouslySetInnerHTML={{ __html: data?.name || "noData" }} />
 
                                                 </div>
                                                 <div className={styles.ProductText}>
-                                                    <div id="terms-content" style={{color:"#c4c4c4"}} dangerouslySetInnerHTML={{ __html: data?.title || "noTitle"}} />
+                                                    <div id="terms-content" style={{ color: "#c4c4c4" }} dangerouslySetInnerHTML={{ __html: data?.title || "noTitle" }} />
                                                 </div>
                                                 <div className={styles.ProductBtn}>
-                                                    <button>{t("SliderBtn")}</button>
+                                                    <button onClick={() => HandleId(item?.id)}>{t("SliderBtn")}</button>
                                                 </div>
                                             </div>
                                         </div>

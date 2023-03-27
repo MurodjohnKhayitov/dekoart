@@ -8,7 +8,7 @@ import ImgThree from '../../assets/serviceHome/service3.jpg'
 import ImgFour from '../../assets/serviceHome/service4.jpg'
 export default function Service() {
     const { t } = useTranslation(["home"]);
-    return (
+    return ( 
         <div className={styles.Container}>
             <div className={styles.Main}>
                 <div className={styles.Text}>

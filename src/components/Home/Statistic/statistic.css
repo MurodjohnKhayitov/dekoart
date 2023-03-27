@@ -130,6 +130,13 @@
   }
 }
 
+@media (max-width: 568px) {
+  .wor {
+
+    padding: 50px 16px;
+
+  }
+}
 
 
 @media (min-width:768px) and (max-width:1023px) {}

@@ -21,7 +21,7 @@ function Statistic() {
                                             <span ref={countUpRef} />
                                         </VisibilitySensor>
                                     )}
-                                </CountUp>
+                                </CountUp> 
                                 <h4>{t("count1")}</h4>
                             </div>
                         </div>

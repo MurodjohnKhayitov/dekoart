@@ -60,7 +60,7 @@ export default function ServiceType() {
 
                                     </div>
                                 )
-                            })}
+                            })} 
                         {
                             repairType.filter(data => data?.id == 2).map(data => {
                                 return (

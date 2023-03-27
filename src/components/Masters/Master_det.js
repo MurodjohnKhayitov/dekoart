@@ -13,14 +13,14 @@ import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 
 export default function Master_Det() {
-  const { t } = useTranslation(["dekoart"]);
+  const { t } = useTranslation(["masters"]);
 
 
   const navigate = useNavigate();
   const HandleId = (id) => {
     navigate(`/product_det/:${id}`);
   };
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
+  const [itemList] = useContext(DetailsForDekoart)
 
   const [productlist, setProductlist] = useState([])
   const fetchGetAllData = (params) => {
@@ -63,7 +63,7 @@ export default function Master_Det() {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
-  });
+    });
   }, [itemList?.typeLang])
 
 
@@ -83,10 +83,10 @@ export default function Master_Det() {
               <NavLink to="/home"><FaHome style={{ marginRight: "15px" }} /> DEKOART.UZ</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/company_about"> {t("breadCrum1")}</NavLink>
+              <NavLink to="/masters"> {t("breadCrum1")}</NavLink>
             </Breadcrumb.Item>
             <Breadcrumb.Item>
-              <NavLink to="/dekoart">{t("breadCrum2")}</NavLink>
+              <NavLink to={`/masters/:${UrlId}`}>{masters?.name}</NavLink>
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>

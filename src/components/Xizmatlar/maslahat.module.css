@@ -9,6 +9,7 @@
     padding: 0px 100px;
     color: #0f3460;
 }
+
 .BreadcrumbItem {
     padding: 15px 0px;
     margin: 20px 0px;
@@ -35,6 +36,7 @@
     background-color: white;
     color: red;
 }
+
 .Content {
     width: 100%;
     height: fit-content;
@@ -88,6 +90,7 @@
     text-align: center;
 
 }
+
 .ImgTwo {
     display: flex;
     justify-content: center;
@@ -111,10 +114,10 @@
     padding: 15px 0px;
 
 }
+
 .ImgTwo img {
     width: 400px;
-    margin:40px;
-
+    margin: 40px;
 }
 
 
@@ -128,7 +131,7 @@
 
 .textLeftTwo p {
     font-size: 16px;
-  
+
     font-size: normal;
     line-height: 20px;
     margin: 15px 0px;
@@ -322,10 +325,11 @@
 
     .textLeft p {
         font-size: 16px;
+        text-align: justify;
     }
 
     .textLeftTwo p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .RightTitle p {
@@ -359,6 +363,14 @@
 
     .ImgGroup img {
         width: 70px;
+    }
+
+    .ImgOne {
+        width: 100%;
+    }
+
+    .ImgOne img {
+        width: 100%;
     }
 
 }
@@ -397,11 +409,12 @@
     }
 
     .textLeft p {
-        font-size: 12px;
+        font-size: 14px;
+        text-align: justify;
     }
 
     .textLeftTwo p {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .RightTitle {
@@ -440,6 +453,14 @@
 
     .ImgGroup img {
         width: 70px;
+    }
+
+    .ImgOne {
+        width: 100%;
+    }
+
+    .ImgOne img {
+        width: 100%;
     }
 
 }

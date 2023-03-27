@@ -13,7 +13,7 @@ import { Helmet } from 'react-helmet'
 export default function Master() {
 
     const { t } = useTranslation(["masters"]);
-
+ 
     const navigate = useNavigate();
     const HandleId = (id) => {
         navigate(`/masters/:${id}`);
