@@ -4,13 +4,14 @@ import styles from './Product.module.css'
 import { useNavigate } from 'react-router-dom';
 // import Slider from "react-slick";
 // import { useQuery } from 'react-query';
-import { url } from '../../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { useContext } from 'react';
 import noImg from '../../../img/pro3.jpg'
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+const { REACT_APP_BASE_URL: url } = process.env;
+
 export default function ProductCarosuel() {
     const [getProduct, setGetProduct] = useState([])
     const { t } = useTranslation(["home"]);
@@ -39,7 +40,6 @@ export default function ProductCarosuel() {
             language: itemList?.typeLang,
         })
     }, [itemList?.typeLang])
-
 
 
     const responsive1 = {
@@ -93,7 +93,7 @@ export default function ProductCarosuel() {
                                                 <img src={data?.photo_url || noImg} alt="" />
                                             </div>
                                             <div className={styles.ForTextCard}>
-                                                <div onClick={() => HandleId(item?.id)} className={styles.ProductTitle}>
+                                                <div onClick={() => HandleId(data?.id)} className={styles.ProductTitle}>
                                                     <div id="terms-content" dangerouslySetInnerHTML={{ __html: data?.name || "noData" }} />
 
                                                 </div>
@@ -101,7 +101,7 @@ export default function ProductCarosuel() {
                                                     <div id="terms-content" style={{ color: "#c4c4c4" }} dangerouslySetInnerHTML={{ __html: data?.title || "noTitle" }} />
                                                 </div>
                                                 <div className={styles.ProductBtn}>
-                                                    <button onClick={() => HandleId(item?.id)}>{t("SliderBtn")}</button>
+                                                    <button onClick={() => HandleId(data?.id)}>{t("SliderBtn")}</button>
                                                 </div>
                                             </div>
                                         </div>

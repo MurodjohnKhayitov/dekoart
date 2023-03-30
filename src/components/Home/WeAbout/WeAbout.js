@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './about.module.css'
 import AOS from "aos";
-import { url } from '../../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { DetailsForDekoart } from '../../../ContextMenu/ContextMenu';
 AOS.init({
     duration: 1000
 });
+const { REACT_APP_BASE_URL: url } = process.env;
 
 export default function WeAbout() {
     const { t } = useTranslation(["home"]);

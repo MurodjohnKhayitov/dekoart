@@ -20,7 +20,7 @@ import { MdOutlineNavigateNext } from "react-icons/md";
 export default function News() {
     const { t } = useTranslation(["news"]);
     const [dekoNews, setDekoNews] = useState([])
-    const [itemList, setItemList] = useContext(DetailsForDekoart)
+    const [itemList] = useContext(DetailsForDekoart)
 
     const fetchGetAllData = (params) => {
         Object.entries(params).forEach(i => {

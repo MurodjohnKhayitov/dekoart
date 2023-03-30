@@ -1,1 +1,1 @@
-export const url = "https://dekoartserver.pythonanywhere.com/api/v1";
+export const url = "http://dekoart.jamgirov.uz/api/v1";

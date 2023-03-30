@@ -15,10 +15,10 @@ import sertifikat8 from '../../img/Dekoart/1550912494_sertifikat-sherzod8.jpg'
 import { Breadcrumb, } from 'antd';
 import { FaHome } from "react-icons/fa"
 import { NavLink } from 'react-router-dom'
-import { url } from '../Host/Host';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet';
 import { MdOutlineNavigateNext } from "react-icons/md";
+const { REACT_APP_BASE_URL: url } = process.env;
 
 export default function DekoarItem() {
   const { t } = useTranslation(["dekoart"]);
@@ -31,7 +31,7 @@ export default function DekoarItem() {
   const [productlist, setProductlist] = useState([])
 
 
-  const [itemList, setItemList] = useContext(DetailsForDekoart)
+  const [itemList] = useContext(DetailsForDekoart)
 
   const fetchGetAllData = (params) => {
     Object.entries(params).forEach(i => {

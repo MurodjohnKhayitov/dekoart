@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
-import { url } from "../Host/Host";
 import "./style.css";
+import ReactGoogleMap from './ReactGoogleMaps'
+const { REACT_APP_BASE_URL: url } = process.env;
 
 const Contact = () => {
 
@@ -93,7 +94,10 @@ const Contact = () => {
           </div>
         </div>
       </section>
-     
+      <div className="mapMeGoogle">
+        <ReactGoogleMap />
+      </div>
+
     </>
   );
 };

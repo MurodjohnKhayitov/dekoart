@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styles from './sliderMain.module.css'
 import Slider from "react-slick";
 // import { NavLink } from 'react-router-dom';
@@ -12,8 +12,8 @@ import { useQuery } from 'react-query'
 
 // import required modules 
 // import { Navigation } from "swiper";
-import { url } from '../../Host/Host';
-export default function SliderMain() { 
+const { REACT_APP_BASE_URL: url } = process.env;
+export default function SliderMain() {
 
 
     const { t } = useTranslation(["home"]);
@@ -57,7 +57,7 @@ export default function SliderMain() {
             </div>
         );
     };
-  
+
     let settings1 = {
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
@@ -69,7 +69,7 @@ export default function SliderMain() {
         autoplay: false,
         autoplaySpeed: 500
 
-    }; 
+    };
 
 
     return (
@@ -78,7 +78,7 @@ export default function SliderMain() {
             <Slider {...settings1} className={styles.DataCarousel}>
                 {dataSlide.map((value, index) => {
                     return (
-                        <div className={styles.Box}>
+                        <div key={value?.photo_url} className={styles.Box}>
                             <img src={value.photo_url} alt="cover" />
                             <div className={styles.CarosuelItems}>
                                 <div className={styles.CarosuelCard}>

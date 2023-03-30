@@ -1,13 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import logo from "../../components/assets/images/deko.png";
 import {  NavLink, useNavigate } from "react-router-dom";
-
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import {  Dropdown } from 'antd';
 import { url } from "../../components/Host/Host";
-
 import {  Popover } from 'antd';
-
 import { useTranslation } from "react-i18next";
 
 

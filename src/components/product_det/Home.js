@@ -14,7 +14,7 @@ import { url } from "../Host/Host";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import noDataImg from '../../assets/noData/NoData.png'
-import {  Modal } from 'antd';
+import { Modal } from 'antd';
 import { DetailsForDekoart } from "../../ContextMenu/ContextMenu";
 import ReactPlayer from 'react-player'
 
@@ -32,8 +32,8 @@ const Home = () => {
 
 
 
- 
- 
+
+
   // ---------------------GOItem
   const navigate = useNavigate();
   const HandleId = (id) => {
@@ -43,7 +43,7 @@ const Home = () => {
 
   const [getM2M, setgetM2M] = useState("");
 
- 
+
 
   const [productsLists, setProductsLists] = useState([])
   useQuery(["ProductsLists type"], () => {
@@ -160,7 +160,8 @@ const Home = () => {
     setIsModalCategory(false);
 
   };
-
+  let kg = productId?.coefficient ? productId?.coefficient : 0
+  let kgForDekoart = kg * getM2M
 
 
   // const DefaultValueItem = () => {
@@ -215,7 +216,7 @@ const Home = () => {
                               className="card-img-top"
                               onClick={() => {
                                 showModalGalleryOne(item?.id)
-                               
+
                               }
                               }
                               alt="..."
@@ -300,7 +301,7 @@ const Home = () => {
                 <div className="Result">
                   {getM2M ? (
                     <h1>
-                      <span>{getM2M} </span> m<sup>2</sup> joyga <span>{parseInt(getM2M * 1.8)}</span> kg
+                      <span>{getM2M} </span> m<sup>2</sup> joyga <span>{kgForDekoart}</span> kg
                       mahsulot ishlatiladi
                     </h1>
                   ) : null}
